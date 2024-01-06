@@ -1,0 +1,2 @@
+NSLocationWhenInUseUsageDescription = "We will use your location to provide greater precision of services";
+PermissionGroupNotification = "We will send system notifications, so that you can be aware of everything related to the App";

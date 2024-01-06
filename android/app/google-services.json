@@ -1,0 +1,310 @@
+{
+  "project_info": {
+    "project_number": "882572463657",
+    "project_id": "meka-app",
+    "storage_bucket": "meka-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:882572463657:android:816bd619435bafb9e69638",
+        "android_client_info": {
+          "package_name": "com.devcreativo.mekaapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "882572463657-bqqm42l5v31kitjd7cedhohfa8q12fq5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.devcreativo.mekaapp",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "882572463657-4tf1hjk3k8a0e2uldeov5b74qiajqpkj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7njc9IjM84ihgcMypPOlEMK-4EKIaJ4Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "882572463657-0oipic4nqjj3n3adbn9vn7j8fvgmq1d3.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "882572463657-64qj7u9t309pei9r06bcsm5sjbtfdrd8.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mekadevelopments.client"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:882572463657:android:480fd9b80a517da7e69638",
+        "android_client_info": {
+          "package_name": "com.mekadevelopments.client"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "882572463657-4tf1hjk3k8a0e2uldeov5b74qiajqpkj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7njc9IjM84ihgcMypPOlEMK-4EKIaJ4Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "882572463657-0oipic4nqjj3n3adbn9vn7j8fvgmq1d3.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "882572463657-64qj7u9t309pei9r06bcsm5sjbtfdrd8.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mekadevelopments.client"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:882572463657:android:3dc4dbf2b37ddaeee69638",
+        "android_client_info": {
+          "package_name": "com.mekadevelopments.cliente"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "882572463657-04j14ge9ndq0me26u5b0svj97qlccdu0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mekadevelopments.cliente",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "882572463657-4tf1hjk3k8a0e2uldeov5b74qiajqpkj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7njc9IjM84ihgcMypPOlEMK-4EKIaJ4Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "882572463657-0oipic4nqjj3n3adbn9vn7j8fvgmq1d3.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "882572463657-64qj7u9t309pei9r06bcsm5sjbtfdrd8.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mekadevelopments.client"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:882572463657:android:0a0bc6a25eb134b8e69638",
+        "android_client_info": {
+          "package_name": "com.mekadevelopments.clientev2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "882572463657-vc1llml4a3jl12cq96gohk8i6d6q1jpl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mekadevelopments.clientev2",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "882572463657-4tf1hjk3k8a0e2uldeov5b74qiajqpkj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7njc9IjM84ihgcMypPOlEMK-4EKIaJ4Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "882572463657-0oipic4nqjj3n3adbn9vn7j8fvgmq1d3.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "882572463657-64qj7u9t309pei9r06bcsm5sjbtfdrd8.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mekadevelopments.client"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:882572463657:android:128052d764d8100be69638",
+        "android_client_info": {
+          "package_name": "com.mekadevelopments.lt"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "882572463657-5gtqh639r7k9rj78ca5akmcqo4l3lseo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mekadevelopments.lt",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "882572463657-4tf1hjk3k8a0e2uldeov5b74qiajqpkj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7njc9IjM84ihgcMypPOlEMK-4EKIaJ4Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "882572463657-0oipic4nqjj3n3adbn9vn7j8fvgmq1d3.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "882572463657-64qj7u9t309pei9r06bcsm5sjbtfdrd8.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mekadevelopments.client"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:882572463657:android:8d7046eb225c2a84e69638",
+        "android_client_info": {
+          "package_name": "com.mekadevelopments.meka"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "882572463657-lv4lhtc5sodi5i72rdcc8ppdt1gt5c60.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mekadevelopments.meka",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "882572463657-4tf1hjk3k8a0e2uldeov5b74qiajqpkj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7njc9IjM84ihgcMypPOlEMK-4EKIaJ4Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "882572463657-0oipic4nqjj3n3adbn9vn7j8fvgmq1d3.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "882572463657-64qj7u9t309pei9r06bcsm5sjbtfdrd8.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mekadevelopments.client"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:882572463657:android:f2824675c974f8bfe69638",
+        "android_client_info": {
+          "package_name": "com.mekadevelopments.pushtest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "882572463657-qqpgfstakbgq8nisosbrlhkfkjntal48.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mekadevelopments.pushtest",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "882572463657-4tf1hjk3k8a0e2uldeov5b74qiajqpkj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7njc9IjM84ihgcMypPOlEMK-4EKIaJ4Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "882572463657-0oipic4nqjj3n3adbn9vn7j8fvgmq1d3.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "882572463657-64qj7u9t309pei9r06bcsm5sjbtfdrd8.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mekadevelopments.client"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
