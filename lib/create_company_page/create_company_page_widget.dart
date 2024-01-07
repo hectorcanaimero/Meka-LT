@@ -121,9 +121,11 @@ class _CreateCompanyPageWidgetState extends State<CreateCompanyPageWidget> {
                               TextFormField(
                                 controller: _model.textController,
                                 focusNode: _model.textFieldFocusNode,
-                                autofocus: true,
+                                autofillHints: [AutofillHints.name],
+                                textCapitalization: TextCapitalization.words,
                                 obscureText: false,
                                 decoration: InputDecoration(
+                                  isDense: true,
                                   labelStyle:
                                       FlutterFlowTheme.of(context).labelMedium,
                                   hintText: FFLocalizations.of(context).getText(
@@ -256,13 +258,23 @@ class _CreateCompanyPageWidgetState extends State<CreateCompanyPageWidget> {
                                   return FlutterFlowDropDown<String>(
                                     controller: _model
                                             .metodoPagoDropDownValueController1 ??=
-                                        FormFieldController<String>(null),
-                                    options: [
-                                      FFLocalizations.of(context).getText(
-                                        '3mnrgxvk' /* Dinero */,
-                                      ),
-                                      ''
-                                    ],
+                                        FormFieldController<String>(
+                                      _model.metodoPagoDropDownValue1 ??= '1',
+                                    ),
+                                    options: List<String>.from(
+                                        (MekaGroup.todasLasCategoriasCall.id(
+                                      metodoPagoDropDownTodasLasCategoriasResponse
+                                          .jsonBody,
+                                    ) as List)
+                                            .map<String>((s) => s.toString())
+                                            .toList()!),
+                                    optionLabels:
+                                        (MekaGroup.todasLasCategoriasCall.name(
+                                      metodoPagoDropDownTodasLasCategoriasResponse
+                                          .jsonBody,
+                                    ) as List)
+                                            .map<String>((s) => s.toString())
+                                            .toList()!,
                                     onChanged: null,
                                     width: double.infinity,
                                     height: 50.0,

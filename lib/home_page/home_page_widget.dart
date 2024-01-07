@@ -53,10 +53,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             logFirebaseEvent('HomePage_backend_call');
             _model.apiInProcess = await MekaLTGroup.serviciosActivosCall.call(
               status: 'in_process',
-              company: getJsonField(
-                FFAppState().companyJson,
-                r'''$._id''',
-              ).toString().toString(),
+              company: FFAppState().ltCompany.id,
             );
             if ((_model.apiInProcess?.succeeded ?? true)) {
               logFirebaseEvent('HomePage_update_app_state');
@@ -71,10 +68,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             logFirebaseEvent('HomePage_backend_call');
             _model.apiAccepted = await MekaLTGroup.serviciosActivosCall.call(
               status: 'accepted',
-              company: getJsonField(
-                FFAppState().companyJson,
-                r'''$._id''',
-              ).toString().toString(),
+              company: FFAppState().ltCompany.id,
             );
             if ((_model.apiAccepted?.succeeded ?? true)) {
               logFirebaseEvent('HomePage_update_app_state');

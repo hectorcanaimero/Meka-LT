@@ -31,17 +31,19 @@ class FFAppState extends ChangeNotifier {
       _ltActive = await secureStorage.getBool('ff_ltActive') ?? _ltActive;
     });
     await _safeInitAsync(() async {
-      if (await secureStorage.read(key: 'ff_companyJson') != null) {
-        try {
-          _companyJson =
-              jsonDecode(await secureStorage.getString('ff_companyJson') ?? '');
-        } catch (e) {
-          print("Can't decode persisted json. Error: $e.");
-        }
-      }
+      _ffPushKey = await secureStorage.getString('ff_ffPushKey') ?? _ffPushKey;
     });
     await _safeInitAsync(() async {
-      _ffPushKey = await secureStorage.getString('ff_ffPushKey') ?? _ffPushKey;
+      if (await secureStorage.read(key: 'ff_ltCompany') != null) {
+        try {
+          final serializedData =
+              await secureStorage.getString('ff_ltCompany') ?? '{}';
+          _ltCompany =
+              CompanyStruct.fromSerializableMap(jsonDecode(serializedData));
+        } catch (e) {
+          print("Can't decode persisted data type. Error: $e.");
+        }
+      }
     });
   }
 
@@ -173,17 +175,6 @@ class FFAppState extends ChangeNotifier {
     _serviceActive.insert(_index, _value);
   }
 
-  dynamic _companyJson;
-  dynamic get companyJson => _companyJson;
-  set companyJson(dynamic _value) {
-    _companyJson = _value;
-    secureStorage.setString('ff_companyJson', jsonEncode(_value));
-  }
-
-  void deleteCompanyJson() {
-    secureStorage.delete(key: 'ff_companyJson');
-  }
-
   String _ffPushKey = '';
   String get ffPushKey => _ffPushKey;
   set ffPushKey(String _value) {
@@ -193,6 +184,22 @@ class FFAppState extends ChangeNotifier {
 
   void deleteFfPushKey() {
     secureStorage.delete(key: 'ff_ffPushKey');
+  }
+
+  CompanyStruct _ltCompany = CompanyStruct();
+  CompanyStruct get ltCompany => _ltCompany;
+  set ltCompany(CompanyStruct _value) {
+    _ltCompany = _value;
+    secureStorage.setString('ff_ltCompany', _value.serialize());
+  }
+
+  void deleteLtCompany() {
+    secureStorage.delete(key: 'ff_ltCompany');
+  }
+
+  void updateLtCompanyStruct(Function(CompanyStruct) updateFn) {
+    updateFn(_ltCompany);
+    secureStorage.setString('ff_ltCompany', _ltCompany.serialize());
   }
 }
 

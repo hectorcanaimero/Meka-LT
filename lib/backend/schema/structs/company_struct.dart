@@ -14,11 +14,17 @@ class CompanyStruct extends FFFirebaseStruct {
     LatLng? position,
     List<String>? categories,
     List<String>? payment,
+    String? typeCompany,
+    String? id,
+    String? user,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _name = name,
         _position = position,
         _categories = categories,
         _payment = payment,
+        _typeCompany = typeCompany,
+        _id = id,
+        _user = user,
         super(firestoreUtilData);
 
   // "name" field.
@@ -49,11 +55,32 @@ class CompanyStruct extends FFFirebaseStruct {
       updateFn(_payment ??= []);
   bool hasPayment() => _payment != null;
 
+  // "type_company" field.
+  String? _typeCompany;
+  String get typeCompany => _typeCompany ?? '';
+  set typeCompany(String? val) => _typeCompany = val;
+  bool hasTypeCompany() => _typeCompany != null;
+
+  // "id" field.
+  String? _id;
+  String get id => _id ?? '';
+  set id(String? val) => _id = val;
+  bool hasId() => _id != null;
+
+  // "user" field.
+  String? _user;
+  String get user => _user ?? '';
+  set user(String? val) => _user = val;
+  bool hasUser() => _user != null;
+
   static CompanyStruct fromMap(Map<String, dynamic> data) => CompanyStruct(
         name: data['name'] as String?,
         position: data['position'] as LatLng?,
         categories: getDataList(data['categories']),
         payment: getDataList(data['payment']),
+        typeCompany: data['type_company'] as String?,
+        id: data['id'] as String?,
+        user: data['user'] as String?,
       );
 
   static CompanyStruct? maybeFromMap(dynamic data) =>
@@ -64,6 +91,9 @@ class CompanyStruct extends FFFirebaseStruct {
         'position': _position,
         'categories': _categories,
         'payment': _payment,
+        'type_company': _typeCompany,
+        'id': _id,
+        'user': _user,
       }.withoutNulls;
 
   @override
@@ -85,6 +115,18 @@ class CompanyStruct extends FFFirebaseStruct {
           _payment,
           ParamType.String,
           true,
+        ),
+        'type_company': serializeParam(
+          _typeCompany,
+          ParamType.String,
+        ),
+        'id': serializeParam(
+          _id,
+          ParamType.String,
+        ),
+        'user': serializeParam(
+          _user,
+          ParamType.String,
         ),
       }.withoutNulls;
 
@@ -110,6 +152,21 @@ class CompanyStruct extends FFFirebaseStruct {
           ParamType.String,
           true,
         ),
+        typeCompany: deserializeParam(
+          data['type_company'],
+          ParamType.String,
+          false,
+        ),
+        id: deserializeParam(
+          data['id'],
+          ParamType.String,
+          false,
+        ),
+        user: deserializeParam(
+          data['user'],
+          ParamType.String,
+          false,
+        ),
       );
 
   @override
@@ -122,17 +179,23 @@ class CompanyStruct extends FFFirebaseStruct {
         name == other.name &&
         position == other.position &&
         listEquality.equals(categories, other.categories) &&
-        listEquality.equals(payment, other.payment);
+        listEquality.equals(payment, other.payment) &&
+        typeCompany == other.typeCompany &&
+        id == other.id &&
+        user == other.user;
   }
 
   @override
-  int get hashCode =>
-      const ListEquality().hash([name, position, categories, payment]);
+  int get hashCode => const ListEquality()
+      .hash([name, position, categories, payment, typeCompany, id, user]);
 }
 
 CompanyStruct createCompanyStruct({
   String? name,
   LatLng? position,
+  String? typeCompany,
+  String? id,
+  String? user,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -141,6 +204,9 @@ CompanyStruct createCompanyStruct({
     CompanyStruct(
       name: name,
       position: position,
+      typeCompany: typeCompany,
+      id: id,
+      user: user,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

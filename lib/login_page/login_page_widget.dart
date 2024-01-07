@@ -524,12 +524,6 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                             logFirebaseEvent(
                                                 'Button_update_app_state');
                                             setState(() {
-                                              FFAppState().companyJson =
-                                                  getJsonField(
-                                                (_model.getCompany?.jsonBody ??
-                                                    ''),
-                                                r'''$''',
-                                              );
                                               FFAppState().ltCreateCompany =
                                                   true;
                                             });
