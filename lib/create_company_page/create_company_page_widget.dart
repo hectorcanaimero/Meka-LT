@@ -437,9 +437,7 @@ class _CreateCompanyPageWidgetState extends State<CreateCompanyPageWidget> {
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Text(
-                                    FFLocalizations.of(context).getText(
-                                      '0qomtq3k' /* Direccion de la compañia */,
-                                    ),
+                                    FFAppState().ltPositionAddress,
                                     textAlign: TextAlign.start,
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
@@ -453,8 +451,9 @@ class _CreateCompanyPageWidgetState extends State<CreateCompanyPageWidget> {
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 12.0, 0.0, 0.0),
                                     child: Text(
-                                      FFLocalizations.of(context).getText(
-                                        '4dz7w0rk' /* Latitude y logintude */,
+                                      valueOrDefault<String>(
+                                        FFAppState().ltPosition?.toString(),
+                                        'Position',
                                       ),
                                       textAlign: TextAlign.start,
                                       style: FlutterFlowTheme.of(context)
@@ -482,9 +481,18 @@ class _CreateCompanyPageWidgetState extends State<CreateCompanyPageWidget> {
                   child: Align(
                     alignment: AlignmentDirectional(0.0, 0.0),
                     child: FFButtonWidget(
-                      onPressed: () {
-                        print('Button pressed ...');
-                      },
+                      onPressed: ((_model.name == null || _model.name == '') &&
+                              (_model.typeCompany == null ||
+                                  _model.typeCompany == '') &&
+                              !(_model.categories.isNotEmpty) &&
+                              !(_model.payment.isNotEmpty) &&
+                              (FFAppState().ltPosition == null) &&
+                              (FFAppState().ltPositionAddress == null ||
+                                  FFAppState().ltPositionAddress == ''))
+                          ? null
+                          : () {
+                              print('Button pressed ...');
+                            },
                       text: FFLocalizations.of(context).getText(
                         'gokn01in' /* Registrar Compañia */,
                       ),
@@ -508,6 +516,9 @@ class _CreateCompanyPageWidgetState extends State<CreateCompanyPageWidget> {
                           width: 1.0,
                         ),
                         borderRadius: BorderRadius.circular(8.0),
+                        disabledColor: Color(0xFF797979),
+                        disabledTextColor:
+                            FlutterFlowTheme.of(context).primaryText,
                       ),
                     ),
                   ),

@@ -13,6 +13,30 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class CreateCompanyPageModel extends FlutterFlowModel<CreateCompanyPageWidget> {
+  ///  Local state fields for this page.
+
+  String? name = '';
+
+  String? typeCompany = '';
+
+  List<String> categories = [];
+  void addToCategories(String item) => categories.add(item);
+  void removeFromCategories(String item) => categories.remove(item);
+  void removeAtIndexFromCategories(int index) => categories.removeAt(index);
+  void insertAtIndexInCategories(int index, String item) =>
+      categories.insert(index, item);
+  void updateCategoriesAtIndex(int index, Function(String) updateFn) =>
+      categories[index] = updateFn(categories[index]);
+
+  List<String> payment = [];
+  void addToPayment(String item) => payment.add(item);
+  void removeFromPayment(String item) => payment.remove(item);
+  void removeAtIndexFromPayment(int index) => payment.removeAt(index);
+  void insertAtIndexInPayment(int index, String item) =>
+      payment.insert(index, item);
+  void updatePaymentAtIndex(int index, Function(String) updateFn) =>
+      payment[index] = updateFn(payment[index]);
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

@@ -603,16 +603,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Find your address',
       'pt': 'Encontre seu endereço',
     },
-    '0qomtq3k': {
-      'es': 'Direccion de la compañia',
-      'en': '',
-      'pt': '',
-    },
-    '4dz7w0rk': {
-      'es': 'Latitude y logintude',
-      'en': '',
-      'pt': '',
-    },
     'gokn01in': {
       'es': 'Registrar Compañia',
       'en': 'Register Company',
