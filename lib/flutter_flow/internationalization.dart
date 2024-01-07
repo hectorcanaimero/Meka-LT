@@ -909,7 +909,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // Miscellaneous
   {
     'dnns4zx8': {
-      'es': '',
+      'es':
+          'Vamos a utilizar la camara, para acciones dentro de la App, tales como fotografia de los servicios, avatar',
       'en': '',
       'pt': '',
     },

@@ -684,8 +684,12 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                       padding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 16.0),
                       child: FFButtonWidget(
-                        onPressed: () {
-                          print('Button pressed ...');
+                        onPressed: () async {
+                          logFirebaseEvent(
+                              'LOGIN_¿_HAS_OLVIDADO_TU_CONTRASEÑA?_BTN_');
+                          logFirebaseEvent('Button_navigate_to');
+
+                          context.pushNamed('ForgotPasswordPage');
                         },
                         text: FFLocalizations.of(context).getText(
                           '9wlny8wh' /* ¿Has olvidado tu contraseña? */,

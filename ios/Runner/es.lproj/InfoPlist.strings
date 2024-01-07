@@ -1,2 +1,3 @@
+NSCameraUsageDescription = "Vamos a utilizar la camara, para acciones dentro de la App, tales como fotografia de los servicios, avatar";
 NSLocationWhenInUseUsageDescription = "Vamos usar tu localización, para entrgar una mayor precision de los servicios";
 PermissionGroupNotification = "Vamos enviar notificaciones de sistema, y que puedas estar enterado de todo lo relacionado a la App";
