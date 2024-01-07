@@ -548,21 +548,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Search for an item...',
       'pt': 'Procure um item...',
     },
-    '3mnrgxvk': {
-      'es': 'Dinero',
-      'en': 'Money',
-      'pt': 'Dinheiro',
-    },
-    'nsdadawn': {
-      'es': 'Categoria(s) que actua...',
-      'en': 'Payment method',
-      'pt': 'Forma de pagamento',
-    },
-    's4fn8gbg': {
-      'es': 'Search for an item...',
-      'en': 'Search for an item...',
-      'pt': 'Procure um item...',
-    },
     'a0y8jx9y': {
       'es': 'Dinero',
       'en': 'Money',
