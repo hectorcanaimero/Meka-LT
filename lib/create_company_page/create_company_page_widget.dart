@@ -173,16 +173,9 @@ class _CreateCompanyPageWidgetState extends State<CreateCompanyPageWidget> {
                                   // Customize what your widget looks like when it's loading.
                                   if (!snapshot.hasData) {
                                     return Center(
-                                      child: SizedBox(
-                                        width: 24.0,
-                                        height: 24.0,
-                                        child: CircularProgressIndicator(
-                                          valueColor:
-                                              AlwaysStoppedAnimation<Color>(
-                                            FlutterFlowTheme.of(context)
-                                                .primary,
-                                          ),
-                                        ),
+                                      child: LinearProgressIndicator(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
                                       ),
                                     );
                                   }
@@ -194,22 +187,20 @@ class _CreateCompanyPageWidgetState extends State<CreateCompanyPageWidget> {
                                         FormFieldController<String>(
                                       _model.typeCompanyDropDownValue ??= '',
                                     ),
-                                    options: List<String>.from((getJsonField(
+                                    options: List<String>.from(
+                                        (MekaGroup.tipoCompaniasCall.id(
                                       typeCompanyDropDownTipoCompaniasResponse
                                           .jsonBody,
-                                      r'''$._id''',
-                                      true,
                                     ) as List)
-                                        .map<String>((s) => s.toString())
-                                        .toList()!),
-                                    optionLabels: (getJsonField(
+                                            .map<String>((s) => s.toString())
+                                            .toList()!),
+                                    optionLabels:
+                                        (MekaGroup.tipoCompaniasCall.name(
                                       typeCompanyDropDownTipoCompaniasResponse
                                           .jsonBody,
-                                      r'''$.name''',
-                                      true,
                                     ) as List)
-                                        .map<String>((s) => s.toString())
-                                        .toList()!,
+                                            .map<String>((s) => s.toString())
+                                            .toList()!,
                                     onChanged: (val) => setState(() =>
                                         _model.typeCompanyDropDownValue = val),
                                     width: double.infinity,
@@ -248,50 +239,69 @@ class _CreateCompanyPageWidgetState extends State<CreateCompanyPageWidget> {
                                   );
                                 },
                               ),
-                              FlutterFlowDropDown<String>(
-                                controller: _model
-                                        .metodoPagoDropDownValueController1 ??=
-                                    FormFieldController<String>(null),
-                                options: [
-                                  FFLocalizations.of(context).getText(
-                                    '3mnrgxvk' /* Dinero */,
-                                  )
-                                ],
-                                onChanged: null,
-                                width: double.infinity,
-                                height: 50.0,
-                                textStyle: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Poppins',
+                              FutureBuilder<ApiCallResponse>(
+                                future: MekaGroup.todasLasCategoriasCall.call(),
+                                builder: (context, snapshot) {
+                                  // Customize what your widget looks like when it's loading.
+                                  if (!snapshot.hasData) {
+                                    return Center(
+                                      child: LinearProgressIndicator(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                      ),
+                                    );
+                                  }
+                                  final metodoPagoDropDownTodasLasCategoriasResponse =
+                                      snapshot.data!;
+                                  return FlutterFlowDropDown<String>(
+                                    controller: _model
+                                            .metodoPagoDropDownValueController1 ??=
+                                        FormFieldController<String>(null),
+                                    options: [
+                                      FFLocalizations.of(context).getText(
+                                        '3mnrgxvk' /* Dinero */,
+                                      ),
+                                      ''
+                                    ],
+                                    onChanged: null,
+                                    width: double.infinity,
+                                    height: 50.0,
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Poppins',
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryText,
+                                          fontSize: 14.0,
+                                        ),
+                                    hintText:
+                                        FFLocalizations.of(context).getText(
+                                      'nsdadawn' /* Categoria(s) que actua... */,
+                                    ),
+                                    icon: Icon(
+                                      Icons.keyboard_arrow_down_rounded,
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryText,
-                                      fontSize: 14.0,
+                                      size: 24.0,
                                     ),
-                                hintText: FFLocalizations.of(context).getText(
-                                  'nsdadawn' /* Categoria(s) que actua... */,
-                                ),
-                                icon: Icon(
-                                  Icons.keyboard_arrow_down_rounded,
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryText,
-                                  size: 24.0,
-                                ),
-                                fillColor:
-                                    FlutterFlowTheme.of(context).lineColor,
-                                elevation: 2.0,
-                                borderColor:
-                                    FlutterFlowTheme.of(context).alternate,
-                                borderWidth: 2.0,
-                                borderRadius: 8.0,
-                                margin: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 4.0, 16.0, 4.0),
-                                hidesUnderline: true,
-                                isOverButton: true,
-                                isSearchable: false,
-                                isMultiSelect: true,
-                                onChangedForMultiSelect: (val) => setState(() =>
-                                    _model.metodoPagoDropDownValue1 = val),
+                                    fillColor:
+                                        FlutterFlowTheme.of(context).lineColor,
+                                    elevation: 2.0,
+                                    borderColor:
+                                        FlutterFlowTheme.of(context).alternate,
+                                    borderWidth: 2.0,
+                                    borderRadius: 8.0,
+                                    margin: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 4.0, 16.0, 4.0),
+                                    hidesUnderline: true,
+                                    isOverButton: true,
+                                    isSearchable: false,
+                                    isMultiSelect: true,
+                                    onChangedForMultiSelect: (val) => setState(
+                                        () => _model.metodoPagoDropDownValue1 =
+                                            val),
+                                  );
+                                },
                               ),
                               FlutterFlowDropDown<String>(
                                 controller: _model
