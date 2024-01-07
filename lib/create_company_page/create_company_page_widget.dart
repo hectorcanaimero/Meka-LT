@@ -241,6 +241,79 @@ class _CreateCompanyPageWidgetState extends State<CreateCompanyPageWidget> {
                                   );
                                 },
                               ),
+                              FutureBuilder<ApiCallResponse>(
+                                future: MekaGroup.todasLasCategoriasCall.call(),
+                                builder: (context, snapshot) {
+                                  // Customize what your widget looks like when it's loading.
+                                  if (!snapshot.hasData) {
+                                    return Center(
+                                      child: LinearProgressIndicator(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                      ),
+                                    );
+                                  }
+                                  final categoriesDropDownTodasLasCategoriasResponse =
+                                      snapshot.data!;
+                                  return FlutterFlowDropDown<String>(
+                                    controller: _model
+                                            .categoriesDropDownValueController ??=
+                                        FormFieldController<String>(
+                                      _model.categoriesDropDownValue ??= '',
+                                    ),
+                                    options: List<String>.from(
+                                        (MekaGroup.todasLasCategoriasCall.id(
+                                      categoriesDropDownTodasLasCategoriasResponse
+                                          .jsonBody,
+                                    ) as List)
+                                            .map<String>((s) => s.toString())
+                                            .toList()!),
+                                    optionLabels:
+                                        (MekaGroup.todasLasCategoriasCall.name(
+                                      categoriesDropDownTodasLasCategoriasResponse
+                                          .jsonBody,
+                                    ) as List)
+                                            .map<String>((s) => s.toString())
+                                            .toList()!,
+                                    onChanged: null,
+                                    width: double.infinity,
+                                    height: 50.0,
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Poppins',
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryText,
+                                        ),
+                                    hintText:
+                                        FFLocalizations.of(context).getText(
+                                      '40lcjozl' /* Categoria(s) que actua.. */,
+                                    ),
+                                    icon: Icon(
+                                      Icons.keyboard_arrow_down_rounded,
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                      size: 24.0,
+                                    ),
+                                    fillColor:
+                                        FlutterFlowTheme.of(context).lineColor,
+                                    elevation: 2.0,
+                                    borderColor:
+                                        FlutterFlowTheme.of(context).alternate,
+                                    borderWidth: 2.0,
+                                    borderRadius: 8.0,
+                                    margin: EdgeInsetsDirectional.fromSTEB(
+                                        16.0, 4.0, 16.0, 4.0),
+                                    hidesUnderline: true,
+                                    isOverButton: true,
+                                    isSearchable: false,
+                                    isMultiSelect: true,
+                                    onChangedForMultiSelect: (val) => setState(
+                                        () => _model.categoriesDropDownValue =
+                                            val),
+                                  );
+                                },
+                              ),
                               FlutterFlowDropDown<String>(
                                 controller:
                                     _model.metodoPagoDropDownValueController ??=

@@ -548,6 +548,21 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Search for an item...',
       'pt': 'Procure um item...',
     },
+    'r83bynzp': {
+      'es': 'Option 1',
+      'en': '',
+      'pt': '',
+    },
+    '40lcjozl': {
+      'es': 'Categoria(s) que actua..',
+      'en': '',
+      'pt': '',
+    },
+    'nbwx30pn': {
+      'es': 'Search for an item...',
+      'en': '',
+      'pt': '',
+    },
     'a0y8jx9y': {
       'es': 'Dinero',
       'en': 'Money',
