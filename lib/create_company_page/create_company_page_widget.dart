@@ -258,17 +258,8 @@ class _CreateCompanyPageWidgetState extends State<CreateCompanyPageWidget> {
                                   return FlutterFlowDropDown<String>(
                                     controller: _model
                                             .categoriesNewDropDownValueController ??=
-                                        FormFieldController<String>(
-                                      _model.categoriesNewDropDownValue ??= '',
-                                    ),
-                                    options: List<String>.from(
-                                        (MekaGroup.todasLasCategoriasCall.id(
-                                      categoriesNewDropDownTodasLasCategoriasResponse
-                                          .jsonBody,
-                                    ) as List)
-                                            .map<String>((s) => s.toString())
-                                            .toList()!),
-                                    optionLabels:
+                                        FormFieldController<String>(null),
+                                    options:
                                         (MekaGroup.todasLasCategoriasCall.name(
                                       categoriesNewDropDownTodasLasCategoriasResponse
                                           .jsonBody,
@@ -278,6 +269,9 @@ class _CreateCompanyPageWidgetState extends State<CreateCompanyPageWidget> {
                                     onChanged: null,
                                     width: double.infinity,
                                     height: 50.0,
+                                    searchHintTextStyle:
+                                        FlutterFlowTheme.of(context)
+                                            .labelMedium,
                                     textStyle: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
@@ -288,6 +282,10 @@ class _CreateCompanyPageWidgetState extends State<CreateCompanyPageWidget> {
                                     hintText:
                                         FFLocalizations.of(context).getText(
                                       '40lcjozl' /* Categoria(s) que actua.. */,
+                                    ),
+                                    searchHintText:
+                                        FFLocalizations.of(context).getText(
+                                      '6uo85d50' /* Busqueda de la categoria... */,
                                     ),
                                     icon: Icon(
                                       Icons.keyboard_arrow_down_rounded,
@@ -306,7 +304,7 @@ class _CreateCompanyPageWidgetState extends State<CreateCompanyPageWidget> {
                                         0.0, 4.0, 16.0, 4.0),
                                     hidesUnderline: true,
                                     isOverButton: true,
-                                    isSearchable: false,
+                                    isSearchable: true,
                                     isMultiSelect: true,
                                     onChangedForMultiSelect: (val) => setState(
                                         () => _model

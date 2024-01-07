@@ -558,8 +558,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
       'pt': '',
     },
-    'nbwx30pn': {
-      'es': 'Search for an item...',
+    '6uo85d50': {
+      'es': 'Busqueda de la categoria...',
       'en': '',
       'pt': '',
     },
