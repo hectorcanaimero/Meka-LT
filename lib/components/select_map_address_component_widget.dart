@@ -205,37 +205,39 @@ class _SelectMapAddressComponentWidgetState
                           ),
                         ),
                       ),
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
-                        child: Text(
-                          '${_model.placePickerValue.address}, ${_model.placePickerValue.name}. ${_model.placePickerValue.city} ${_model.placePickerValue.state}. ${_model.placePickerValue.country} ${_model.placePickerValue.zipCode}',
-                          style: FlutterFlowTheme.of(context)
-                              .bodyMedium
-                              .override(
-                                fontFamily: 'Poppins',
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
-                              ),
-                        ),
-                      ),
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
-                        child: Text(
-                          valueOrDefault<String>(
-                            _model.placePickerValue.latLng?.toString(),
-                            'position',
+                      if (_model.placePickerValue.latLng != null)
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 24.0, 0.0, 0.0),
+                          child: Text(
+                            '${_model.placePickerValue.address}, ${_model.placePickerValue.name}. ${_model.placePickerValue.city} ${_model.placePickerValue.state}. ${_model.placePickerValue.country} ${_model.placePickerValue.zipCode}',
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Poppins',
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryText,
+                                ),
                           ),
-                          style: FlutterFlowTheme.of(context)
-                              .bodyMedium
-                              .override(
-                                fontFamily: 'Poppins',
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
-                              ),
                         ),
-                      ),
+                      if (_model.placePickerValue.latLng != null)
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 12.0, 0.0, 0.0),
+                          child: Text(
+                            valueOrDefault<String>(
+                              _model.placePickerValue.latLng?.toString(),
+                              'position',
+                            ),
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Poppins',
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryText,
+                                ),
+                          ),
+                        ),
                     ],
                   ),
                 ),

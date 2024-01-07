@@ -448,10 +448,7 @@ class _CreateCompanyPageWidgetState extends State<CreateCompanyPageWidget> {
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 12.0, 0.0, 0.0),
                                     child: Text(
-                                      valueOrDefault<String>(
-                                        FFAppState().ltPosition?.toString(),
-                                        'Position',
-                                      ),
+                                      FFAppState().ltPosition!.toString(),
                                       textAlign: TextAlign.start,
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
