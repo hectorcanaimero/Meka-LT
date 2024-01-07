@@ -143,7 +143,7 @@ class _CreateUserPageWidgetState extends State<CreateUserPageWidget>
           ),
           actions: [],
           centerTitle: true,
-          elevation: 2.0,
+          elevation: 0.0,
         ),
         body: SafeArea(
           top: true,
@@ -179,18 +179,31 @@ class _CreateUserPageWidgetState extends State<CreateUserPageWidget>
                                   Align(
                                     alignment: AlignmentDirectional(0.0, 0.0),
                                     child: Container(
-                                      width: 120.0,
-                                      height: 120.0,
-                                      clipBehavior: Clip.antiAlias,
+                                      width: 100.0,
+                                      height: 100.0,
                                       decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .alternate,
+                                        image: DecorationImage(
+                                          fit: BoxFit.cover,
+                                          image: Image.network(
+                                            'https://gravatar.com/avatar/4941d2176d6c4319e33274c51dc69322?s=400&d=robohash&r=x',
+                                          ).image,
+                                        ),
                                         shape: BoxShape.circle,
                                       ),
-                                      child: Image.network(
-                                        getJsonField(
-                                          (_model.uploadImage?.jsonBody ?? ''),
-                                          r'''$.path''',
-                                        ).toString(),
-                                        fit: BoxFit.cover,
+                                      child: Container(
+                                        width: 100.0,
+                                        height: 100.0,
+                                        clipBehavior: Clip.antiAlias,
+                                        decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                        ),
+                                        child: Image.memory(
+                                          _model.uploadedLocalFile.bytes ??
+                                              Uint8List.fromList([]),
+                                          fit: BoxFit.cover,
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -257,39 +270,6 @@ class _CreateUserPageWidgetState extends State<CreateUserPageWidget>
                                               return;
                                             }
                                           }
-
-                                          logFirebaseEvent(
-                                              'Button_backend_call');
-                                          _model.uploadImage = await MekaGroup
-                                              .uploadStorageCall
-                                              .call(
-                                            photo: _model.uploadedLocalFile,
-                                          );
-                                          if ((_model.uploadImage?.succeeded ??
-                                              true)) {
-                                            logFirebaseEvent(
-                                                'Button_show_snack_bar');
-                                            ScaffoldMessenger.of(context)
-                                                .showSnackBar(
-                                              SnackBar(
-                                                content: Text(
-                                                  'La imagen fue cargada con éxito!',
-                                                  style: TextStyle(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primaryText,
-                                                  ),
-                                                ),
-                                                duration: Duration(
-                                                    milliseconds: 4000),
-                                                backgroundColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondary,
-                                              ),
-                                            );
-                                          }
-
-                                          setState(() {});
                                         },
                                         text:
                                             FFLocalizations.of(context).getText(

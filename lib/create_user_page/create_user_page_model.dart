@@ -25,8 +25,6 @@ class CreateUserPageModel extends FlutterFlowModel<CreateUserPageWidget> {
   FFUploadedFile uploadedLocalFile =
       FFUploadedFile(bytes: Uint8List.fromList([]));
 
-  // Stores action output result for [Backend Call - API (Upload Storage)] action in Button widget.
-  ApiCallResponse? uploadImage;
   // State field(s) for firstName widget.
   FocusNode? firstNameFocusNode;
   TextEditingController? firstNameController;
