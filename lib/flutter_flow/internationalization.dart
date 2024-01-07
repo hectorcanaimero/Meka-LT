@@ -550,18 +550,18 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'r83bynzp': {
       'es': 'Option 1',
-      'en': '',
-      'pt': '',
+      'en': 'Option 1',
+      'pt': 'Opção 1',
     },
     '40lcjozl': {
       'es': 'Categoria(s) que actua..',
-      'en': '',
-      'pt': '',
+      'en': 'Category(s) that operates..',
+      'pt': 'Categoria(s) que opera..',
     },
     '6uo85d50': {
       'es': 'Busqueda de la categoria...',
-      'en': '',
-      'pt': '',
+      'en': 'Category search...',
+      'pt': 'Pesquisa de categoria...',
     },
     'a0y8jx9y': {
       'es': 'Dinero',
@@ -610,8 +610,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'lr9k4mpn': {
       'es': 'Home',
-      'en': '',
-      'pt': '',
+      'en': 'Home',
+      'pt': 'Home',
     },
   },
   // MessageAdvisorComponent

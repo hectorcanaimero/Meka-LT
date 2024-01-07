@@ -205,7 +205,7 @@ class _SelectMapAddressComponentWidgetState
                           ),
                         ),
                       ),
-                      if (_model.placePickerValue.latLng != null)
+                      if (FFAppState().ltPosition != null)
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 24.0, 0.0, 0.0),
@@ -220,7 +220,7 @@ class _SelectMapAddressComponentWidgetState
                                 ),
                           ),
                         ),
-                      if (_model.placePickerValue.latLng != null)
+                      if (FFAppState().ltPosition != null)
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 12.0, 0.0, 0.0),
