@@ -409,8 +409,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'ywata1kg': {
       'es': 'Cargar Foto',
-      'en': '',
-      'pt': '',
+      'en': 'Upload Photo',
+      'pt': 'Carregar foto',
     },
     'kj3f3mit': {
       'es': '',
@@ -489,8 +489,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'i89p1pef': {
       'es': 'Home',
-      'en': 'home',
-      'pt': 'lar',
+      'en': 'Home',
+      'pt': 'Home ',
     },
   },
   // RegistroPage
