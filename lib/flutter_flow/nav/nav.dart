@@ -142,7 +142,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'CreateCompanyPage',
           path: '/createCompanyPage',
-          builder: (context, params) => CreateCompanyPageWidget(),
+          builder: (context, params) => CreateCompanyPageWidget(
+            uid: params.getParam('uid', ParamType.String),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
