@@ -201,11 +201,12 @@ class _SelectMapAddressComponentWidgetState
                       width: 200.0,
                       height: 40.0,
                       color: FlutterFlowTheme.of(context).primary,
-                      textStyle:
-                          FlutterFlowTheme.of(context).titleSmall.override(
-                                fontFamily: 'Poppins',
-                                color: FlutterFlowTheme.of(context).info,
-                              ),
+                      textStyle: FlutterFlowTheme.of(context)
+                          .titleSmall
+                          .override(
+                            fontFamily: 'Poppins',
+                            color: FlutterFlowTheme.of(context).secondaryText,
+                          ),
                       elevation: 2.0,
                       borderSide: BorderSide(
                         color: Colors.transparent,

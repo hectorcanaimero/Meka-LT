@@ -674,13 +674,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'd3fgepjg': {
       'es': 'Ubicación de la compañia',
-      'en': '',
-      'pt': '',
+      'en': 'Company location',
+      'pt': 'Localização da empresa',
     },
     's248lbb6': {
       'es': 'Select Location',
-      'en': '',
-      'pt': '',
+      'en': 'Select Location',
+      'pt': 'Selecione o local',
     },
     'ogcutuse': {
       'es': 'Salvar la dirección',
