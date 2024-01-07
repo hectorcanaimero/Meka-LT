@@ -253,24 +253,24 @@ class _CreateCompanyPageWidgetState extends State<CreateCompanyPageWidget> {
                                       ),
                                     );
                                   }
-                                  final categoriesDropDownTodasLasCategoriasResponse =
+                                  final categoriesNewDropDownTodasLasCategoriasResponse =
                                       snapshot.data!;
                                   return FlutterFlowDropDown<String>(
                                     controller: _model
-                                            .categoriesDropDownValueController ??=
+                                            .categoriesNewDropDownValueController ??=
                                         FormFieldController<String>(
-                                      _model.categoriesDropDownValue ??= '',
+                                      _model.categoriesNewDropDownValue ??= '',
                                     ),
                                     options: List<String>.from(
                                         (MekaGroup.todasLasCategoriasCall.id(
-                                      categoriesDropDownTodasLasCategoriasResponse
+                                      categoriesNewDropDownTodasLasCategoriasResponse
                                           .jsonBody,
                                     ) as List)
                                             .map<String>((s) => s.toString())
                                             .toList()!),
                                     optionLabels:
                                         (MekaGroup.todasLasCategoriasCall.name(
-                                      categoriesDropDownTodasLasCategoriasResponse
+                                      categoriesNewDropDownTodasLasCategoriasResponse
                                           .jsonBody,
                                     ) as List)
                                             .map<String>((s) => s.toString())
@@ -303,14 +303,14 @@ class _CreateCompanyPageWidgetState extends State<CreateCompanyPageWidget> {
                                     borderWidth: 2.0,
                                     borderRadius: 8.0,
                                     margin: EdgeInsetsDirectional.fromSTEB(
-                                        16.0, 4.0, 16.0, 4.0),
+                                        0.0, 4.0, 16.0, 4.0),
                                     hidesUnderline: true,
                                     isOverButton: true,
                                     isSearchable: false,
                                     isMultiSelect: true,
                                     onChangedForMultiSelect: (val) => setState(
-                                        () => _model.categoriesDropDownValue =
-                                            val),
+                                        () => _model
+                                            .categoriesNewDropDownValue = val),
                                   );
                                 },
                               ),
