@@ -834,130 +834,124 @@ class _CreateUserPageWidgetState extends State<CreateUserPageWidget>
                                     );
                                     if ((_model.apiResultbyl?.succeeded ??
                                         true)) {
-                                      logFirebaseEvent('Button_backend_call');
-                                      _model.apiResult9uk =
-                                          await MekaGroup.authLoginCall.call(
-                                        username:
-                                            _model.emailLoginController.text,
-                                        password: _model
-                                            .passwordRegisterController.text,
-                                      );
-                                      if ((_model.apiResult9uk?.succeeded ??
-                                          true)) {
-                                        logFirebaseEvent('Button_auth');
-                                        GoRouter.of(context).prepareAuthEvent();
-                                        await authManager.signIn(
-                                          authenticationToken:
-                                              MekaGroup.authLoginCall
-                                                  .token(
-                                                    (_model.apiResult9uk
+                                      logFirebaseEvent('Button_auth');
+                                      GoRouter.of(context).prepareAuthEvent();
+                                      await authManager.signIn(
+                                        authenticationToken: MekaGroup
+                                            .authCreateUserCall
+                                            .token(
+                                              (_model.apiResultbyl?.jsonBody ??
+                                                  ''),
+                                            )
+                                            .toString(),
+                                        refreshToken: MekaGroup
+                                            .authCreateUserCall
+                                            .refreshToken(
+                                              (_model.apiResultbyl?.jsonBody ??
+                                                  ''),
+                                            )
+                                            .toString(),
+                                        authUid: MekaGroup.authCreateUserCall
+                                            .id(
+                                              (_model.apiResultbyl?.jsonBody ??
+                                                  ''),
+                                            )
+                                            .toString(),
+                                        userData: UsersStruct(
+                                          firstName:
+                                              MekaGroup.authCreateUserCall
+                                                  .firstName(
+                                                    (_model.apiResultbyl
                                                             ?.jsonBody ??
                                                         ''),
                                                   )
                                                   .toString(),
-                                          authUid: MekaGroup.authLoginCall
-                                              .id(
-                                                (_model.apiResult9uk
+                                          lastName: MekaGroup.authCreateUserCall
+                                              .lastName(
+                                                (_model.apiResultbyl
                                                         ?.jsonBody ??
                                                     ''),
                                               )
                                               .toString(),
-                                          userData: UsersStruct(
-                                            firstName: MekaGroup.authLoginCall
-                                                .firstName(
-                                                  (_model.apiResult9uk
-                                                          ?.jsonBody ??
-                                                      ''),
-                                                )
-                                                .toString(),
-                                            lastName: MekaGroup.authLoginCall
-                                                .lastName(
-                                                  (_model.apiResult9uk
-                                                          ?.jsonBody ??
-                                                      ''),
-                                                )
-                                                .toString(),
-                                            email: MekaGroup.authLoginCall
-                                                .email(
-                                                  (_model.apiResult9uk
-                                                          ?.jsonBody ??
-                                                      ''),
-                                                )
-                                                .toString(),
-                                            countryName: MekaGroup.authLoginCall
-                                                .countryName(
-                                                  (_model.apiResult9uk
-                                                          ?.jsonBody ??
-                                                      ''),
-                                                )
-                                                .toString(),
-                                            countryId: MekaGroup.authLoginCall
-                                                .countryId(
-                                                  (_model.apiResult9uk
-                                                          ?.jsonBody ??
-                                                      ''),
-                                                )
-                                                .toString(),
-                                            typeUser: MekaGroup.authLoginCall
-                                                .typeUser(
-                                                  (_model.apiResult9uk
-                                                          ?.jsonBody ??
-                                                      ''),
-                                                )
-                                                .toString(),
-                                            id: MekaGroup.authLoginCall
-                                                .id(
-                                                  (_model.apiResult9uk
-                                                          ?.jsonBody ??
-                                                      ''),
-                                                )
-                                                .toString(),
-                                            score:
-                                                MekaGroup.authLoginCall.score(
-                                              (_model.apiResult9uk?.jsonBody ??
-                                                  ''),
-                                            ),
-                                            scoreName: MekaGroup.authLoginCall
-                                                .scoreName(
-                                                  (_model.apiResult9uk
-                                                          ?.jsonBody ??
-                                                      ''),
-                                                )
-                                                .toString(),
+                                          email: MekaGroup.authCreateUserCall
+                                              .email(
+                                                (_model.apiResultbyl
+                                                        ?.jsonBody ??
+                                                    ''),
+                                              )
+                                              .toString(),
+                                          countryName: getJsonField(
+                                            (_model.apiResultbyl?.jsonBody ??
+                                                ''),
+                                            r'''$.user.country.name''',
+                                          ).toString(),
+                                          countryId:
+                                              MekaGroup.authCreateUserCall
+                                                  .country(
+                                                    (_model.apiResultbyl
+                                                            ?.jsonBody ??
+                                                        ''),
+                                                  )
+                                                  .toString(),
+                                          typeUser: MekaGroup.authCreateUserCall
+                                              .typeUser(
+                                                (_model.apiResultbyl
+                                                        ?.jsonBody ??
+                                                    ''),
+                                              )
+                                              .toString(),
+                                          id: MekaGroup.authCreateUserCall
+                                              .id(
+                                                (_model.apiResultbyl
+                                                        ?.jsonBody ??
+                                                    ''),
+                                              )
+                                              .toString(),
+                                          score: MekaGroup.authCreateUserCall
+                                              .score(
+                                            (_model.apiResultbyl?.jsonBody ??
+                                                ''),
                                           ),
-                                        );
-                                        logFirebaseEvent('Button_alert_dialog');
-                                        await showDialog(
-                                          context: context,
-                                          builder: (alertDialogContext) {
-                                            return AlertDialog(
-                                              title: Text('Show!'),
-                                              content: Text(
-                                                  'Ya creamos tu cuenta de forma correcta. Ahora necesitamos los datos de la empresa.'),
-                                              actions: [
-                                                TextButton(
-                                                  onPressed: () =>
-                                                      Navigator.pop(
-                                                          alertDialogContext),
-                                                  child: Text('Ok'),
-                                                ),
-                                              ],
-                                            );
-                                          },
-                                        );
-                                        logFirebaseEvent('Button_navigate_to');
+                                          scoreName:
+                                              MekaGroup.authCreateUserCall
+                                                  .scoreName(
+                                                    (_model.apiResultbyl
+                                                            ?.jsonBody ??
+                                                        ''),
+                                                  )
+                                                  .toString(),
+                                        ),
+                                      );
+                                      logFirebaseEvent('Button_alert_dialog');
+                                      await showDialog(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return AlertDialog(
+                                            title: Text('Show!'),
+                                            content: Text(
+                                                'Ya creamos tu cuenta de forma correcta. Ahora necesitamos los datos de la empresa.'),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext),
+                                                child: Text('Ok'),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      );
+                                      logFirebaseEvent('Button_navigate_to');
 
-                                        context.pushNamedAuth(
-                                          'CreateCompanyPage',
-                                          context.mounted,
-                                          queryParameters: {
-                                            'uid': serializeParam(
-                                              currentUserUid,
-                                              ParamType.String,
-                                            ),
-                                          }.withoutNulls,
-                                        );
-                                      }
+                                      context.pushNamedAuth(
+                                        'CreateCompanyPage',
+                                        context.mounted,
+                                        queryParameters: {
+                                          'uid': serializeParam(
+                                            currentUserUid,
+                                            ParamType.String,
+                                          ),
+                                        }.withoutNulls,
+                                      );
                                     } else {
                                       logFirebaseEvent('Button_alert_dialog');
                                       await showDialog(
@@ -965,8 +959,11 @@ class _CreateUserPageWidgetState extends State<CreateUserPageWidget>
                                         builder: (alertDialogContext) {
                                           return AlertDialog(
                                             title: Text('Error'),
-                                            content:
-                                                Text('No se creo el usuário!'),
+                                            content: Text(getJsonField(
+                                              (_model.apiResultbyl?.jsonBody ??
+                                                  ''),
+                                              r'''$.message''',
+                                            ).toString()),
                                             actions: [
                                               TextButton(
                                                 onPressed: () => Navigator.pop(

@@ -52,8 +52,6 @@ class CreateUserPageModel extends FlutterFlowModel<CreateUserPageWidget> {
   String? Function(BuildContext, String?)? passwordRegisterControllerValidator;
   // Stores action output result for [Backend Call - API (Auth Create User)] action in Button widget.
   ApiCallResponse? apiResultbyl;
-  // Stores action output result for [Backend Call - API (Auth Login)] action in Button widget.
-  ApiCallResponse? apiResult9uk;
 
   /// Initialization and disposal methods.
 
