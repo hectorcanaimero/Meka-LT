@@ -48,12 +48,12 @@ class CreateCompanyPageModel extends FlutterFlowModel<CreateCompanyPageWidget> {
   // State field(s) for TypeCompanyDropDown widget.
   String? typeCompanyDropDownValue;
   FormFieldController<String>? typeCompanyDropDownValueController;
+  // State field(s) for CategoriesDropDown widget.
+  List<String>? categoriesDropDownValue;
+  FormFieldController<String>? categoriesDropDownValueController;
   // State field(s) for MetodoPagoDropDown widget.
-  List<String>? metodoPagoDropDownValue1;
-  FormFieldController<String>? metodoPagoDropDownValueController1;
-  // State field(s) for MetodoPagoDropDown widget.
-  List<String>? metodoPagoDropDownValue2;
-  FormFieldController<String>? metodoPagoDropDownValueController2;
+  List<String>? metodoPagoDropDownValue;
+  FormFieldController<String>? metodoPagoDropDownValueController;
 
   /// Initialization and disposal methods.
 

@@ -253,24 +253,24 @@ class _CreateCompanyPageWidgetState extends State<CreateCompanyPageWidget> {
                                       ),
                                     );
                                   }
-                                  final metodoPagoDropDownTodasLasCategoriasResponse =
+                                  final categoriesDropDownTodasLasCategoriasResponse =
                                       snapshot.data!;
                                   return FlutterFlowDropDown<String>(
                                     controller: _model
-                                            .metodoPagoDropDownValueController1 ??=
+                                            .categoriesDropDownValueController ??=
                                         FormFieldController<String>(
-                                      _model.metodoPagoDropDownValue1 ??= '1',
+                                      _model.categoriesDropDownValue ??= '1',
                                     ),
                                     options: List<String>.from(
                                         (MekaGroup.todasLasCategoriasCall.id(
-                                      metodoPagoDropDownTodasLasCategoriasResponse
+                                      categoriesDropDownTodasLasCategoriasResponse
                                           .jsonBody,
                                     ) as List)
                                             .map<String>((s) => s.toString())
                                             .toList()!),
                                     optionLabels:
                                         (MekaGroup.todasLasCategoriasCall.name(
-                                      metodoPagoDropDownTodasLasCategoriasResponse
+                                      categoriesDropDownTodasLasCategoriasResponse
                                           .jsonBody,
                                     ) as List)
                                             .map<String>((s) => s.toString())
@@ -310,15 +310,15 @@ class _CreateCompanyPageWidgetState extends State<CreateCompanyPageWidget> {
                                     isSearchable: false,
                                     isMultiSelect: true,
                                     onChangedForMultiSelect: (val) => setState(
-                                        () => _model.metodoPagoDropDownValue1 =
+                                        () => _model.categoriesDropDownValue =
                                             val),
                                   );
                                 },
                               ),
                               FlutterFlowDropDown<String>(
-                                controller: _model
-                                        .metodoPagoDropDownValueController2 ??=
-                                    FormFieldController<String>(null),
+                                controller:
+                                    _model.metodoPagoDropDownValueController ??=
+                                        FormFieldController<String>(null),
                                 options: [
                                   FFLocalizations.of(context).getText(
                                     'a0y8jx9y' /* Dinero */,
@@ -369,8 +369,8 @@ class _CreateCompanyPageWidgetState extends State<CreateCompanyPageWidget> {
                                 isOverButton: true,
                                 isSearchable: false,
                                 isMultiSelect: true,
-                                onChangedForMultiSelect: (val) => setState(() =>
-                                    _model.metodoPagoDropDownValue2 = val),
+                                onChangedForMultiSelect: (val) => setState(
+                                    () => _model.metodoPagoDropDownValue = val),
                               ),
                               FFButtonWidget(
                                 onPressed: () async {
