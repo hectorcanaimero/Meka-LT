@@ -30,8 +30,6 @@ class _SelectMapAddressComponentWidgetState
     extends State<SelectMapAddressComponentWidget> {
   late SelectMapAddressComponentModel _model;
 
-  LatLng? currentUserLocationValue;
-
   @override
   void setState(VoidCallback callback) {
     super.setState(callback);
@@ -43,8 +41,6 @@ class _SelectMapAddressComponentWidgetState
     super.initState();
     _model = createModel(context, () => SelectMapAddressComponentModel());
 
-    getCurrentUserLocation(defaultLocation: LatLng(0.0, 0.0), cached: true)
-        .then((loc) => setState(() => currentUserLocationValue = loc));
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -58,22 +54,6 @@ class _SelectMapAddressComponentWidgetState
   @override
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
-    if (currentUserLocationValue == null) {
-      return Container(
-        color: FlutterFlowTheme.of(context).primaryBackground,
-        child: Center(
-          child: SizedBox(
-            width: 24.0,
-            height: 24.0,
-            child: CircularProgressIndicator(
-              valueColor: AlwaysStoppedAnimation<Color>(
-                FlutterFlowTheme.of(context).primary,
-              ),
-            ),
-          ),
-        ),
-      );
-    }
 
     return Align(
       alignment: AlignmentDirectional(0.0, 1.0),
@@ -81,7 +61,7 @@ class _SelectMapAddressComponentWidgetState
         width: double.infinity,
         height: MediaQuery.sizeOf(context).height * 0.95,
         decoration: BoxDecoration(
-          color: FlutterFlowTheme.of(context).primaryBackground,
+          color: FlutterFlowTheme.of(context).primaryText,
           boxShadow: [
             BoxShadow(
               blurRadius: 4.0,
@@ -100,6 +80,7 @@ class _SelectMapAddressComponentWidgetState
           padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 24.0),
           child: Column(
             mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
@@ -117,7 +98,7 @@ class _SelectMapAddressComponentWidgetState
                             width: 60.0,
                             height: 4.0,
                             decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context).alternate,
+                              color: Color(0xFF393939),
                               borderRadius: BorderRadius.circular(2.0),
                             ),
                           ),
@@ -139,6 +120,8 @@ class _SelectMapAddressComponentWidgetState
                                   .headlineSmall
                                   .override(
                                     fontFamily: 'Poppins',
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryText,
                                     fontSize: 18.0,
                                   ),
                             ),
@@ -155,7 +138,8 @@ class _SelectMapAddressComponentWidgetState
                               },
                               child: FaIcon(
                                 FontAwesomeIcons.angleDown,
-                                color: FlutterFlowTheme.of(context).primaryText,
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryText,
                                 size: 24.0,
                               ),
                             ),
@@ -170,50 +154,89 @@ class _SelectMapAddressComponentWidgetState
                 padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                 child: Container(
                   width: double.infinity,
-                  decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).secondaryBackground,
-                  ),
-                ),
-              ),
-              Align(
-                alignment: AlignmentDirectional(0.0, 0.0),
-                child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
-                  child: FlutterFlowPlacePicker(
-                    iOSGoogleMapsApiKey:
-                        'AIzaSyAfs9ii32MZWo4mfzsz659P_n-uXQadVP8',
-                    androidGoogleMapsApiKey:
-                        'AIzaSyAfs9ii32MZWo4mfzsz659P_n-uXQadVP8',
-                    webGoogleMapsApiKey:
-                        'AIzaSyAfs9ii32MZWo4mfzsz659P_n-uXQadVP8',
-                    onSelect: (place) async {
-                      setState(() => _model.placePickerValue = place);
-                    },
-                    defaultText: FFLocalizations.of(context).getText(
-                      's248lbb6' /* Select Location */,
-                    ),
-                    icon: Icon(
-                      Icons.place,
-                      color: FlutterFlowTheme.of(context).info,
-                      size: 16.0,
-                    ),
-                    buttonOptions: FFButtonOptions(
-                      width: 200.0,
-                      height: 40.0,
-                      color: FlutterFlowTheme.of(context).primary,
-                      textStyle: FlutterFlowTheme.of(context)
-                          .titleSmall
-                          .override(
-                            fontFamily: 'Poppins',
-                            color: FlutterFlowTheme.of(context).secondaryText,
+                  decoration: BoxDecoration(),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Align(
+                        alignment: AlignmentDirectional(0.0, 0.0),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 24.0, 0.0, 0.0),
+                          child: FlutterFlowPlacePicker(
+                            iOSGoogleMapsApiKey:
+                                'AIzaSyAfs9ii32MZWo4mfzsz659P_n-uXQadVP8',
+                            androidGoogleMapsApiKey:
+                                'AIzaSyAfs9ii32MZWo4mfzsz659P_n-uXQadVP8',
+                            webGoogleMapsApiKey:
+                                'AIzaSyAfs9ii32MZWo4mfzsz659P_n-uXQadVP8',
+                            onSelect: (place) async {
+                              setState(() => _model.placePickerValue = place);
+                              (await _model.googleMapsController.future)
+                                  .animateCamera(CameraUpdate.newLatLng(
+                                      place.latLng.toGoogleMaps()));
+                            },
+                            defaultText: FFLocalizations.of(context).getText(
+                              's248lbb6' /* Select Location */,
+                            ),
+                            icon: Icon(
+                              Icons.place,
+                              color: FlutterFlowTheme.of(context).info,
+                              size: 16.0,
+                            ),
+                            buttonOptions: FFButtonOptions(
+                              width: double.infinity,
+                              height: 40.0,
+                              color: FlutterFlowTheme.of(context).primary,
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .titleSmall
+                                  .override(
+                                    fontFamily: 'Poppins',
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryText,
+                                  ),
+                              elevation: 2.0,
+                              borderSide: BorderSide(
+                                color: Colors.transparent,
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
                           ),
-                      elevation: 2.0,
-                      borderSide: BorderSide(
-                        color: Colors.transparent,
-                        width: 1.0,
+                        ),
                       ),
-                      borderRadius: BorderRadius.circular(8.0),
-                    ),
+                      Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+                        child: Text(
+                          '${_model.placePickerValue.address}, ${_model.placePickerValue.name}. ${_model.placePickerValue.city} ${_model.placePickerValue.state}. ${_model.placePickerValue.country} ${_model.placePickerValue.zipCode}',
+                          style: FlutterFlowTheme.of(context)
+                              .bodyMedium
+                              .override(
+                                fontFamily: 'Poppins',
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryText,
+                              ),
+                        ),
+                      ),
+                      Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                        child: Text(
+                          valueOrDefault<String>(
+                            _model.placePickerValue.latLng?.toString(),
+                            'position',
+                          ),
+                          style: FlutterFlowTheme.of(context)
+                              .bodyMedium
+                              .override(
+                                fontFamily: 'Poppins',
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryText,
+                              ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),
@@ -223,16 +246,16 @@ class _SelectMapAddressComponentWidgetState
                       EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 24.0, 24.0),
                   child: Container(
                     width: double.infinity,
-                    height: 100.0,
+                    height: 300.0,
                     decoration: BoxDecoration(),
                     child: Builder(builder: (context) {
-                      final _googleMapMarker = currentUserLocationValue;
+                      final _googleMapMarker = _model.placePickerValue.latLng;
                       return FlutterFlowGoogleMap(
                         controller: _model.googleMapsController,
                         onCameraIdle: (latLng) =>
                             _model.googleMapsCenter = latLng,
                         initialLocation: _model.googleMapsCenter ??=
-                            currentUserLocationValue!,
+                            _model.placePickerValue.latLng,
                         markers: [
                           if (_googleMapMarker != null)
                             FlutterFlowMarker(
@@ -262,8 +285,18 @@ class _SelectMapAddressComponentWidgetState
                 child: Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                   child: FFButtonWidget(
-                    onPressed: () {
-                      print('Button pressed ...');
+                    onPressed: () async {
+                      logFirebaseEvent(
+                          'SELECT_MAP_ADDRESS_COMPONENT_SALVAR_LA_D');
+                      logFirebaseEvent('Button_update_app_state');
+                      setState(() {
+                        FFAppState().ltPositionAddress =
+                            '${_model.placePickerValue.address}, ${_model.placePickerValue.name}. ${_model.placePickerValue.city} ${_model.placePickerValue.state}. ${_model.placePickerValue.country} ${_model.placePickerValue.zipCode}';
+                        FFAppState().ltPosition =
+                            _model.placePickerValue.latLng;
+                      });
+                      logFirebaseEvent('Button_bottom_sheet');
+                      Navigator.pop(context);
                     },
                     text: FFLocalizations.of(context).getText(
                       'ogcutuse' /* Salvar la dirección */,
