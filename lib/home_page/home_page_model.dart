@@ -1,7 +1,6 @@
 import '/auth/custom_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
-import '/components/create_company_component_widget.dart';
 import '/components/desactive_component_widget.dart';
 import '/components/nav_bar_floting_widget.dart';
 import '/components/notification_component_widget.dart';

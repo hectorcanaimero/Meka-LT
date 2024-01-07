@@ -1,7 +1,6 @@
 import '/auth/custom_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
-import '/components/create_company_component_widget.dart';
 import '/components/desactive_component_widget.dart';
 import '/components/nav_bar_floting_widget.dart';
 import '/components/notification_component_widget.dart';
@@ -110,26 +109,24 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             );
           },
         );
-        logFirebaseEvent('HomePage_bottom_sheet');
-        await showModalBottomSheet(
-          isScrollControlled: true,
-          backgroundColor: Colors.transparent,
-          enableDrag: false,
-          context: context,
-          builder: (context) {
-            return GestureDetector(
-              onTap: () => _model.unfocusNode.canRequestFocus
-                  ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-                  : FocusScope.of(context).unfocus(),
-              child: Padding(
-                padding: MediaQuery.viewInsetsOf(context),
-                child: CreateCompanyComponentWidget(
-                  uid: currentUserUid,
-                ),
-              ),
-            );
+        logFirebaseEvent('HomePage_navigate_to');
+
+        context.pushNamed(
+          'CreateCompanyPage',
+          queryParameters: {
+            'uid': serializeParam(
+              currentUserUid,
+              ParamType.String,
+            ),
+          }.withoutNulls,
+          extra: <String, dynamic>{
+            kTransitionInfoKey: TransitionInfo(
+              hasTransition: true,
+              transitionType: PageTransitionType.fade,
+              duration: Duration(milliseconds: 0),
+            ),
           },
-        ).then((value) => safeSetState(() {}));
+        );
       }
     });
 

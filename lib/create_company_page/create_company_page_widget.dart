@@ -68,13 +68,13 @@ class _CreateCompanyPageWidgetState extends State<CreateCompanyPageWidget> {
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
           : FocusScope.of(context).unfocus(),
-      child: Scaffold(
-        key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryText,
-        body: SafeArea(
-          top: true,
-          child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(24.0, 4.0, 24.0, 24.0),
+      child: WillPopScope(
+        onWillPop: () async => false,
+        child: Scaffold(
+          key: scaffoldKey,
+          backgroundColor: FlutterFlowTheme.of(context).primaryText,
+          body: Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(24.0, 50.0, 24.0, 24.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -470,13 +470,8 @@ class _CreateCompanyPageWidgetState extends State<CreateCompanyPageWidget> {
                   child: Align(
                     alignment: AlignmentDirectional(0.0, 0.0),
                     child: FFButtonWidget(
-                      onPressed: () async {
-                        logFirebaseEvent(
-                            'CREATE_COMPANY_REGISTRAR_COMPAÑIA_BTN_ON');
-                        logFirebaseEvent('Button_update_app_state');
-                        _model.updatePage(() {});
-                        logFirebaseEvent('Button_bottom_sheet');
-                        Navigator.pop(context);
+                      onPressed: () {
+                        print('Button pressed ...');
                       },
                       text: FFLocalizations.of(context).getText(
                         'gokn01in' /* Registrar Compañia */,
