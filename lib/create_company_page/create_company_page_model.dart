@@ -5,8 +5,10 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'create_company_page_widget.dart' show CreateCompanyPageWidget;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -41,6 +43,8 @@ class CreateCompanyPageModel extends FlutterFlowModel<CreateCompanyPageWidget> {
 
   final unfocusNode = FocusNode();
   final formKey = GlobalKey<FormState>();
+  // Stores action output result for [Backend Call - API (Todas las Categorias)] action in CreateCompanyPage widget.
+  ApiCallResponse? apiCategories;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode;
   TextEditingController? textController;
@@ -54,6 +58,8 @@ class CreateCompanyPageModel extends FlutterFlowModel<CreateCompanyPageWidget> {
   // State field(s) for MetodoPagoDropDown widget.
   List<String>? metodoPagoDropDownValue;
   FormFieldController<String>? metodoPagoDropDownValueController;
+  // Stores action output result for [Backend Call - API (Create Company)] action in Button widget.
+  ApiCallResponse? apiResult32c;
 
   /// Initialization and disposal methods.
 

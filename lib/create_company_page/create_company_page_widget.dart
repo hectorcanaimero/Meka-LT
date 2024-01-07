@@ -5,7 +5,9 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -38,6 +40,13 @@ class _CreateCompanyPageWidgetState extends State<CreateCompanyPageWidget> {
 
     logFirebaseEvent('screen_view',
         parameters: {'screen_name': 'CreateCompanyPage'});
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('CREATE_COMPANY_CreateCompanyPage_ON_INIT');
+      logFirebaseEvent('CreateCompanyPage_backend_call');
+      _model.apiCategories = await MekaGroup.todasLasCategoriasCall.call();
+    });
+
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
 
@@ -486,8 +495,76 @@ class _CreateCompanyPageWidgetState extends State<CreateCompanyPageWidget> {
                               (FFAppState().ltPositionAddress == null ||
                                   FFAppState().ltPositionAddress == ''))
                           ? null
-                          : () {
-                              print('Button pressed ...');
+                          : () async {
+                              logFirebaseEvent(
+                                  'CREATE_COMPANY_REGISTRAR_COMPAÑIA_BTN_ON');
+                              logFirebaseEvent('Button_backend_call');
+                              _model.apiResult32c =
+                                  await MekaLTGroup.createCompanyCall.call(
+                                categoriesList: functions.getIdsCategories(
+                                    getJsonField(
+                                      (_model.apiCategories?.jsonBody ?? ''),
+                                      r'''$''',
+                                      true,
+                                    )!,
+                                    _model.categoriesNewDropDownValue!
+                                        .toList()),
+                                typeCompany: _model.typeCompanyDropDownValue,
+                                paymentList: _model.metodoPagoDropDownValue,
+                                user: widget.uid,
+                                name: _model.textController.text,
+                                address: FFAppState().ltPositionAddress,
+                                lat: functions.getLng(FFAppState().ltPosition),
+                                lng: functions.getLng(FFAppState().ltPosition),
+                              );
+                              if ((_model.apiResult32c?.succeeded ?? true)) {
+                                logFirebaseEvent('Button_update_app_state');
+                                setState(() {
+                                  FFAppState().ltCreateCompany = false;
+                                });
+                                logFirebaseEvent('Button_alert_dialog');
+                                await showDialog(
+                                  context: context,
+                                  builder: (alertDialogContext) {
+                                    return AlertDialog(
+                                      title: Text('Show!'),
+                                      content: Text(
+                                          'Tu empresa fue creada con éxito!'),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () =>
+                                              Navigator.pop(alertDialogContext),
+                                          child: Text('Ok'),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                                logFirebaseEvent('Button_navigate_to');
+
+                                context.pushNamed('HomePage');
+                              } else {
+                                logFirebaseEvent('Button_alert_dialog');
+                                await showDialog(
+                                  context: context,
+                                  builder: (alertDialogContext) {
+                                    return AlertDialog(
+                                      title: Text('Error'),
+                                      content: Text(
+                                          'Que pena! no conseguimos registrar tu empresa'),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () =>
+                                              Navigator.pop(alertDialogContext),
+                                          child: Text('Ok'),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                              }
+
+                              setState(() {});
                             },
                       text: FFLocalizations.of(context).getText(
                         'gokn01in' /* Registrar Compañia */,

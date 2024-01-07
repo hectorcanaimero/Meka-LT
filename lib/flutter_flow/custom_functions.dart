@@ -58,3 +58,23 @@ DateTime parseData(String data) {
   DateTime fecha = formatoEntrada.parse(data);
   return fecha;
 }
+
+List<String> getIdsCategories(
+  List<dynamic> data,
+  List<String> categories,
+) {
+  List<String> ids = [];
+  for (String categoryName in categories) {
+    // Buscar el objeto correspondiente en data por nombre
+    Map<String, dynamic>? category = data.firstWhere(
+      (element) => element['name'] == categoryName,
+      orElse: () => null,
+    );
+
+    // Si se encuentra, agregar el id a la lista
+    if (category != null && category['_id'] != null) {
+      ids.add(category['_id'].toString());
+    }
+  }
+  return ids;
+}

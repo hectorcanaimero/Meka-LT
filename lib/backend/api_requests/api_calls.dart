@@ -915,6 +915,7 @@ class MekaLTGroup {
   static ServicioPorIDCall servicioPorIDCall = ServicioPorIDCall();
   static CrearComentarioCall crearComentarioCall = CrearComentarioCall();
   static GetCompanyByUserCall getCompanyByUserCall = GetCompanyByUserCall();
+  static CreateCompanyCall createCompanyCall = CreateCompanyCall();
 }
 
 class ServiciosActivosCall {
@@ -999,6 +1000,48 @@ class GetCompanyByUserCall {
       callType: ApiCallType.GET,
       headers: {},
       params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class CreateCompanyCall {
+  Future<ApiCallResponse> call({
+    String? typeCompany = '',
+    String? user = '',
+    List<String>? categoriesList,
+    List<String>? paymentList,
+    String? address = '',
+    String? name = '',
+    double? lat,
+    double? lng,
+  }) async {
+    final categories = _serializeList(categoriesList);
+    final payment = _serializeList(paymentList);
+
+    final ffApiRequestBody = '''
+{
+  "typeCompany": "${typeCompany}",
+  "user": "${user}",
+  "categories": ${categories},
+  "latitude": ${lat},
+  "name": "${name}",
+  "longitude": ${lng},
+  "address": "${address}",
+  "payment": ${payment}
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'Create Company',
+      apiUrl: '${MekaLTGroup.baseUrl}/companies',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
       returnBody: true,
       encodeBodyUtf8: false,
       decodeUtf8: false,
