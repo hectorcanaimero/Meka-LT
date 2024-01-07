@@ -430,37 +430,39 @@ class _CreateCompanyPageWidgetState extends State<CreateCompanyPageWidget> {
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
                               ),
-                              Column(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Text(
-                                    FFAppState().ltPositionAddress,
-                                    textAlign: TextAlign.start,
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Poppins',
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
-                                        ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 12.0, 0.0, 0.0),
-                                    child: Text(
-                                      FFAppState().ltPosition!.toString(),
+                              if (FFAppState().ltPosition != null)
+                                Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Text(
+                                      FFAppState().ltPositionAddress,
                                       textAlign: TextAlign.start,
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
                                             fontFamily: 'Poppins',
-                                            color: Color(0xFF393939),
-                                            fontSize: 12.0,
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryText,
                                           ),
                                     ),
-                                  ),
-                                ],
-                              ),
+                                    if (FFAppState().ltPosition != null)
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 12.0, 0.0, 0.0),
+                                        child: Text(
+                                          FFAppState().ltPosition!.toString(),
+                                          textAlign: TextAlign.start,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Poppins',
+                                                color: Color(0xFF393939),
+                                                fontSize: 12.0,
+                                              ),
+                                        ),
+                                      ),
+                                  ],
+                                ),
                             ].divide(SizedBox(height: 24.0)),
                           ),
                         ),
