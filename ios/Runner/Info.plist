@@ -61,6 +61,10 @@
 
 	<key>NSLocationWhenInUseUsageDescription</key>
     <string>Vamos usar tu localización, para entrgar una mayor precision de los servicios</string>
+	<key>NSCameraUsageDescription</key>
+    <string>In order to take a picture or video, this app requires permission to access the camera.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+    <string>In order to upload data, this app requires permission to access the photo library.</string>
 	<key>PermissionGroupNotification</key>
     <string>Vamos enviar notificaciones de sistema, y que puedas estar enterado de todo lo relacionado a la App</string>
 
