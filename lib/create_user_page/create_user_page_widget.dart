@@ -354,21 +354,11 @@ class _CreateUserPageWidgetState extends State<CreateUserPageWidget>
                                               .getText(
                                             'jgkwd72q' /* Nombre */,
                                           ),
-                                          hintStyle: FlutterFlowTheme.of(
-                                                  context)
-                                              .titleMedium
-                                              .override(
-                                                fontFamily: 'Poppins',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryBackground,
-                                                fontSize: 16.0,
-                                              ),
                                           enabledBorder: OutlineInputBorder(
                                             borderSide: BorderSide(
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .primaryBackground,
+                                                      .alternate,
                                               width: 2.0,
                                             ),
                                             borderRadius:
@@ -417,7 +407,7 @@ class _CreateUserPageWidgetState extends State<CreateUserPageWidget>
                                               fontFamily: 'Poppins',
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .primary,
+                                                      .secondaryText,
                                               fontSize: 16.0,
                                             ),
                                         validator: _model
