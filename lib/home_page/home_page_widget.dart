@@ -320,7 +320,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                   bannerItem,
                                                   r'''$.picture''',
                                                 ).toString(),
-                                                fit: BoxFit.fitHeight,
+                                                fit: BoxFit.cover,
                                                 memCacheHeight: 200,
                                               ),
                                             ),
@@ -409,85 +409,101 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                         itemBuilder: (context, acceptedIndex) {
                                           final acceptedItem =
                                               accepted[acceptedIndex];
-                                          return InkWell(
-                                            splashColor: Colors.transparent,
-                                            focusColor: Colors.transparent,
-                                            hoverColor: Colors.transparent,
-                                            highlightColor: Colors.transparent,
-                                            onTap: () async {
-                                              logFirebaseEvent(
-                                                  'HOME_PAGE_PAGE_Container_g7smx6lu_ON_TAP');
-                                              logFirebaseEvent(
-                                                  'Container_bottom_sheet');
-                                              await showModalBottomSheet(
-                                                isScrollControlled: true,
-                                                backgroundColor:
-                                                    Colors.transparent,
-                                                isDismissible: false,
-                                                enableDrag: false,
-                                                context: context,
-                                                builder: (context) {
-                                                  return GestureDetector(
-                                                    onTap: () => _model
-                                                            .unfocusNode
-                                                            .canRequestFocus
-                                                        ? FocusScope.of(context)
-                                                            .requestFocus(_model
-                                                                .unfocusNode)
-                                                        : FocusScope.of(context)
-                                                            .unfocus(),
-                                                    child: Padding(
-                                                      padding: MediaQuery
-                                                          .viewInsetsOf(
-                                                              context),
-                                                      child:
-                                                          ViewServiceComponentWidget(
-                                                        serviceId: functions
-                                                            .trasnsformReference(
-                                                                getJsonField(
-                                                              acceptedItem,
-                                                              r'''$._id''',
-                                                            ).toString())
-                                                            .id,
-                                                        status: getJsonField(
-                                                          acceptedItem,
-                                                          r'''$.status''',
-                                                        ).toString(),
-                                                      ),
-                                                    ),
-                                                  );
-                                                },
-                                              ).then((value) =>
-                                                  safeSetState(() {}));
-                                            },
-                                            child: Material(
-                                              color: Colors.transparent,
-                                              elevation: 3.0,
-                                              shape: RoundedRectangleBorder(
+                                          return Material(
+                                            color: Colors.transparent,
+                                            elevation: 3.0,
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(16.0),
+                                            ),
+                                            child: Container(
+                                              width: 100.0,
+                                              decoration: BoxDecoration(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .alternate,
                                                 borderRadius:
                                                     BorderRadius.circular(16.0),
                                               ),
-                                              child: Container(
-                                                width: 100.0,
-                                                decoration: BoxDecoration(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .alternate,
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          16.0),
-                                                ),
-                                                child: Padding(
-                                                  padding: EdgeInsets.all(10.0),
-                                                  child: Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    children: [
-                                                      Expanded(
-                                                        child: Padding(
-                                                          padding:
-                                                              EdgeInsets.all(
-                                                                  10.0),
+                                              child: Padding(
+                                                padding: EdgeInsets.all(10.0),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Expanded(
+                                                      child: Padding(
+                                                        padding: EdgeInsets.all(
+                                                            10.0),
+                                                        child: InkWell(
+                                                          splashColor: Colors
+                                                              .transparent,
+                                                          focusColor: Colors
+                                                              .transparent,
+                                                          hoverColor: Colors
+                                                              .transparent,
+                                                          highlightColor: Colors
+                                                              .transparent,
+                                                          onTap: () async {
+                                                            logFirebaseEvent(
+                                                                'HOME_PAGE_PAGE_Column_8e2q7dqh_ON_TAP');
+                                                            logFirebaseEvent(
+                                                                'Column_bottom_sheet');
+                                                            await showModalBottomSheet(
+                                                              isScrollControlled:
+                                                                  true,
+                                                              backgroundColor:
+                                                                  Colors
+                                                                      .transparent,
+                                                              isDismissible:
+                                                                  false,
+                                                              enableDrag: false,
+                                                              context: context,
+                                                              builder:
+                                                                  (context) {
+                                                                return GestureDetector(
+                                                                  onTap: () => _model
+                                                                          .unfocusNode
+                                                                          .canRequestFocus
+                                                                      ? FocusScope.of(
+                                                                              context)
+                                                                          .requestFocus(_model
+                                                                              .unfocusNode)
+                                                                      : FocusScope.of(
+                                                                              context)
+                                                                          .unfocus(),
+                                                                  child:
+                                                                      Padding(
+                                                                    padding: MediaQuery
+                                                                        .viewInsetsOf(
+                                                                            context),
+                                                                    child:
+                                                                        Container(
+                                                                      height:
+                                                                          MediaQuery.sizeOf(context).height *
+                                                                              0.9,
+                                                                      child:
+                                                                          ViewServiceComponentWidget(
+                                                                        serviceId: functions
+                                                                            .trasnsformReference(getJsonField(
+                                                                              acceptedItem,
+                                                                              r'''$._id''',
+                                                                            ).toString())
+                                                                            .id,
+                                                                        status:
+                                                                            getJsonField(
+                                                                          acceptedItem,
+                                                                          r'''$.status''',
+                                                                        ).toString(),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                );
+                                                              },
+                                                            ).then((value) =>
+                                                                safeSetState(
+                                                                    () {}));
+                                                          },
                                                           child: Column(
                                                             mainAxisSize:
                                                                 MainAxisSize
@@ -589,69 +605,107 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                           ),
                                                         ),
                                                       ),
-                                                      Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    0.0,
-                                                                    10.0,
-                                                                    0.0),
-                                                        child: Column(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .center,
-                                                          children: [
-                                                            FutureBuilder<int>(
-                                                              future:
-                                                                  queryChatRecordCount(
-                                                                parent: functions
-                                                                    .trasnsformReference(
-                                                                        getJsonField(
-                                                                  acceptedItem,
-                                                                  r'''$._id''',
-                                                                ).toString()),
-                                                                queryBuilder:
-                                                                    (chatRecord) =>
-                                                                        chatRecord
-                                                                            .where(
-                                                                              'type_user',
-                                                                              isEqualTo: 1,
-                                                                            )
-                                                                            .where(
-                                                                              'view_message',
-                                                                              isEqualTo: false,
-                                                                            ),
-                                                              ),
-                                                              builder: (context,
-                                                                  snapshot) {
-                                                                // Customize what your widget looks like when it's loading.
-                                                                if (!snapshot
-                                                                    .hasData) {
-                                                                  return Center(
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  10.0,
+                                                                  0.0),
+                                                      child: Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .center,
+                                                        children: [
+                                                          FutureBuilder<int>(
+                                                            future:
+                                                                queryChatRecordCount(
+                                                              parent: functions
+                                                                  .trasnsformReference(
+                                                                      getJsonField(
+                                                                acceptedItem,
+                                                                r'''$._id''',
+                                                              ).toString()),
+                                                              queryBuilder:
+                                                                  (chatRecord) =>
+                                                                      chatRecord
+                                                                          .where(
+                                                                            'type_user',
+                                                                            isEqualTo:
+                                                                                1,
+                                                                          )
+                                                                          .where(
+                                                                            'view_message',
+                                                                            isEqualTo:
+                                                                                false,
+                                                                          ),
+                                                            ),
+                                                            builder: (context,
+                                                                snapshot) {
+                                                              // Customize what your widget looks like when it's loading.
+                                                              if (!snapshot
+                                                                  .hasData) {
+                                                                return Center(
+                                                                  child:
+                                                                      SizedBox(
+                                                                    width: 24.0,
+                                                                    height:
+                                                                        24.0,
                                                                     child:
-                                                                        SizedBox(
-                                                                      width:
-                                                                          24.0,
-                                                                      height:
-                                                                          24.0,
-                                                                      child:
-                                                                          CircularProgressIndicator(
-                                                                        valueColor:
-                                                                            AlwaysStoppedAnimation<Color>(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .primary,
-                                                                        ),
+                                                                        CircularProgressIndicator(
+                                                                      valueColor:
+                                                                          AlwaysStoppedAnimation<
+                                                                              Color>(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .primary,
                                                                       ),
                                                                     ),
+                                                                  ),
+                                                                );
+                                                              }
+                                                              int badgeCount =
+                                                                  snapshot
+                                                                      .data!;
+                                                              return InkWell(
+                                                                splashColor: Colors
+                                                                    .transparent,
+                                                                focusColor: Colors
+                                                                    .transparent,
+                                                                hoverColor: Colors
+                                                                    .transparent,
+                                                                highlightColor:
+                                                                    Colors
+                                                                        .transparent,
+                                                                onTap:
+                                                                    () async {
+                                                                  logFirebaseEvent(
+                                                                      'HOME_PAGE_PAGE_Badge_r1dixcf6_ON_TAP');
+                                                                  logFirebaseEvent(
+                                                                      'Badge_navigate_to');
+
+                                                                  context
+                                                                      .pushNamed(
+                                                                    'ChatPage',
+                                                                    queryParameters:
+                                                                        {
+                                                                      'serviceId':
+                                                                          serializeParam(
+                                                                        functions
+                                                                            .trasnsformReference(getJsonField(
+                                                                          acceptedItem,
+                                                                          r'''$._id''',
+                                                                        ).toString()),
+                                                                        ParamType
+                                                                            .DocumentReference,
+                                                                      ),
+                                                                    }.withoutNulls,
                                                                   );
-                                                                }
-                                                                int badgeCount =
-                                                                    snapshot
-                                                                        .data!;
-                                                                return badges
+                                                                },
+                                                                child: badges
                                                                     .Badge(
                                                                   badgeContent:
                                                                       Text(
@@ -702,14 +756,14 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                         0xFF404040),
                                                                     size: 48.0,
                                                                   ),
-                                                                );
-                                                              },
-                                                            ),
-                                                          ],
-                                                        ),
+                                                                ),
+                                                              );
+                                                            },
+                                                          ),
+                                                        ],
                                                       ),
-                                                    ],
-                                                  ),
+                                                    ),
+                                                  ],
                                                 ),
                                               ),
                                             ),

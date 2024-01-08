@@ -365,11 +365,18 @@ class _ViewServiceComponentWidgetState
                                                               .start,
                                                       children: [
                                                         Text(
-                                                          getJsonField(
-                                                            containerServicioPorIDResponse
-                                                                .jsonBody,
-                                                            r'''$.createdAt''',
-                                                          ).toString(),
+                                                          dateTimeFormat(
+                                                            'd/M h:mm a',
+                                                            functions.parseData(
+                                                                getJsonField(
+                                                              containerServicioPorIDResponse
+                                                                  .jsonBody,
+                                                              r'''$.createdAt''',
+                                                            ).toString()),
+                                                            locale: FFLocalizations
+                                                                    .of(context)
+                                                                .languageCode,
+                                                          ),
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .bodyMedium
