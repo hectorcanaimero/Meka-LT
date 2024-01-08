@@ -45,7 +45,7 @@ class CreateCompanyPageModel extends FlutterFlowModel<CreateCompanyPageWidget> {
   final unfocusNode = FocusNode();
   final formKey = GlobalKey<FormState>();
   // Stores action output result for [Backend Call - API (get Company by User)] action in CreateCompanyPage widget.
-  ApiCallResponse? apiGetCompany;
+  ApiCallResponse? resultGetCompany;
   // Stores action output result for [Backend Call - API (Todas las Categorias)] action in CreateCompanyPage widget.
   ApiCallResponse? apiResultejv;
   // State field(s) for TextField widget.

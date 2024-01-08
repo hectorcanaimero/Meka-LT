@@ -40,54 +40,55 @@ class _CreateCompanyPageWidgetState extends State<CreateCompanyPageWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       logFirebaseEvent('CREATE_COMPANY_CreateCompanyPage_ON_INIT');
       logFirebaseEvent('CreateCompanyPage_backend_call');
-      _model.apiGetCompany = await MekaLTGroup.getCompanyByUserCall.call(
+      _model.resultGetCompany = await MekaLTGroup.getCompanyByUserCall.call(
         userId: currentUserUid,
       );
-      if ((_model.apiGetCompany?.succeeded ?? true) &&
-          (getJsonField(
-                (_model.apiGetCompany?.jsonBody ?? ''),
-                r'''$''',
-              ) !=
-              null)) {
-        logFirebaseEvent('CreateCompanyPage_alert_dialog');
-        await showDialog(
-          context: context,
-          builder: (alertDialogContext) {
-            return AlertDialog(
-              title: Text('Beta'),
-              content: Text('${getJsonField(
-                (_model.apiGetCompany?.jsonBody ?? ''),
-                r'''$._id''',
-              ).toString().toString()}-${getJsonField(
-                (_model.apiGetCompany?.jsonBody ?? ''),
-                r'''$.name''',
-              ).toString().toString()}'),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.pop(alertDialogContext),
-                  child: Text('Ok'),
-                ),
-              ],
-            );
-          },
-        );
-        logFirebaseEvent('CreateCompanyPage_update_app_state');
-        FFAppState().ltCompany = getJsonField(
-          (_model.apiGetCompany?.jsonBody ?? ''),
-          r'''$''',
-        );
-        logFirebaseEvent('CreateCompanyPage_navigate_to');
+      if ((_model.resultGetCompany?.succeeded ?? true)) {
+        if (getJsonField(
+              (_model.resultGetCompany?.jsonBody ?? ''),
+              r'''$''',
+            ) !=
+            null) {
+          logFirebaseEvent('CreateCompanyPage_alert_dialog');
+          await showDialog(
+            context: context,
+            builder: (alertDialogContext) {
+              return AlertDialog(
+                title: Text('Beta'),
+                content: Text('${getJsonField(
+                  (_model.resultGetCompany?.jsonBody ?? ''),
+                  r'''$._id''',
+                ).toString().toString()}-${getJsonField(
+                  (_model.resultGetCompany?.jsonBody ?? ''),
+                  r'''$.name''',
+                ).toString().toString()}'),
+                actions: [
+                  TextButton(
+                    onPressed: () => Navigator.pop(alertDialogContext),
+                    child: Text('Ok'),
+                  ),
+                ],
+              );
+            },
+          );
+          logFirebaseEvent('CreateCompanyPage_update_app_state');
+          FFAppState().ltCompany = getJsonField(
+            (_model.resultGetCompany?.jsonBody ?? ''),
+            r'''$''',
+          );
+          logFirebaseEvent('CreateCompanyPage_navigate_to');
 
-        context.pushNamed(
-          'HomePage',
-          extra: <String, dynamic>{
-            kTransitionInfoKey: TransitionInfo(
-              hasTransition: true,
-              transitionType: PageTransitionType.fade,
-              duration: Duration(milliseconds: 0),
-            ),
-          },
-        );
+          context.pushNamed(
+            'HomePage',
+            extra: <String, dynamic>{
+              kTransitionInfoKey: TransitionInfo(
+                hasTransition: true,
+                transitionType: PageTransitionType.fade,
+                duration: Duration(milliseconds: 0),
+              ),
+            },
+          );
+        }
       } else {
         logFirebaseEvent('CreateCompanyPage_backend_call');
         _model.apiResultejv = await MekaGroup.todasLasCategoriasCall.call();
