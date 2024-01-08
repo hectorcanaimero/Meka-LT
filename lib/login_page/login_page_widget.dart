@@ -522,13 +522,13 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                           );
                                           if ((_model.getCompany?.succeeded ??
                                                   true) &&
-                                              (getJsonField(
+                                              (MekaLTGroup.getCompanyByUserCall
+                                                      .active(
                                                     (_model.getCompany
                                                             ?.jsonBody ??
                                                         ''),
-                                                    r'''$''',
-                                                  ) !=
-                                                  null)) {
+                                                  ) ==
+                                                  true)) {
                                             logFirebaseEvent(
                                                 'Button_alert_dialog');
                                             await showDialog(
