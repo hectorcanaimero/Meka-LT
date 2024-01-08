@@ -416,6 +416,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                               _model.emailLoginController.text,
                                           password: _model
                                               .passwordLoginController.text,
+                                          pushKey: FFAppState().ffPushKey,
                                         );
                                         if ((_model.apiResult9uk?.succeeded ??
                                             true)) {
