@@ -40,6 +40,21 @@ class _CreateCompanyPageWidgetState extends State<CreateCompanyPageWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       logFirebaseEvent('CREATE_COMPANY_CreateCompanyPage_ON_INIT');
       if (FFAppState().ltCompany != null) {
+        logFirebaseEvent('CreateCompanyPage_alert_dialog');
+        await showDialog(
+          context: context,
+          builder: (alertDialogContext) {
+            return AlertDialog(
+              content: Text('Beta'),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(alertDialogContext),
+                  child: Text('Ok'),
+                ),
+              ],
+            );
+          },
+        );
         logFirebaseEvent('CreateCompanyPage_navigate_to');
 
         context.pushNamed(
@@ -53,6 +68,21 @@ class _CreateCompanyPageWidgetState extends State<CreateCompanyPageWidget> {
           },
         );
       } else {
+        logFirebaseEvent('CreateCompanyPage_alert_dialog');
+        await showDialog(
+          context: context,
+          builder: (alertDialogContext) {
+            return AlertDialog(
+              content: Text('Bethoven'),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(alertDialogContext),
+                  child: Text('Ok'),
+                ),
+              ],
+            );
+          },
+        );
         logFirebaseEvent('CreateCompanyPage_backend_call');
         _model.apiCategories = await MekaGroup.todasLasCategoriasCall.call();
       }

@@ -401,6 +401,11 @@ class _MenuPageWidgetState extends State<MenuPageWidget> {
                             await authManager.signOut();
                             GoRouter.of(context).clearRedirectLocation();
 
+                            logFirebaseEvent('Logout_update_app_state');
+                            setState(() {
+                              FFAppState().deleteLtCompany();
+                              FFAppState().ltCompany = null;
+                            });
                             logFirebaseEvent('Logout_navigate_to');
 
                             context.pushNamedAuth(
