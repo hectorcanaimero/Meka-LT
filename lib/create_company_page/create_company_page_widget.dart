@@ -48,28 +48,6 @@ class _CreateCompanyPageWidgetState extends State<CreateCompanyPageWidget> {
               (_model.resultGetCompany?.jsonBody ?? ''),
             ) ==
             true) {
-          logFirebaseEvent('CreateCompanyPage_alert_dialog');
-          await showDialog(
-            context: context,
-            builder: (alertDialogContext) {
-              return AlertDialog(
-                title: Text('Beta'),
-                content: Text('${getJsonField(
-                  (_model.resultGetCompany?.jsonBody ?? ''),
-                  r'''$._id''',
-                ).toString().toString()}-${getJsonField(
-                  (_model.resultGetCompany?.jsonBody ?? ''),
-                  r'''$.name''',
-                ).toString().toString()}'),
-                actions: [
-                  TextButton(
-                    onPressed: () => Navigator.pop(alertDialogContext),
-                    child: Text('Ok'),
-                  ),
-                ],
-              );
-            },
-          );
           logFirebaseEvent('CreateCompanyPage_update_app_state');
           FFAppState().ltCompany = getJsonField(
             (_model.resultGetCompany?.jsonBody ?? ''),

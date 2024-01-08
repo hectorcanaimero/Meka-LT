@@ -9,6 +9,7 @@ import '/components/view_service_component_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/instant_timer.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:badges/badges.dart' as badges;
 import 'package:cached_network_image/cached_network_image.dart';
@@ -45,10 +46,50 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       logFirebaseEvent('HOME_PAGE_PAGE_HomePage_ON_INIT_STATE');
       logFirebaseEvent('HomePage_start_periodic_action');
-      logFirebaseEvent('HomePage_backend_call');
-      logFirebaseEvent('HomePage_not_defined');
-      logFirebaseEvent('HomePage_backend_call');
-      logFirebaseEvent('HomePage_not_defined');
+      _model.timerService = InstantTimer.periodic(
+        duration: Duration(milliseconds: 5000),
+        callback: (timer) async {
+          logFirebaseEvent('HomePage_backend_call');
+          _model.apiInProcess = await MekaLTGroup.serviciosActivosCall.call(
+            status: 'in_process',
+            company: getJsonField(
+              FFAppState().ltCompany,
+              r'''$._id''',
+            ).toString().toString(),
+          );
+          if ((_model.apiInProcess?.succeeded ?? true)) {
+            logFirebaseEvent('HomePage_update_app_state');
+            FFAppState().serviceForAccepted = getJsonField(
+              (_model.apiInProcess?.jsonBody ?? ''),
+              r'''$''',
+              true,
+            )!
+                .toList()
+                .cast<dynamic>();
+          }
+          logFirebaseEvent('HomePage_backend_call');
+          _model.apiAccepted = await MekaLTGroup.serviciosActivosCall.call(
+            status: 'accepted',
+            company: getJsonField(
+              FFAppState().ltCompany,
+              r'''$._id''',
+            ).toString().toString(),
+          );
+          if ((_model.apiAccepted?.succeeded ?? true)) {
+            logFirebaseEvent('HomePage_update_app_state');
+            setState(() {
+              FFAppState().serviceActive = getJsonField(
+                (_model.apiAccepted?.jsonBody ?? ''),
+                r'''$''',
+                true,
+              )!
+                  .toList()
+                  .cast<dynamic>();
+            });
+          }
+        },
+        startImmediately: true,
+      );
     });
 
     getCurrentUserLocation(defaultLocation: LatLng(0.0, 0.0), cached: true)

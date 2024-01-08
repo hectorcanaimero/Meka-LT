@@ -530,35 +530,6 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                   ) ==
                                                   true)) {
                                             logFirebaseEvent(
-                                                'Button_alert_dialog');
-                                            await showDialog(
-                                              context: context,
-                                              builder: (alertDialogContext) {
-                                                return AlertDialog(
-                                                  title: Text('Beta'),
-                                                  content: Text('${getJsonField(
-                                                    (_model.getCompany
-                                                            ?.jsonBody ??
-                                                        ''),
-                                                    r'''$._id''',
-                                                  ).toString()}-${getJsonField(
-                                                    (_model.getCompany
-                                                            ?.jsonBody ??
-                                                        ''),
-                                                    r'''$.name''',
-                                                  ).toString()}'),
-                                                  actions: [
-                                                    TextButton(
-                                                      onPressed: () =>
-                                                          Navigator.pop(
-                                                              alertDialogContext),
-                                                      child: Text('Ok'),
-                                                    ),
-                                                  ],
-                                                );
-                                              },
-                                            );
-                                            logFirebaseEvent(
                                                 'Button_update_app_state');
                                             FFAppState().ltCompany =
                                                 getJsonField(

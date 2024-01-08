@@ -9,6 +9,7 @@ import '/components/view_service_component_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/instant_timer.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'home_page_widget.dart' show HomePageWidget;
 import 'package:badges/badges.dart' as badges;
@@ -25,6 +26,11 @@ class HomePageModel extends FlutterFlowModel<HomePageWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+  InstantTimer? timerService;
+  // Stores action output result for [Backend Call - API (Servicios Activos)] action in HomePage widget.
+  ApiCallResponse? apiInProcess;
+  // Stores action output result for [Backend Call - API (Servicios Activos)] action in HomePage widget.
+  ApiCallResponse? apiAccepted;
   // Model for DesactiveComponent component.
   late DesactiveComponentModel desactiveComponentModel;
   // Model for NotificationComponent component.
@@ -49,6 +55,7 @@ class HomePageModel extends FlutterFlowModel<HomePageWidget> {
 
   void dispose() {
     unfocusNode.dispose();
+    timerService?.cancel();
     desactiveComponentModel.dispose();
     notificationComponentModel.dispose();
     navBarFlotingModel.dispose();
