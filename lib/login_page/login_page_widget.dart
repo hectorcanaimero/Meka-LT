@@ -597,16 +597,15 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                             context: context,
                                             builder: (alertDialogContext) {
                                               return AlertDialog(
-                                                content: Text(
-                                                    FFLocalizations.of(context)
-                                                        .getVariableText(
-                                                  esText:
-                                                      'Usuario y/o Contraseña Invalida',
-                                                  enText:
-                                                      'User and Password Invalid!',
-                                                  ptText:
-                                                      'Usuario ou Senha Invalida',
-                                                )),
+                                                title: Text('Error'),
+                                                content:
+                                                    Text(MekaGroup.authLoginCall
+                                                        .errordescription(
+                                                          (_model.apiResult9uk
+                                                                  ?.jsonBody ??
+                                                              ''),
+                                                        )
+                                                        .toString()),
                                                 actions: [
                                                   TextButton(
                                                     onPressed: () =>
