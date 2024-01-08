@@ -720,6 +720,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Cancel Service',
       'pt': 'Cancelar serviço',
     },
+    'ulva0kgi': {
+      'es': 'Finalizar',
+      'en': 'Cancel Service',
+      'pt': 'Cancelar serviço',
+    },
     'gnw2bhl2': {
       'es': 'Cancelar',
       'en': 'Cancel Service',

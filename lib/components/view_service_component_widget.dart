@@ -1009,121 +1009,249 @@ class _ViewServiceComponentWidgetState
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        if (widget.status == 'in_process')
-                          Expanded(
-                            child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  3.0, 0.0, 3.0, 0.0),
-                              child: FFButtonWidget(
-                                onPressed: () async {
-                                  logFirebaseEvent(
-                                      'VIEW_SERVICE_COMPONENT_ACEPTAR_BTN_ON_TA');
-                                  logFirebaseEvent('Button_alert_dialog');
-                                  var confirmDialogResponse = await showDialog<
-                                          bool>(
+                        Expanded(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              if (widget.status == 'in_process')
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      3.0, 0.0, 3.0, 0.0),
+                                  child: FFButtonWidget(
+                                    onPressed: () async {
+                                      logFirebaseEvent(
+                                          'VIEW_SERVICE_COMPONENT_Accepted_ON_TAP');
+                                      logFirebaseEvent('Accepted_alert_dialog');
+                                      var confirmDialogResponse =
+                                          await showDialog<bool>(
+                                                context: context,
+                                                builder: (alertDialogContext) {
+                                                  return AlertDialog(
+                                                    title: Text('Info'),
+                                                    content: Text(
+                                                        FFLocalizations.of(
+                                                                context)
+                                                            .getVariableText(
+                                                      esText:
+                                                          'Vamos a cancelar el servicio con este proveedor?',
+                                                      enText:
+                                                          'Are we going to cancel service with this provider?',
+                                                      ptText:
+                                                          'Vamos cancelar o serviço com este provedor?',
+                                                    )),
+                                                    actions: [
+                                                      TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                alertDialogContext,
+                                                                false),
+                                                        child: Text(
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .getVariableText(
+                                                          esText: 'Cancelar',
+                                                          enText: 'Cancel',
+                                                          ptText: 'Cancelar',
+                                                        )),
+                                                      ),
+                                                      TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                alertDialogContext,
+                                                                true),
+                                                        child: Text('Ok'),
+                                                      ),
+                                                    ],
+                                                  );
+                                                },
+                                              ) ??
+                                              false;
+                                      logFirebaseEvent('Accepted_backend_call');
+                                      _model.apiResult8jb =
+                                          await MekaServicesGroup
+                                              .serviceUpdateCall
+                                              .call(
+                                        status: 'accepted',
+                                        id: widget.serviceId,
+                                      );
+                                      if ((_model.apiResult8jb?.succeeded ??
+                                          true)) {
+                                        logFirebaseEvent(
+                                            'Accepted_bottom_sheet');
+                                        Navigator.pop(context);
+                                        logFirebaseEvent(
+                                            'Accepted_bottom_sheet');
+                                        await showModalBottomSheet(
+                                          isScrollControlled: true,
+                                          backgroundColor: Colors.transparent,
+                                          context: context,
+                                          builder: (context) {
+                                            return Padding(
+                                              padding: MediaQuery.viewInsetsOf(
+                                                  context),
+                                              child: CommentsComponentWidget(
+                                                serviceId: widget.serviceId!,
+                                                companyId: getJsonField(
+                                                  containerServicioPorIDResponse
+                                                      .jsonBody,
+                                                  r'''$.company.user._id''',
+                                                ).toString(),
+                                                userId: getJsonField(
+                                                  containerServicioPorIDResponse
+                                                      .jsonBody,
+                                                  r'''$.user._id''',
+                                                ).toString(),
+                                              ),
+                                            );
+                                          },
+                                        ).then((value) => safeSetState(() {}));
+                                      }
+
+                                      setState(() {});
+                                    },
+                                    text: FFLocalizations.of(context).getText(
+                                      'nkq90grj' /* Aceptar */,
+                                    ),
+                                    options: FFButtonOptions(
+                                      width: 270.0,
+                                      height: 40.0,
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          24.0, 0.0, 24.0, 0.0),
+                                      iconPadding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              0.0, 0.0, 0.0, 0.0),
+                                      color: Color(0xFF0044FF),
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .override(
+                                            fontFamily: 'Poppins',
+                                            color: Colors.white,
+                                          ),
+                                      elevation: 3.0,
+                                      borderSide: BorderSide(
+                                        color: Colors.transparent,
+                                        width: 1.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8.0),
+                                    ),
+                                  ),
+                                ),
+                              if (widget.status == 'accepted')
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      3.0, 0.0, 3.0, 0.0),
+                                  child: FFButtonWidget(
+                                    onPressed: () async {
+                                      logFirebaseEvent(
+                                          'VIEW_SERVICE_COMPONENT_Finished_ON_TAP');
+                                      logFirebaseEvent('Finished_alert_dialog');
+                                      var confirmDialogResponse =
+                                          await showDialog<bool>(
+                                                context: context,
+                                                builder: (alertDialogContext) {
+                                                  return AlertDialog(
+                                                    title: Text('Info'),
+                                                    content: Text(
+                                                        FFLocalizations.of(
+                                                                context)
+                                                            .getVariableText(
+                                                      esText:
+                                                          'Vamos a finalizar el servicio. Ahora necesitamos que califique al usuario',
+                                                      enText:
+                                                          'We are going to end the service. Now we need you to rate the user',
+                                                      ptText:
+                                                          'Vamos encerrar o serviço. Agora precisamos que você avalie o usuário',
+                                                    )),
+                                                    actions: [
+                                                      TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                alertDialogContext,
+                                                                false),
+                                                        child: Text(
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .getVariableText(
+                                                          esText: 'Cancelar',
+                                                          enText: 'Cancel',
+                                                          ptText: 'Cancelar',
+                                                        )),
+                                                      ),
+                                                      TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                alertDialogContext,
+                                                                true),
+                                                        child: Text('Ok'),
+                                                      ),
+                                                    ],
+                                                  );
+                                                },
+                                              ) ??
+                                              false;
+                                      logFirebaseEvent('Finished_bottom_sheet');
+                                      await showModalBottomSheet(
+                                        isScrollControlled: true,
+                                        backgroundColor: Colors.transparent,
+                                        isDismissible: false,
+                                        enableDrag: false,
                                         context: context,
-                                        builder: (alertDialogContext) {
-                                          return AlertDialog(
-                                            title: Text('Info'),
-                                            content: Text(
-                                                FFLocalizations.of(context)
-                                                    .getVariableText(
-                                              esText:
-                                                  'Vamos a cancelar el servicio con este proveedor?',
-                                              enText:
-                                                  'Are we going to cancel service with this provider?',
-                                              ptText:
-                                                  'Vamos cancelar o serviço com este provedor?',
-                                            )),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext, false),
-                                                child: Text(
-                                                    FFLocalizations.of(context)
-                                                        .getVariableText(
-                                                  esText: 'Cancelar',
-                                                  enText: 'Cancel',
-                                                  ptText: 'Cancelar',
-                                                )),
-                                              ),
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext, true),
-                                                child: Text('Ok'),
-                                              ),
-                                            ],
+                                        builder: (context) {
+                                          return Padding(
+                                            padding: MediaQuery.viewInsetsOf(
+                                                context),
+                                            child: CommentsComponentWidget(
+                                              serviceId: getJsonField(
+                                                containerServicioPorIDResponse
+                                                    .jsonBody,
+                                                r'''$._id''',
+                                              ).toString(),
+                                              companyId: getJsonField(
+                                                containerServicioPorIDResponse
+                                                    .jsonBody,
+                                                r'''$.company._id''',
+                                              ).toString(),
+                                              userId: getJsonField(
+                                                containerServicioPorIDResponse
+                                                    .jsonBody,
+                                                r'''$.user._id''',
+                                              ).toString(),
+                                            ),
                                           );
                                         },
-                                      ) ??
-                                      false;
-                                  logFirebaseEvent('Button_backend_call');
-                                  _model.apiResult8jb = await MekaServicesGroup
-                                      .serviceUpdateCall
-                                      .call(
-                                    status: 'accepted',
-                                    id: widget.serviceId,
-                                  );
-                                  if ((_model.apiResult8jb?.succeeded ??
-                                      true)) {
-                                    logFirebaseEvent('Button_bottom_sheet');
-                                    Navigator.pop(context);
-                                    logFirebaseEvent('Button_bottom_sheet');
-                                    await showModalBottomSheet(
-                                      isScrollControlled: true,
-                                      backgroundColor: Colors.transparent,
-                                      context: context,
-                                      builder: (context) {
-                                        return Padding(
-                                          padding:
-                                              MediaQuery.viewInsetsOf(context),
-                                          child: CommentsComponentWidget(
-                                            serviceId: widget.serviceId!,
-                                            companyId: getJsonField(
-                                              containerServicioPorIDResponse
-                                                  .jsonBody,
-                                              r'''$.company.user._id''',
-                                            ).toString(),
-                                            userId: getJsonField(
-                                              containerServicioPorIDResponse
-                                                  .jsonBody,
-                                              r'''$.user._id''',
-                                            ).toString(),
+                                      ).then((value) => safeSetState(() {}));
+                                    },
+                                    text: FFLocalizations.of(context).getText(
+                                      'ulva0kgi' /* Finalizar */,
+                                    ),
+                                    options: FFButtonOptions(
+                                      width: 270.0,
+                                      height: 40.0,
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          24.0, 0.0, 24.0, 0.0),
+                                      iconPadding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              0.0, 0.0, 0.0, 0.0),
+                                      color:
+                                          FlutterFlowTheme.of(context).success,
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .override(
+                                            fontFamily: 'Poppins',
+                                            color: Colors.white,
                                           ),
-                                        );
-                                      },
-                                    ).then((value) => safeSetState(() {}));
-                                  }
-
-                                  setState(() {});
-                                },
-                                text: FFLocalizations.of(context).getText(
-                                  'nkq90grj' /* Aceptar */,
-                                ),
-                                options: FFButtonOptions(
-                                  width: 270.0,
-                                  height: 40.0,
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      24.0, 0.0, 24.0, 0.0),
-                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 0.0),
-                                  color: Color(0xFF0044FF),
-                                  textStyle: FlutterFlowTheme.of(context)
-                                      .titleSmall
-                                      .override(
-                                        fontFamily: 'Poppins',
-                                        color: Colors.white,
+                                      elevation: 3.0,
+                                      borderSide: BorderSide(
+                                        color: Colors.transparent,
+                                        width: 1.0,
                                       ),
-                                  elevation: 3.0,
-                                  borderSide: BorderSide(
-                                    color: Colors.transparent,
-                                    width: 1.0,
+                                      borderRadius: BorderRadius.circular(8.0),
+                                    ),
                                   ),
-                                  borderRadius: BorderRadius.circular(8.0),
                                 ),
-                              ),
-                            ),
+                            ],
                           ),
+                        ),
                         Expanded(
                           child: Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
@@ -1131,8 +1259,8 @@ class _ViewServiceComponentWidgetState
                             child: FFButtonWidget(
                               onPressed: () async {
                                 logFirebaseEvent(
-                                    'VIEW_SERVICE_COMPONENT_CancellButton_ON_');
-                                logFirebaseEvent('CancellButton_alert_dialog');
+                                    'VIEW_SERVICE_COMPONENT_Cancelled_ON_TAP');
+                                logFirebaseEvent('Cancelled_alert_dialog');
                                 var confirmDialogResponse = await showDialog<
                                         bool>(
                                       context: context,
@@ -1171,7 +1299,7 @@ class _ViewServiceComponentWidgetState
                                       },
                                     ) ??
                                     false;
-                                logFirebaseEvent('CancellButton_backend_call');
+                                logFirebaseEvent('Cancelled_backend_call');
                                 _model.apiReturnOpen = await MekaServicesGroup
                                     .serviceUpdateCall
                                     .call(
@@ -1179,8 +1307,7 @@ class _ViewServiceComponentWidgetState
                                   id: widget.serviceId,
                                 );
                                 if ((_model.apiReturnOpen?.succeeded ?? true)) {
-                                  logFirebaseEvent(
-                                      'CancellButton_bottom_sheet');
+                                  logFirebaseEvent('Cancelled_bottom_sheet');
                                   Navigator.pop(context);
                                 }
 

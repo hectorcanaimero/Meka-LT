@@ -37,9 +37,9 @@ class ViewServiceComponentModel
 
   int carouselCurrentIndex = 1;
 
-  // Stores action output result for [Backend Call - API (Service Update )] action in Button widget.
+  // Stores action output result for [Backend Call - API (Service Update )] action in Accepted widget.
   ApiCallResponse? apiResult8jb;
-  // Stores action output result for [Backend Call - API (Service Update )] action in CancellButton widget.
+  // Stores action output result for [Backend Call - API (Service Update )] action in Cancelled widget.
   ApiCallResponse? apiReturnOpen;
 
   /// Initialization and disposal methods.
