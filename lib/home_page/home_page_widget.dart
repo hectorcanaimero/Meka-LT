@@ -502,10 +502,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                               Text(
                                                                 '${getJsonField(
                                                                   acceptedItem,
-                                                                  r'''$.user.firstName''',
+                                                                  r'''$.user.first_name''',
                                                                 ).toString()} ${getJsonField(
                                                                   acceptedItem,
-                                                                  r'''$.user.lastName''',
+                                                                  r'''$.user.last_name''',
                                                                 ).toString()}',
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
@@ -562,10 +562,18 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                         -1.0,
                                                                         0.0),
                                                                 child: Text(
-                                                                  getJsonField(
-                                                                    acceptedItem,
-                                                                    r'''$.createdAt''',
-                                                                  ).toString(),
+                                                                  dateTimeFormat(
+                                                                    'd/M h:mm a',
+                                                                    functions
+                                                                        .parseData(
+                                                                            getJsonField(
+                                                                      acceptedItem,
+                                                                      r'''$.createdAt''',
+                                                                    ).toString()),
+                                                                    locale: FFLocalizations.of(
+                                                                            context)
+                                                                        .languageCode,
+                                                                  ),
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMedium
