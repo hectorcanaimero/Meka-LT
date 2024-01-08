@@ -36,12 +36,10 @@ class FFAppState extends ChangeNotifier {
     await _safeInitAsync(() async {
       if (await secureStorage.read(key: 'ff_ltCompany') != null) {
         try {
-          final serializedData =
-              await secureStorage.getString('ff_ltCompany') ?? '{}';
           _ltCompany =
-              CompanyStruct.fromSerializableMap(jsonDecode(serializedData));
+              jsonDecode(await secureStorage.getString('ff_ltCompany') ?? '');
         } catch (e) {
-          print("Can't decode persisted data type. Error: $e.");
+          print("Can't decode persisted json. Error: $e.");
         }
       }
     });
@@ -186,20 +184,15 @@ class FFAppState extends ChangeNotifier {
     secureStorage.delete(key: 'ff_ffPushKey');
   }
 
-  CompanyStruct _ltCompany = CompanyStruct();
-  CompanyStruct get ltCompany => _ltCompany;
-  set ltCompany(CompanyStruct _value) {
+  dynamic _ltCompany;
+  dynamic get ltCompany => _ltCompany;
+  set ltCompany(dynamic _value) {
     _ltCompany = _value;
-    secureStorage.setString('ff_ltCompany', _value.serialize());
+    secureStorage.setString('ff_ltCompany', jsonEncode(_value));
   }
 
   void deleteLtCompany() {
     secureStorage.delete(key: 'ff_ltCompany');
-  }
-
-  void updateLtCompanyStruct(Function(CompanyStruct) updateFn) {
-    updateFn(_ltCompany);
-    secureStorage.setString('ff_ltCompany', _ltCompany.serialize());
   }
 }
 

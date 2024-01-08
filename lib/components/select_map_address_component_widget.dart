@@ -177,11 +177,11 @@ class _SelectMapAddressComponentWidgetState
                                       place.latLng.toGoogleMaps()));
                             },
                             defaultText: FFLocalizations.of(context).getText(
-                              's248lbb6' /* Select Location */,
+                              's248lbb6' /* Seleccionar tu ubicación */,
                             ),
                             icon: Icon(
                               Icons.place,
-                              color: FlutterFlowTheme.of(context).info,
+                              color: FlutterFlowTheme.of(context).secondaryText,
                               size: 16.0,
                             ),
                             buttonOptions: FFButtonOptions(

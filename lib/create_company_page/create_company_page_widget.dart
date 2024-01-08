@@ -1,3 +1,4 @@
+import '/auth/custom_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/components/select_map_address_component_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
@@ -16,12 +17,7 @@ import 'create_company_page_model.dart';
 export 'create_company_page_model.dart';
 
 class CreateCompanyPageWidget extends StatefulWidget {
-  const CreateCompanyPageWidget({
-    Key? key,
-    required this.uid,
-  }) : super(key: key);
-
-  final String? uid;
+  const CreateCompanyPageWidget({Key? key}) : super(key: key);
 
   @override
   _CreateCompanyPageWidgetState createState() =>
@@ -43,8 +39,23 @@ class _CreateCompanyPageWidgetState extends State<CreateCompanyPageWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       logFirebaseEvent('CREATE_COMPANY_CreateCompanyPage_ON_INIT');
-      logFirebaseEvent('CreateCompanyPage_backend_call');
-      _model.apiCategories = await MekaGroup.todasLasCategoriasCall.call();
+      if (FFAppState().ltCompany != null) {
+        logFirebaseEvent('CreateCompanyPage_navigate_to');
+
+        context.pushNamed(
+          'HomePage',
+          extra: <String, dynamic>{
+            kTransitionInfoKey: TransitionInfo(
+              hasTransition: true,
+              transitionType: PageTransitionType.fade,
+              duration: Duration(milliseconds: 0),
+            ),
+          },
+        );
+      } else {
+        logFirebaseEvent('CreateCompanyPage_backend_call');
+        _model.apiCategories = await MekaGroup.todasLasCategoriasCall.call();
+      }
     });
 
     _model.textController ??= TextEditingController();
@@ -174,7 +185,13 @@ class _CreateCompanyPageWidgetState extends State<CreateCompanyPageWidget> {
                                   ),
                                   filled: true,
                                 ),
-                                style: FlutterFlowTheme.of(context).bodyMedium,
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Poppins',
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                    ),
                                 validator: _model.textControllerValidator
                                     .asValidator(context),
                               ),
@@ -511,7 +528,7 @@ class _CreateCompanyPageWidgetState extends State<CreateCompanyPageWidget> {
                                         .toList()),
                                 typeCompany: _model.typeCompanyDropDownValue,
                                 paymentList: _model.metodoPagoDropDownValue,
-                                user: widget.uid,
+                                user: currentUserUid,
                                 name: _model.textController.text,
                                 address: FFAppState().ltPositionAddress,
                                 lat: functions.getLng(FFAppState().ltPosition),

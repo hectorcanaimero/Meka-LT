@@ -678,7 +678,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'pt': 'Localização da empresa',
     },
     's248lbb6': {
-      'es': 'Select Location',
+      'es': 'Seleccionar tu ubicación',
       'en': 'Select Location',
       'pt': 'Selecione o local',
     },

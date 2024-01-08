@@ -943,15 +943,7 @@ class _CreateUserPageWidgetState extends State<CreateUserPageWidget>
                                       logFirebaseEvent('Button_navigate_to');
 
                                       context.pushNamedAuth(
-                                        'CreateCompanyPage',
-                                        context.mounted,
-                                        queryParameters: {
-                                          'uid': serializeParam(
-                                            currentUserUid,
-                                            ParamType.String,
-                                          ),
-                                        }.withoutNulls,
-                                      );
+                                          'CreateCompanyPage', context.mounted);
                                     } else {
                                       logFirebaseEvent('Button_alert_dialog');
                                       await showDialog(

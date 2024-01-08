@@ -526,12 +526,36 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                             setState(() {
                                               FFAppState().ltCreateCompany =
                                                   true;
+                                              FFAppState().ltCompany =
+                                                  getJsonField(
+                                                (_model.getCompany?.jsonBody ??
+                                                    ''),
+                                                r'''$''',
+                                              );
                                             });
                                             logFirebaseEvent(
                                                 'Button_navigate_to');
 
                                             context.pushNamedAuth(
                                                 'HomePage', context.mounted);
+                                          } else {
+                                            logFirebaseEvent(
+                                                'Button_navigate_to');
+
+                                            context.pushNamedAuth(
+                                              'CreateCompanyPage',
+                                              context.mounted,
+                                              extra: <String, dynamic>{
+                                                kTransitionInfoKey:
+                                                    TransitionInfo(
+                                                  hasTransition: true,
+                                                  transitionType:
+                                                      PageTransitionType.fade,
+                                                  duration:
+                                                      Duration(milliseconds: 0),
+                                                ),
+                                              },
+                                            );
                                           }
                                         } else {
                                           logFirebaseEvent(
