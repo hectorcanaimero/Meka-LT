@@ -520,7 +520,14 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                             userId: currentUserUid,
                                           );
                                           if ((_model.getCompany?.succeeded ??
-                                              true)) {
+                                                  true) &&
+                                              (getJsonField(
+                                                    (_model.getCompany
+                                                            ?.jsonBody ??
+                                                        ''),
+                                                    r'''$''',
+                                                  ) !=
+                                                  null)) {
                                             logFirebaseEvent(
                                                 'Button_update_app_state');
                                             setState(() {
