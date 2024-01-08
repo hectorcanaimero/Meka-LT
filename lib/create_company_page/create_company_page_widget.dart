@@ -44,11 +44,10 @@ class _CreateCompanyPageWidgetState extends State<CreateCompanyPageWidget> {
         userId: currentUserUid,
       );
       if ((_model.resultGetCompany?.succeeded ?? true)) {
-        if (getJsonField(
+        if (MekaLTGroup.getCompanyByUserCall.active(
               (_model.resultGetCompany?.jsonBody ?? ''),
-              r'''$._id''',
-            ) !=
-            null) {
+            ) ==
+            true) {
           logFirebaseEvent('CreateCompanyPage_alert_dialog');
           await showDialog(
             context: context,

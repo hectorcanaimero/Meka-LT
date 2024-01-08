@@ -996,7 +996,7 @@ class GetCompanyByUserCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'get Company by User',
-      apiUrl: '${MekaLTGroup.baseUrl}/companies/user/${userId}',
+      apiUrl: '${MekaLTGroup.baseUrl}/companies/ff/user/${userId}',
       callType: ApiCallType.GET,
       headers: {},
       params: {},
@@ -1007,6 +1007,11 @@ class GetCompanyByUserCall {
       alwaysAllowBody: false,
     );
   }
+
+  bool? active(dynamic response) => castToType<bool>(getJsonField(
+        response,
+        r'''$.active''',
+      ));
 }
 
 class CreateCompanyCall {
