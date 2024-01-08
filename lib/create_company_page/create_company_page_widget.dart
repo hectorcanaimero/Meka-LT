@@ -46,7 +46,7 @@ class _CreateCompanyPageWidgetState extends State<CreateCompanyPageWidget> {
       if ((_model.resultGetCompany?.succeeded ?? true)) {
         if (getJsonField(
               (_model.resultGetCompany?.jsonBody ?? ''),
-              r'''$''',
+              r'''$._id''',
             ) !=
             null) {
           logFirebaseEvent('CreateCompanyPage_alert_dialog');
