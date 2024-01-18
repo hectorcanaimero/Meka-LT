@@ -1012,6 +1012,7 @@ class _ViewServiceComponentWidgetState
                         Expanded(
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               if (widget.status == 'in_process')
                                 Padding(

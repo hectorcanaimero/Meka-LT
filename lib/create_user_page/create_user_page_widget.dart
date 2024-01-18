@@ -649,21 +649,19 @@ class _CreateUserPageWidgetState extends State<CreateUserPageWidget>
                                       _model.countryValue ??= '',
                                     ),
                                     options: List<String>.from(
-                                        (MekaGroup.countryGelAllCall.id(
-                                      countryCountryGelAllResponse.jsonBody,
-                                    ) as List)
-                                            .map<String>((s) => s.toString())
-                                            .toList()!
+                                        MekaGroup.countryGelAllCall
+                                            .id(
+                                              countryCountryGelAllResponse
+                                                  .jsonBody,
+                                            )!
                                             .map((e) => e.toString())
                                             .toList()),
-                                    optionLabels:
-                                        (MekaGroup.countryGelAllCall.country(
-                                      countryCountryGelAllResponse.jsonBody,
-                                    ) as List)
-                                            .map<String>((s) => s.toString())
-                                            .toList()!
-                                            .map((e) => e.toString())
-                                            .toList(),
+                                    optionLabels: MekaGroup.countryGelAllCall
+                                        .country(
+                                          countryCountryGelAllResponse.jsonBody,
+                                        )!
+                                        .map((e) => e.toString())
+                                        .toList(),
                                     onChanged: (val) => setState(
                                         () => _model.countryValue = val),
                                     width: double.infinity,
@@ -677,6 +675,8 @@ class _CreateUserPageWidgetState extends State<CreateUserPageWidget>
                                                   FlutterFlowTheme.of(context)
                                                       .secondaryText,
                                             ),
+                                    searchTextStyle:
+                                        FlutterFlowTheme.of(context).bodyMedium,
                                     textStyle: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(

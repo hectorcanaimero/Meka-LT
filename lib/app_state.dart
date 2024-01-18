@@ -104,7 +104,7 @@ class FFAppState extends ChangeNotifier {
     _ltPositionAddress = _value;
   }
 
-  bool _ltActive = true;
+  bool _ltActive = false;
   bool get ltActive => _ltActive;
   set ltActive(bool _value) {
     _ltActive = _value;

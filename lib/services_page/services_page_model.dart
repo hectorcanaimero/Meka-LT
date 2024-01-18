@@ -1,4 +1,5 @@
 import '/components/desactive_component_widget.dart';
+import '/components/nav_bar_floting_widget.dart';
 import '/components/vazio_widget_widget.dart';
 import '/flutter_flow/flutter_flow_button_tabbar.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -22,17 +23,22 @@ class ServicesPageModel extends FlutterFlowModel<ServicesPageWidget> {
   int get tabBarCurrentIndex =>
       tabBarController != null ? tabBarController!.index : 0;
 
+  // Model for NavBarFloting component.
+  late NavBarFlotingModel navBarFlotingModel;
+
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {
     desactiveComponentModel =
         createModel(context, () => DesactiveComponentModel());
+    navBarFlotingModel = createModel(context, () => NavBarFlotingModel());
   }
 
   void dispose() {
     unfocusNode.dispose();
     desactiveComponentModel.dispose();
     tabBarController?.dispose();
+    navBarFlotingModel.dispose();
   }
 
   /// Action blocks are added here.

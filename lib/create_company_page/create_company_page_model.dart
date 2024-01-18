@@ -14,6 +14,7 @@ import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:shake/shake.dart';
 
 class CreateCompanyPageModel extends FlutterFlowModel<CreateCompanyPageWidget> {
   ///  Local state fields for this page.
@@ -44,10 +45,8 @@ class CreateCompanyPageModel extends FlutterFlowModel<CreateCompanyPageWidget> {
 
   final unfocusNode = FocusNode();
   final formKey = GlobalKey<FormState>();
-  // Stores action output result for [Backend Call - API (get Company by User)] action in CreateCompanyPage widget.
-  ApiCallResponse? resultGetCompany;
   // Stores action output result for [Backend Call - API (Todas las Categorias)] action in CreateCompanyPage widget.
-  ApiCallResponse? apiResultejv;
+  ApiCallResponse? apiResultCategories;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode;
   TextEditingController? textController;
@@ -57,10 +56,10 @@ class CreateCompanyPageModel extends FlutterFlowModel<CreateCompanyPageWidget> {
   FormFieldController<String>? typeCompanyDropDownValueController;
   // State field(s) for CategoriesNewDropDown widget.
   List<String>? categoriesNewDropDownValue;
-  FormFieldController<String>? categoriesNewDropDownValueController;
+  FormFieldController<List<String>>? categoriesNewDropDownValueController;
   // State field(s) for MetodoPagoDropDown widget.
   List<String>? metodoPagoDropDownValue;
-  FormFieldController<String>? metodoPagoDropDownValueController;
+  FormFieldController<List<String>>? metodoPagoDropDownValueController;
   // Stores action output result for [Backend Call - API (Create Company)] action in Button widget.
   ApiCallResponse? apiResult32c;
 

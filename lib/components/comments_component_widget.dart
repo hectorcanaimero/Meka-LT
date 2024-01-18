@@ -228,6 +228,18 @@ class _CommentsComponentWidgetState extends State<CommentsComponentWidget> {
                             if ((_model.apiResultgua?.succeeded ?? true)) {
                               logFirebaseEvent('Button_bottom_sheet');
                               Navigator.pop(context);
+                              logFirebaseEvent('Button_navigate_to');
+
+                              context.pushNamed(
+                                'HomePage',
+                                extra: <String, dynamic>{
+                                  kTransitionInfoKey: TransitionInfo(
+                                    hasTransition: true,
+                                    transitionType: PageTransitionType.fade,
+                                    duration: Duration(milliseconds: 0),
+                                  ),
+                                },
+                              );
                             }
                           }
 

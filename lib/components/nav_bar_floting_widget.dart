@@ -146,8 +146,21 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                           color: Color(0xFF3F3F3F),
                           size: 30.0,
                         ),
-                        onPressed: () {
-                          print('IconButton pressed ...');
+                        onPressed: () async {
+                          logFirebaseEvent(
+                              'NAV_BAR_FLOTING_COMP_receipt_ICN_ON_TAP');
+                          logFirebaseEvent('IconButton_navigate_to');
+
+                          context.pushNamed(
+                            'RegistroPage',
+                            extra: <String, dynamic>{
+                              kTransitionInfoKey: TransitionInfo(
+                                hasTransition: true,
+                                transitionType: PageTransitionType.fade,
+                                duration: Duration(milliseconds: 0),
+                              ),
+                            },
+                          );
                         },
                       ),
                       FlutterFlowIconButton(

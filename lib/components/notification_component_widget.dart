@@ -1,9 +1,11 @@
-import '/components/vazio_widget_widget.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/components/view_service_component_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/instant_timer.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -32,6 +34,36 @@ class _NotificationComponentWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => NotificationComponentModel());
+
+    // On component load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('NOTIFICATION_COMPONENT_NotificationCompo');
+      logFirebaseEvent('NotificationComponent_start_periodic_act');
+      _model.timerService = InstantTimer.periodic(
+        duration: Duration(milliseconds: 2000),
+        callback: (timer) async {
+          logFirebaseEvent('NotificationComponent_backend_call');
+          _model.apiInProcess = await MekaLTGroup.serviciosActivosCall.call(
+            status: 'in_process',
+            company: getJsonField(
+              FFAppState().ltCompany,
+              r'''$._id''',
+            ).toString().toString(),
+          );
+          if ((_model.apiInProcess?.succeeded ?? true)) {
+            logFirebaseEvent('NotificationComponent_update_app_state');
+            FFAppState().serviceForAccepted = getJsonField(
+              (_model.apiInProcess?.jsonBody ?? ''),
+              r'''$''',
+              true,
+            )!
+                .toList()
+                .cast<dynamic>();
+          }
+        },
+        startImmediately: true,
+      );
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -64,12 +96,10 @@ class _NotificationComponentWidgetState
           padding: EdgeInsets.all(10.0),
           child: Builder(
             builder: (context) {
-              final accepted = FFAppState().serviceForAccepted.toList();
-              if (accepted.isEmpty) {
-                return VazioWidgetWidget(
-                  name: 'Sin servicios por aceptar',
-                );
-              }
+              final accepted = getJsonField(
+                (_model.apiInProcess?.jsonBody ?? ''),
+                r'''$''',
+              ).toList();
               return ListView.separated(
                 padding: EdgeInsets.zero,
                 scrollDirection: Axis.horizontal,
@@ -129,7 +159,7 @@ class _NotificationComponentWidgetState
                             children: [
                               Text(
                                 getJsonField(
-                                  acceptedItem,
+                                  (_model.apiInProcess?.jsonBody ?? ''),
                                   r'''$._id''',
                                 ).toString().maybeHandleOverflow(
                                       maxChars: 7,
@@ -146,7 +176,7 @@ class _NotificationComponentWidgetState
                               ),
                               Text(
                                 getJsonField(
-                                  acceptedItem,
+                                  (_model.apiInProcess?.jsonBody ?? ''),
                                   r'''$.category.name''',
                                 ).toString(),
                                 style: FlutterFlowTheme.of(context)
@@ -159,10 +189,10 @@ class _NotificationComponentWidgetState
                               ),
                               Text(
                                 '${getJsonField(
-                                  acceptedItem,
+                                  (_model.apiInProcess?.jsonBody ?? ''),
                                   r'''$.brand.name''',
                                 ).toString()}-${getJsonField(
-                                  acceptedItem,
+                                  (_model.apiInProcess?.jsonBody ?? ''),
                                   r'''$.model.name''',
                                 ).toString()}',
                                 style: FlutterFlowTheme.of(context)
@@ -190,7 +220,8 @@ class _NotificationComponentWidgetState
                                         ),
                                         Text(
                                           getJsonField(
-                                            acceptedItem,
+                                            (_model.apiInProcess?.jsonBody ??
+                                                ''),
                                             r'''$.distance''',
                                           ).toString(),
                                           style: FlutterFlowTheme.of(context)
@@ -224,7 +255,9 @@ class _NotificationComponentWidgetState
                                             dateTimeFormat(
                                               'd/M H:mm',
                                               functions.parseData(getJsonField(
-                                                acceptedItem,
+                                                (_model.apiInProcess
+                                                        ?.jsonBody ??
+                                                    ''),
                                                 r'''$.createdAt''',
                                               ).toString()),
                                               locale:

@@ -614,6 +614,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'pt': 'Home',
     },
   },
+  // LoadPage
+  {
+    'hg1i2jzt': {
+      'es': 'Home',
+      'en': '',
+      'pt': '',
+    },
+  },
   // MessageAdvisorComponent
   {
     '6v4wpi7w': {

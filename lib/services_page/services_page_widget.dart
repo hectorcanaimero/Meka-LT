@@ -1,4 +1,5 @@
 import '/components/desactive_component_widget.dart';
+import '/components/nav_bar_floting_widget.dart';
 import '/components/vazio_widget_widget.dart';
 import '/flutter_flow/flutter_flow_button_tabbar.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -468,6 +469,11 @@ class _ServicesPageWidgetState extends State<ServicesPageWidget>
                     ),
                   ],
                 ),
+              ),
+              wrapWithModel(
+                model: _model.navBarFlotingModel,
+                updateCallback: () => setState(() {}),
+                child: NavBarFlotingWidget(),
               ),
             ],
           ),

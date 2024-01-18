@@ -13,6 +13,7 @@ import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:shake/shake.dart';
 import 'create_company_page_model.dart';
 export 'create_company_page_model.dart';
 
@@ -28,6 +29,8 @@ class _CreateCompanyPageWidgetState extends State<CreateCompanyPageWidget> {
   late CreateCompanyPageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  late ShakeDetector shakeDetector;
+  var shakeActionInProgress = false;
 
   @override
   void initState() {
@@ -36,41 +39,24 @@ class _CreateCompanyPageWidgetState extends State<CreateCompanyPageWidget> {
 
     logFirebaseEvent('screen_view',
         parameters: {'screen_name': 'CreateCompanyPage'});
-    // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      logFirebaseEvent('CREATE_COMPANY_CreateCompanyPage_ON_INIT');
-      logFirebaseEvent('CreateCompanyPage_backend_call');
-      _model.resultGetCompany = await MekaLTGroup.getCompanyByUserCall.call(
-        userId: currentUserUid,
-      );
-      if ((_model.resultGetCompany?.succeeded ?? true)) {
-        if (MekaLTGroup.getCompanyByUserCall.active(
-              (_model.resultGetCompany?.jsonBody ?? ''),
-            ) ==
-            true) {
-          logFirebaseEvent('CreateCompanyPage_update_app_state');
-          FFAppState().ltCompany = getJsonField(
-            (_model.resultGetCompany?.jsonBody ?? ''),
-            r'''$''',
-          );
-          logFirebaseEvent('CreateCompanyPage_navigate_to');
-
-          context.pushNamed(
-            'HomePage',
-            extra: <String, dynamic>{
-              kTransitionInfoKey: TransitionInfo(
-                hasTransition: true,
-                transitionType: PageTransitionType.fade,
-                duration: Duration(milliseconds: 0),
-              ),
-            },
-          );
+    // On shake action.
+    shakeDetector = ShakeDetector.autoStart(
+      onPhoneShake: () async {
+        if (shakeActionInProgress) {
+          return;
         }
-      } else {
-        logFirebaseEvent('CreateCompanyPage_backend_call');
-        _model.apiResultejv = await MekaGroup.todasLasCategoriasCall.call();
-      }
-    });
+        shakeActionInProgress = true;
+        try {
+          logFirebaseEvent('CREATE_COMPANY_CreateCompanyPage_ON_PHON');
+          logFirebaseEvent('CreateCompanyPage_backend_call');
+          _model.apiResultCategories =
+              await MekaGroup.todasLasCategoriasCall.call();
+        } finally {
+          shakeActionInProgress = false;
+        }
+      },
+      shakeThresholdGravity: 1.5,
+    );
 
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
@@ -82,6 +68,7 @@ class _CreateCompanyPageWidgetState extends State<CreateCompanyPageWidget> {
   void dispose() {
     _model.dispose();
 
+    shakeDetector.stopListening();
     super.dispose();
   }
 
@@ -230,19 +217,15 @@ class _CreateCompanyPageWidgetState extends State<CreateCompanyPageWidget> {
                                       _model.typeCompanyDropDownValue ??= '',
                                     ),
                                     options: List<String>.from(
-                                        (MekaGroup.tipoCompaniasCall.id(
+                                        MekaGroup.tipoCompaniasCall.id(
                                       typeCompanyDropDownTipoCompaniasResponse
                                           .jsonBody,
-                                    ) as List)
-                                            .map<String>((s) => s.toString())
-                                            .toList()!),
+                                    )!),
                                     optionLabels:
-                                        (MekaGroup.tipoCompaniasCall.name(
+                                        MekaGroup.tipoCompaniasCall.name(
                                       typeCompanyDropDownTipoCompaniasResponse
                                           .jsonBody,
-                                    ) as List)
-                                            .map<String>((s) => s.toString())
-                                            .toList()!,
+                                    )!,
                                     onChanged: (val) => setState(() =>
                                         _model.typeCompanyDropDownValue = val),
                                     width: double.infinity,
@@ -296,22 +279,21 @@ class _CreateCompanyPageWidgetState extends State<CreateCompanyPageWidget> {
                                   final categoriesNewDropDownTodasLasCategoriasResponse =
                                       snapshot.data!;
                                   return FlutterFlowDropDown<String>(
-                                    controller: _model
+                                    multiSelectController: _model
                                             .categoriesNewDropDownValueController ??=
-                                        FormFieldController<String>(null),
+                                        FormFieldController<List<String>>(null),
                                     options:
-                                        (MekaGroup.todasLasCategoriasCall.name(
+                                        MekaGroup.todasLasCategoriasCall.name(
                                       categoriesNewDropDownTodasLasCategoriasResponse
                                           .jsonBody,
-                                    ) as List)
-                                            .map<String>((s) => s.toString())
-                                            .toList()!,
-                                    onChanged: null,
+                                    )!,
                                     width: double.infinity,
                                     height: 50.0,
                                     searchHintTextStyle:
                                         FlutterFlowTheme.of(context)
                                             .labelMedium,
+                                    searchTextStyle:
+                                        FlutterFlowTheme.of(context).bodyMedium,
                                     textStyle: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
@@ -346,16 +328,16 @@ class _CreateCompanyPageWidgetState extends State<CreateCompanyPageWidget> {
                                     isOverButton: true,
                                     isSearchable: true,
                                     isMultiSelect: true,
-                                    onChangedForMultiSelect: (val) => setState(
+                                    onMultiSelectChanged: (val) => setState(
                                         () => _model
                                             .categoriesNewDropDownValue = val),
                                   );
                                 },
                               ),
                               FlutterFlowDropDown<String>(
-                                controller:
+                                multiSelectController:
                                     _model.metodoPagoDropDownValueController ??=
-                                        FormFieldController<String>(null),
+                                        FormFieldController<List<String>>(null),
                                 options: [
                                   FFLocalizations.of(context).getText(
                                     'a0y8jx9y' /* Dinero */,
@@ -373,7 +355,6 @@ class _CreateCompanyPageWidgetState extends State<CreateCompanyPageWidget> {
                                     'myhb6kgz' /* Paypal */,
                                   )
                                 ],
-                                onChanged: null,
                                 width: double.infinity,
                                 height: 50.0,
                                 textStyle: FlutterFlowTheme.of(context)
@@ -406,7 +387,7 @@ class _CreateCompanyPageWidgetState extends State<CreateCompanyPageWidget> {
                                 isOverButton: true,
                                 isSearchable: false,
                                 isMultiSelect: true,
-                                onChangedForMultiSelect: (val) => setState(
+                                onMultiSelectChanged: (val) => setState(
                                     () => _model.metodoPagoDropDownValue = val),
                               ),
                               FFButtonWidget(
@@ -534,7 +515,8 @@ class _CreateCompanyPageWidgetState extends State<CreateCompanyPageWidget> {
                                   await MekaLTGroup.createCompanyCall.call(
                                 categoriesList: functions.getIdsCategories(
                                     getJsonField(
-                                      (_model.apiResultejv?.jsonBody ?? ''),
+                                      (_model.apiResultCategories?.jsonBody ??
+                                          ''),
                                       r'''$''',
                                       true,
                                     )!,
