@@ -14,4 +14,6 @@ import 'package:flutter/services.dart';
 Future lockOrientation() async {
   // Add your function code here!
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(statusBarColor: Colors.white));
 }
