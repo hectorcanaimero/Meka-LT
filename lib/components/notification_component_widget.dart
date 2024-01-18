@@ -1,5 +1,4 @@
 import '/backend/api_requests/api_calls.dart';
-import '/components/vazio_widget_widget.dart';
 import '/components/view_service_component_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -100,11 +99,6 @@ class _NotificationComponentWidgetState
                 (_model.apiInProcess?.jsonBody ?? ''),
                 r'''$''',
               ).toList();
-              if (accepted.isEmpty) {
-                return VazioWidgetWidget(
-                  name: 'Sin servicios por aceptar',
-                );
-              }
               return ListView.separated(
                 padding: EdgeInsets.zero,
                 scrollDirection: Axis.horizontal,
@@ -149,7 +143,7 @@ class _NotificationComponentWidgetState
                         borderRadius: BorderRadius.circular(8.0),
                       ),
                       child: Container(
-                        width: MediaQuery.sizeOf(context).width * 0.7,
+                        width: MediaQuery.sizeOf(context).width * 0.6,
                         height: double.infinity,
                         decoration: BoxDecoration(
                           color: FlutterFlowTheme.of(context).alternate,
