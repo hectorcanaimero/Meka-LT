@@ -47,44 +47,56 @@ class _DesactiveComponentWidgetState extends State<DesactiveComponentWidget> {
       alignment: AlignmentDirectional(1.0, 1.0),
       child: Padding(
         padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 16.0),
-        child: Container(
-          width: double.infinity,
-          height: 100.0,
-          decoration: BoxDecoration(
-            color: FlutterFlowTheme.of(context).error,
-            boxShadow: [
-              BoxShadow(
-                blurRadius: 4.0,
-                color: Color(0x33000000),
-                offset: Offset(0.0, 2.0),
-              )
-            ],
-            borderRadius: BorderRadius.circular(12.0),
-          ),
-          child: Padding(
-            padding: EdgeInsets.all(16.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  FFLocalizations.of(context).getText(
-                    'fnxphbgn' /* Fuera de Linea */,
-                  ),
-                  style: FlutterFlowTheme.of(context).headlineMedium.override(
-                        fontFamily: 'Poppins',
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                ),
-                Text(
-                  FFLocalizations.of(context).getText(
-                    '8rjq054y' /* No puedes aceptar ningún servi... */,
-                  ),
-                  style: FlutterFlowTheme.of(context).bodyMedium,
-                ),
+        child: InkWell(
+          splashColor: Colors.transparent,
+          focusColor: Colors.transparent,
+          hoverColor: Colors.transparent,
+          highlightColor: Colors.transparent,
+          onTap: () async {
+            logFirebaseEvent('DESACTIVE_COMPONENT_Dropdown_1_Options_O');
+            logFirebaseEvent('Dropdown_1_Options_navigate_to');
+
+            context.pushNamed('MenuPage');
+          },
+          child: Container(
+            width: double.infinity,
+            height: 100.0,
+            decoration: BoxDecoration(
+              color: FlutterFlowTheme.of(context).error,
+              boxShadow: [
+                BoxShadow(
+                  blurRadius: 4.0,
+                  color: Color(0x33000000),
+                  offset: Offset(0.0, 2.0),
+                )
               ],
+              borderRadius: BorderRadius.circular(12.0),
+            ),
+            child: Padding(
+              padding: EdgeInsets.all(16.0),
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    FFLocalizations.of(context).getText(
+                      'fnxphbgn' /* Fuera de Linea */,
+                    ),
+                    style: FlutterFlowTheme.of(context).headlineMedium.override(
+                          fontFamily: 'Poppins',
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                  ),
+                  Text(
+                    FFLocalizations.of(context).getText(
+                      '8rjq054y' /* No puedes aceptar ningún servi... */,
+                    ),
+                    style: FlutterFlowTheme.of(context).bodyMedium,
+                  ),
+                ],
+              ),
             ),
           ),
         ),

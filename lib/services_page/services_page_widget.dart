@@ -155,7 +155,6 @@ class _ServicesPageWidgetState extends State<ServicesPageWidget>
                                 }
                                 return ListView.separated(
                                   padding: EdgeInsets.symmetric(vertical: 24.0),
-                                  shrinkWrap: true,
                                   scrollDirection: Axis.vertical,
                                   itemCount: item.length,
                                   separatorBuilder: (_, __) =>
@@ -318,7 +317,6 @@ class _ServicesPageWidgetState extends State<ServicesPageWidget>
                                 }
                                 return ListView.separated(
                                   padding: EdgeInsets.symmetric(vertical: 24.0),
-                                  shrinkWrap: true,
                                   scrollDirection: Axis.vertical,
                                   itemCount: item.length,
                                   separatorBuilder: (_, __) =>

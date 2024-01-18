@@ -400,8 +400,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       }
                                       return ListView.separated(
                                         padding: EdgeInsets.zero,
-                                        primary: false,
-                                        shrinkWrap: true,
                                         scrollDirection: Axis.vertical,
                                         itemCount: accepted.length,
                                         separatorBuilder: (_, __) =>
