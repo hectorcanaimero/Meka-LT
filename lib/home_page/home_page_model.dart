@@ -23,12 +23,14 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class HomePageModel extends FlutterFlowModel<HomePageWidget> {
+  ///  Local state fields for this page.
+
+  bool show = false;
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
   InstantTimer? timerService;
-  // Stores action output result for [Backend Call - API (Servicios Activos)] action in HomePage widget.
-  ApiCallResponse? apiInProcess;
   // Stores action output result for [Backend Call - API (Servicios Activos)] action in HomePage widget.
   ApiCallResponse? apiAccepted;
   // Model for DesactiveComponent component.

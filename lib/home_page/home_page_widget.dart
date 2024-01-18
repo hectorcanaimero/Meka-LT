@@ -50,24 +50,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
         duration: Duration(milliseconds: 5000),
         callback: (timer) async {
           logFirebaseEvent('HomePage_backend_call');
-          _model.apiInProcess = await MekaLTGroup.serviciosActivosCall.call(
-            status: 'in_process',
-            company: getJsonField(
-              FFAppState().ltCompany,
-              r'''$._id''',
-            ).toString().toString(),
-          );
-          if ((_model.apiInProcess?.succeeded ?? true)) {
-            logFirebaseEvent('HomePage_update_app_state');
-            FFAppState().serviceForAccepted = getJsonField(
-              (_model.apiInProcess?.jsonBody ?? ''),
-              r'''$''',
-              true,
-            )!
-                .toList()
-                .cast<dynamic>();
-          }
-          logFirebaseEvent('HomePage_backend_call');
           _model.apiAccepted = await MekaLTGroup.serviciosActivosCall.call(
             status: 'accepted',
             company: getJsonField(
@@ -76,15 +58,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             ).toString().toString(),
           );
           if ((_model.apiAccepted?.succeeded ?? true)) {
-            logFirebaseEvent('HomePage_update_app_state');
+            logFirebaseEvent('HomePage_update_page_state');
             setState(() {
-              FFAppState().serviceActive = getJsonField(
-                (_model.apiAccepted?.jsonBody ?? ''),
-                r'''$''',
-                true,
-              )!
-                  .toList()
-                  .cast<dynamic>();
+              _model.show = true;
             });
           }
         },
@@ -386,122 +362,236 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       ),
                                     ),
                                   ),
-                                  Builder(
-                                    builder: (context) {
-                                      final accepted =
-                                          FFAppState().serviceActive.toList();
-                                      if (accepted.isEmpty) {
-                                        return VazioWidgetWidget(
-                                          name: FFLocalizations.of(context)
-                                              .getText(
-                                            'ktpxcq59' /* Sin servicios activos */,
-                                          ),
-                                        );
-                                      }
-                                      return ListView.separated(
-                                        padding: EdgeInsets.zero,
-                                        scrollDirection: Axis.vertical,
-                                        itemCount: accepted.length,
-                                        separatorBuilder: (_, __) =>
-                                            SizedBox(height: 18.0),
-                                        itemBuilder: (context, acceptedIndex) {
-                                          final acceptedItem =
-                                              accepted[acceptedIndex];
-                                          return Material(
-                                            color: Colors.transparent,
-                                            elevation: 3.0,
-                                            shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(16.0),
-                                            ),
-                                            child: Container(
-                                              width: 100.0,
-                                              decoration: BoxDecoration(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .alternate,
-                                                borderRadius:
-                                                    BorderRadius.circular(16.0),
+                                  if (_model.show)
+                                    Container(
+                                      decoration: BoxDecoration(),
+                                      child: Builder(
+                                        builder: (context) {
+                                          final accepted = getJsonField(
+                                            (_model.apiAccepted?.jsonBody ??
+                                                ''),
+                                            r'''$''',
+                                          ).toList();
+                                          if (accepted.isEmpty) {
+                                            return VazioWidgetWidget(
+                                              name: FFLocalizations.of(context)
+                                                  .getText(
+                                                'ktpxcq59' /* Sin servicios activos */,
                                               ),
-                                              child: Padding(
-                                                padding: EdgeInsets.all(10.0),
-                                                child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    Expanded(
-                                                      child: Padding(
-                                                        padding: EdgeInsets.all(
-                                                            10.0),
-                                                        child: InkWell(
-                                                          splashColor: Colors
-                                                              .transparent,
-                                                          focusColor: Colors
-                                                              .transparent,
-                                                          hoverColor: Colors
-                                                              .transparent,
-                                                          highlightColor: Colors
-                                                              .transparent,
-                                                          onTap: () async {
-                                                            logFirebaseEvent(
-                                                                'HOME_PAGE_PAGE_Column_8e2q7dqh_ON_TAP');
-                                                            logFirebaseEvent(
-                                                                'Column_bottom_sheet');
-                                                            await showModalBottomSheet(
-                                                              isScrollControlled:
-                                                                  true,
-                                                              backgroundColor:
+                                            );
+                                          }
+                                          return ListView.separated(
+                                            padding: EdgeInsets.zero,
+                                            shrinkWrap: true,
+                                            scrollDirection: Axis.vertical,
+                                            itemCount: accepted.length,
+                                            separatorBuilder: (_, __) =>
+                                                SizedBox(height: 18.0),
+                                            itemBuilder:
+                                                (context, acceptedIndex) {
+                                              final acceptedItem =
+                                                  accepted[acceptedIndex];
+                                              return Material(
+                                                color: Colors.transparent,
+                                                elevation: 3.0,
+                                                shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          16.0),
+                                                ),
+                                                child: Container(
+                                                  width: 100.0,
+                                                  decoration: BoxDecoration(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .alternate,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            16.0),
+                                                  ),
+                                                  child: Padding(
+                                                    padding:
+                                                        EdgeInsets.all(10.0),
+                                                    child: Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        Expanded(
+                                                          child: Padding(
+                                                            padding:
+                                                                EdgeInsets.all(
+                                                                    10.0),
+                                                            child: InkWell(
+                                                              splashColor: Colors
+                                                                  .transparent,
+                                                              focusColor: Colors
+                                                                  .transparent,
+                                                              hoverColor: Colors
+                                                                  .transparent,
+                                                              highlightColor:
                                                                   Colors
                                                                       .transparent,
-                                                              isDismissible:
-                                                                  false,
-                                                              enableDrag: false,
-                                                              context: context,
-                                                              builder:
-                                                                  (context) {
-                                                                return GestureDetector(
-                                                                  onTap: () => _model
-                                                                          .unfocusNode
-                                                                          .canRequestFocus
-                                                                      ? FocusScope.of(
-                                                                              context)
-                                                                          .requestFocus(_model
+                                                              onTap: () async {
+                                                                logFirebaseEvent(
+                                                                    'HOME_PAGE_PAGE_Column_8e2q7dqh_ON_TAP');
+                                                                logFirebaseEvent(
+                                                                    'Column_bottom_sheet');
+                                                                await showModalBottomSheet(
+                                                                  isScrollControlled:
+                                                                      true,
+                                                                  backgroundColor:
+                                                                      Colors
+                                                                          .transparent,
+                                                                  isDismissible:
+                                                                      false,
+                                                                  enableDrag:
+                                                                      false,
+                                                                  context:
+                                                                      context,
+                                                                  builder:
+                                                                      (context) {
+                                                                    return GestureDetector(
+                                                                      onTap: () => _model
+                                                                              .unfocusNode
+                                                                              .canRequestFocus
+                                                                          ? FocusScope.of(context).requestFocus(_model
                                                                               .unfocusNode)
-                                                                      : FocusScope.of(
-                                                                              context)
-                                                                          .unfocus(),
-                                                                  child:
-                                                                      Padding(
-                                                                    padding: MediaQuery
-                                                                        .viewInsetsOf(
-                                                                            context),
-                                                                    child:
-                                                                        Container(
-                                                                      height:
-                                                                          MediaQuery.sizeOf(context).height *
-                                                                              0.9,
+                                                                          : FocusScope.of(context)
+                                                                              .unfocus(),
                                                                       child:
-                                                                          ViewServiceComponentWidget(
-                                                                        serviceId: functions
-                                                                            .trasnsformReference(getJsonField(
+                                                                          Padding(
+                                                                        padding:
+                                                                            MediaQuery.viewInsetsOf(context),
+                                                                        child:
+                                                                            Container(
+                                                                          height:
+                                                                              MediaQuery.sizeOf(context).height * 0.9,
+                                                                          child:
+                                                                              ViewServiceComponentWidget(
+                                                                            serviceId: functions
+                                                                                .trasnsformReference(getJsonField(
+                                                                                  acceptedItem,
+                                                                                  r'''$._id''',
+                                                                                ).toString())
+                                                                                .id,
+                                                                            status:
+                                                                                getJsonField(
                                                                               acceptedItem,
-                                                                              r'''$._id''',
-                                                                            ).toString())
-                                                                            .id,
-                                                                        status:
-                                                                            getJsonField(
-                                                                          acceptedItem,
-                                                                          r'''$.status''',
-                                                                        ).toString(),
+                                                                              r'''$.status''',
+                                                                            ).toString(),
+                                                                          ),
+                                                                        ),
                                                                       ),
+                                                                    );
+                                                                  },
+                                                                ).then((value) =>
+                                                                    safeSetState(
+                                                                        () {}));
+                                                              },
+                                                              child: Column(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .center,
+                                                                crossAxisAlignment:
+                                                                    CrossAxisAlignment
+                                                                        .start,
+                                                                children: [
+                                                                  Text(
+                                                                    '${getJsonField(
+                                                                      acceptedItem,
+                                                                      r'''$.user.first_name''',
+                                                                    ).toString()} ${getJsonField(
+                                                                      acceptedItem,
+                                                                      r'''$.user.last_name''',
+                                                                    ).toString()}',
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .titleSmall
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Poppins',
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).secondaryText,
+                                                                          fontWeight:
+                                                                              FontWeight.w600,
+                                                                        ),
+                                                                  ),
+                                                                  Text(
+                                                                    getJsonField(
+                                                                      acceptedItem,
+                                                                      r'''$.category.name''',
+                                                                    ).toString(),
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Poppins',
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).secondaryText,
+                                                                        ),
+                                                                  ),
+                                                                  Text(
+                                                                    '${getJsonField(
+                                                                      acceptedItem,
+                                                                      r'''$.brand.name''',
+                                                                    ).toString()}-${getJsonField(
+                                                                      acceptedItem,
+                                                                      r'''$.model.name''',
+                                                                    ).toString()}',
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Poppins',
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).secondaryText,
+                                                                        ),
+                                                                  ),
+                                                                  Align(
+                                                                    alignment:
+                                                                        AlignmentDirectional(
+                                                                            -1.0,
+                                                                            0.0),
+                                                                    child: Text(
+                                                                      dateTimeFormat(
+                                                                        'd/M h:mm a',
+                                                                        functions
+                                                                            .parseData(getJsonField(
+                                                                          acceptedItem,
+                                                                          r'''$.createdAt''',
+                                                                        ).toString()),
+                                                                        locale:
+                                                                            FFLocalizations.of(context).languageCode,
+                                                                      ),
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                'Poppins',
+                                                                            color:
+                                                                                FlutterFlowTheme.of(context).secondaryText,
+                                                                          ),
                                                                     ),
                                                                   ),
-                                                                );
-                                                              },
-                                                            ).then((value) =>
-                                                                safeSetState(
-                                                                    () {}));
-                                                          },
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      0.0,
+                                                                      10.0,
+                                                                      0.0),
                                                           child: Column(
                                                             mainAxisSize:
                                                                 MainAxisSize
@@ -509,127 +599,18 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                             mainAxisAlignment:
                                                                 MainAxisAlignment
                                                                     .center,
-                                                            crossAxisAlignment:
-                                                                CrossAxisAlignment
-                                                                    .start,
                                                             children: [
-                                                              Text(
-                                                                '${getJsonField(
-                                                                  acceptedItem,
-                                                                  r'''$.user.first_name''',
-                                                                ).toString()} ${getJsonField(
-                                                                  acceptedItem,
-                                                                  r'''$.user.last_name''',
-                                                                ).toString()}',
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleSmall
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Poppins',
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .secondaryText,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w600,
-                                                                    ),
-                                                              ),
-                                                              Text(
-                                                                getJsonField(
-                                                                  acceptedItem,
-                                                                  r'''$.category.name''',
-                                                                ).toString(),
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Poppins',
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .secondaryText,
-                                                                    ),
-                                                              ),
-                                                              Text(
-                                                                '${getJsonField(
-                                                                  acceptedItem,
-                                                                  r'''$.brand.name''',
-                                                                ).toString()}-${getJsonField(
-                                                                  acceptedItem,
-                                                                  r'''$.model.name''',
-                                                                ).toString()}',
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Poppins',
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .secondaryText,
-                                                                    ),
-                                                              ),
-                                                              Align(
-                                                                alignment:
-                                                                    AlignmentDirectional(
-                                                                        -1.0,
-                                                                        0.0),
-                                                                child: Text(
-                                                                  dateTimeFormat(
-                                                                    'd/M h:mm a',
-                                                                    functions
-                                                                        .parseData(
-                                                                            getJsonField(
-                                                                      acceptedItem,
-                                                                      r'''$.createdAt''',
-                                                                    ).toString()),
-                                                                    locale: FFLocalizations.of(
-                                                                            context)
-                                                                        .languageCode,
-                                                                  ),
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Poppins',
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .secondaryText,
-                                                                      ),
-                                                                ),
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  0.0,
-                                                                  10.0,
-                                                                  0.0),
-                                                      child: Column(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .center,
-                                                        children: [
-                                                          FutureBuilder<int>(
-                                                            future:
-                                                                queryChatRecordCount(
-                                                              parent: functions
-                                                                  .trasnsformReference(
-                                                                      getJsonField(
-                                                                acceptedItem,
-                                                                r'''$._id''',
-                                                              ).toString()),
-                                                              queryBuilder:
-                                                                  (chatRecord) =>
+                                                              FutureBuilder<
+                                                                  int>(
+                                                                future:
+                                                                    queryChatRecordCount(
+                                                                  parent: functions
+                                                                      .trasnsformReference(
+                                                                          getJsonField(
+                                                                    acceptedItem,
+                                                                    r'''$._id''',
+                                                                  ).toString()),
+                                                                  queryBuilder: (chatRecord) =>
                                                                       chatRecord
                                                                           .where(
                                                                             'type_user',
@@ -641,135 +622,131 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                             isEqualTo:
                                                                                 false,
                                                                           ),
-                                                            ),
-                                                            builder: (context,
-                                                                snapshot) {
-                                                              // Customize what your widget looks like when it's loading.
-                                                              if (!snapshot
-                                                                  .hasData) {
-                                                                return Center(
-                                                                  child:
-                                                                      SizedBox(
-                                                                    width: 24.0,
-                                                                    height:
-                                                                        24.0,
-                                                                    child:
-                                                                        CircularProgressIndicator(
-                                                                      valueColor:
-                                                                          AlwaysStoppedAnimation<
-                                                                              Color>(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .primary,
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                );
-                                                              }
-                                                              int badgeCount =
-                                                                  snapshot
-                                                                      .data!;
-                                                              return InkWell(
-                                                                splashColor: Colors
-                                                                    .transparent,
-                                                                focusColor: Colors
-                                                                    .transparent,
-                                                                hoverColor: Colors
-                                                                    .transparent,
-                                                                highlightColor:
-                                                                    Colors
-                                                                        .transparent,
-                                                                onTap:
-                                                                    () async {
-                                                                  logFirebaseEvent(
-                                                                      'HOME_PAGE_PAGE_Badge_r1dixcf6_ON_TAP');
-                                                                  logFirebaseEvent(
-                                                                      'Badge_navigate_to');
-
-                                                                  context
-                                                                      .pushNamed(
-                                                                    'ChatPage',
-                                                                    queryParameters:
-                                                                        {
-                                                                      'serviceId':
-                                                                          serializeParam(
-                                                                        functions
-                                                                            .trasnsformReference(getJsonField(
-                                                                          acceptedItem,
-                                                                          r'''$._id''',
-                                                                        ).toString()),
-                                                                        ParamType
-                                                                            .DocumentReference,
-                                                                      ),
-                                                                    }.withoutNulls,
-                                                                  );
-                                                                },
-                                                                child: badges
-                                                                    .Badge(
-                                                                  badgeContent:
-                                                                      Text(
-                                                                    badgeCount
-                                                                        .toString(),
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .titleSmall
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Poppins',
-                                                                          color:
-                                                                              Colors.white,
-                                                                          fontSize:
-                                                                              12.0,
+                                                                ),
+                                                                builder: (context,
+                                                                    snapshot) {
+                                                                  // Customize what your widget looks like when it's loading.
+                                                                  if (!snapshot
+                                                                      .hasData) {
+                                                                    return Center(
+                                                                      child:
+                                                                          SizedBox(
+                                                                        width:
+                                                                            24.0,
+                                                                        height:
+                                                                            24.0,
+                                                                        child:
+                                                                            CircularProgressIndicator(
+                                                                          valueColor:
+                                                                              AlwaysStoppedAnimation<Color>(
+                                                                            FlutterFlowTheme.of(context).primary,
+                                                                          ),
                                                                         ),
-                                                                  ),
-                                                                  showBadge:
-                                                                      true,
-                                                                  shape: badges
-                                                                      .BadgeShape
-                                                                      .circle,
-                                                                  badgeColor:
-                                                                      FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .primary,
-                                                                  elevation:
-                                                                      4.0,
-                                                                  padding: EdgeInsetsDirectional
-                                                                      .fromSTEB(
+                                                                      ),
+                                                                    );
+                                                                  }
+                                                                  int badgeCount =
+                                                                      snapshot
+                                                                          .data!;
+                                                                  return InkWell(
+                                                                    splashColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    focusColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    hoverColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    highlightColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    onTap:
+                                                                        () async {
+                                                                      logFirebaseEvent(
+                                                                          'HOME_PAGE_PAGE_Badge_r1dixcf6_ON_TAP');
+                                                                      logFirebaseEvent(
+                                                                          'Badge_navigate_to');
+
+                                                                      context
+                                                                          .pushNamed(
+                                                                        'ChatPage',
+                                                                        queryParameters:
+                                                                            {
+                                                                          'serviceId':
+                                                                              serializeParam(
+                                                                            functions.trasnsformReference(getJsonField(
+                                                                              acceptedItem,
+                                                                              r'''$._id''',
+                                                                            ).toString()),
+                                                                            ParamType.DocumentReference,
+                                                                          ),
+                                                                        }.withoutNulls,
+                                                                      );
+                                                                    },
+                                                                    child: badges
+                                                                        .Badge(
+                                                                      badgeContent:
+                                                                          Text(
+                                                                        badgeCount
+                                                                            .toString(),
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .titleSmall
+                                                                            .override(
+                                                                              fontFamily: 'Poppins',
+                                                                              color: Colors.white,
+                                                                              fontSize: 12.0,
+                                                                            ),
+                                                                      ),
+                                                                      showBadge:
+                                                                          true,
+                                                                      shape: badges
+                                                                          .BadgeShape
+                                                                          .circle,
+                                                                      badgeColor:
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .primary,
+                                                                      elevation:
+                                                                          4.0,
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
                                                                           8.0,
                                                                           8.0,
                                                                           8.0,
                                                                           8.0),
-                                                                  position: badges
-                                                                          .BadgePosition
-                                                                      .topEnd(),
-                                                                  animationType:
-                                                                      badges
+                                                                      position:
+                                                                          badges.BadgePosition
+                                                                              .topEnd(),
+                                                                      animationType: badges
                                                                           .BadgeAnimationType
                                                                           .scale,
-                                                                  toAnimate:
-                                                                      true,
-                                                                  child: Icon(
-                                                                    Icons
-                                                                        .wechat_sharp,
-                                                                    color: Color(
-                                                                        0xFF404040),
-                                                                    size: 48.0,
-                                                                  ),
-                                                                ),
-                                                              );
-                                                            },
+                                                                      toAnimate:
+                                                                          true,
+                                                                      child:
+                                                                          Icon(
+                                                                        Icons
+                                                                            .wechat_sharp,
+                                                                        color: Color(
+                                                                            0xFF404040),
+                                                                        size:
+                                                                            48.0,
+                                                                      ),
+                                                                    ),
+                                                                  );
+                                                                },
+                                                              ),
+                                                            ],
                                                           ),
-                                                        ],
-                                                      ),
+                                                        ),
+                                                      ],
                                                     ),
-                                                  ],
+                                                  ),
                                                 ),
-                                              ),
-                                            ),
+                                              );
+                                            },
                                           );
                                         },
-                                      );
-                                    },
-                                  ),
+                                      ),
+                                    ),
                                 ],
                               ),
                             ),
