@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/components/desactive_component_widget.dart';
 import '/components/nav_bar_floting_widget.dart';
 import '/components/vazio_widget_widget.dart';
@@ -139,95 +140,92 @@ class _ServicesPageWidgetState extends State<ServicesPageWidget>
                         physics: const NeverScrollableScrollPhysics(),
                         children: [
                           KeepAliveWidgetWrapper(
-                            builder: (context) => Builder(
-                              builder: (context) {
-                                final item = FFAppState()
-                                    .serviceForAccepted
-                                    .map((e) => getJsonField(
-                                          e,
-                                          r'''$''',
-                                        ))
-                                    .toList();
-                                if (item.isEmpty) {
-                                  return VazioWidgetWidget(
-                                    name: 'Sin servicios',
+                            builder: (context) =>
+                                FutureBuilder<ApiCallResponse>(
+                              future: MekaLTGroup.serviciosActivosCall.call(
+                                status: 'in_process',
+                                company: getJsonField(
+                                  FFAppState().ltCompany,
+                                  r'''$._id''',
+                                ).toString(),
+                              ),
+                              builder: (context, snapshot) {
+                                // Customize what your widget looks like when it's loading.
+                                if (!snapshot.hasData) {
+                                  return Center(
+                                    child: LinearProgressIndicator(
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
+                                    ),
                                   );
                                 }
-                                return ListView.separated(
-                                  padding: EdgeInsets.symmetric(vertical: 24.0),
-                                  scrollDirection: Axis.vertical,
-                                  itemCount: item.length,
-                                  separatorBuilder: (_, __) =>
-                                      SizedBox(height: 24.0),
-                                  itemBuilder: (context, itemIndex) {
-                                    final itemItem = item[itemIndex];
-                                    return Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          24.0, 0.0, 24.0, 0.0),
-                                      child: Material(
-                                        color: Colors.transparent,
-                                        elevation: 3.0,
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                        ),
-                                        child: Container(
-                                          width: double.infinity,
-                                          decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context)
-                                                .alternate,
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                          ),
-                                          child: Padding(
-                                            padding: EdgeInsets.all(10.0),
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                Expanded(
-                                                  child: Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      Text(
-                                                        getJsonField(
-                                                          itemItem,
-                                                          r'''$.createdAt''',
-                                                        ).toString(),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Poppins',
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryText,
-                                                                ),
-                                                      ),
-                                                      Row(
+                                final listViewServiciosActivosResponse =
+                                    snapshot.data!;
+                                return Builder(
+                                  builder: (context) {
+                                    final item = getJsonField(
+                                      listViewServiciosActivosResponse.jsonBody,
+                                      r'''$''',
+                                    ).toList();
+                                    if (item.isEmpty) {
+                                      return VazioWidgetWidget(
+                                        name: 'Sin servicios',
+                                      );
+                                    }
+                                    return ListView.separated(
+                                      padding:
+                                          EdgeInsets.symmetric(vertical: 24.0),
+                                      scrollDirection: Axis.vertical,
+                                      itemCount: item.length,
+                                      separatorBuilder: (_, __) =>
+                                          SizedBox(height: 24.0),
+                                      itemBuilder: (context, itemIndex) {
+                                        final itemItem = item[itemIndex];
+                                        return Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  24.0, 0.0, 24.0, 0.0),
+                                          child: Material(
+                                            color: Colors.transparent,
+                                            elevation: 3.0,
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                            ),
+                                            child: Container(
+                                              width: double.infinity,
+                                              decoration: BoxDecoration(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .alternate,
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                              ),
+                                              child: Padding(
+                                                padding: EdgeInsets.all(10.0),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  children: [
+                                                    Expanded(
+                                                      child: Column(
                                                         mainAxisSize:
                                                             MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .center,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
                                                         children: [
                                                           Text(
                                                             getJsonField(
                                                               itemItem,
-                                                              r'''$._id''',
-                                                            )
-                                                                .toString()
-                                                                .maybeHandleOverflow(
-                                                                    maxChars:
-                                                                        7),
+                                                              r'''$.createdAt''',
+                                                            ).toString(),
                                                             style: FlutterFlowTheme
                                                                     .of(context)
                                                                 .bodyMedium
@@ -239,26 +237,50 @@ class _ServicesPageWidgetState extends State<ServicesPageWidget>
                                                                       .secondaryText,
                                                                 ),
                                                           ),
+                                                          Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            children: [
+                                                              Text(
+                                                                getJsonField(
+                                                                  itemItem,
+                                                                  r'''$._id''',
+                                                                )
+                                                                    .toString()
+                                                                    .maybeHandleOverflow(
+                                                                        maxChars:
+                                                                            7),
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Poppins',
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryText,
+                                                                    ),
+                                                              ),
+                                                              Text(
+                                                                FFLocalizations.of(
+                                                                        context)
+                                                                    .getText(
+                                                                  '1vck6sd7' /* ... */,
+                                                                ),
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium,
+                                                              ),
+                                                            ],
+                                                          ),
                                                           Text(
-                                                            FFLocalizations.of(
-                                                                    context)
-                                                                .getText(
-                                                              '1vck6sd7' /* ... */,
-                                                            ),
+                                                            getJsonField(
+                                                              itemItem,
+                                                              r'''$.category.name''',
+                                                            ).toString(),
                                                             style: FlutterFlowTheme
                                                                     .of(context)
-                                                                .bodyMedium,
-                                                          ),
-                                                        ],
-                                                      ),
-                                                      Text(
-                                                        getJsonField(
-                                                          itemItem,
-                                                          r'''$.category.name''',
-                                                        ).toString(),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
                                                                 .titleSmall
                                                                 .override(
                                                                   fontFamily:
@@ -270,18 +292,17 @@ class _ServicesPageWidgetState extends State<ServicesPageWidget>
                                                                       FontWeight
                                                                           .w600,
                                                                 ),
-                                                      ),
-                                                      Text(
-                                                        '${getJsonField(
-                                                          itemItem,
-                                                          r'''$.brand.name''',
-                                                        ).toString()}-${getJsonField(
-                                                          itemItem,
-                                                          r'''$.model.name''',
-                                                        ).toString()}',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
+                                                          ),
+                                                          Text(
+                                                            '${getJsonField(
+                                                              itemItem,
+                                                              r'''$.brand.name''',
+                                                            ).toString()}-${getJsonField(
+                                                              itemItem,
+                                                              r'''$.model.name''',
+                                                            ).toString()}',
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
                                                                 .bodyMedium
                                                                 .override(
                                                                   fontFamily:
@@ -290,31 +311,35 @@ class _ServicesPageWidgetState extends State<ServicesPageWidget>
                                                                           context)
                                                                       .secondaryText,
                                                                 ),
+                                                          ),
+                                                        ].divide(SizedBox(
+                                                            height: 3.0)),
                                                       ),
-                                                    ].divide(
-                                                        SizedBox(height: 3.0)),
-                                                  ),
+                                                    ),
+                                                    Container(
+                                                      width: 60.0,
+                                                      height: 60.0,
+                                                      clipBehavior:
+                                                          Clip.antiAlias,
+                                                      decoration: BoxDecoration(
+                                                        shape: BoxShape.circle,
+                                                      ),
+                                                      child: Image.network(
+                                                        getJsonField(
+                                                          itemItem,
+                                                          r'''$.category.picture''',
+                                                        ).toString(),
+                                                        fit: BoxFit.cover,
+                                                      ),
+                                                    ),
+                                                  ].divide(
+                                                      SizedBox(width: 10.0)),
                                                 ),
-                                                Container(
-                                                  width: 60.0,
-                                                  height: 60.0,
-                                                  clipBehavior: Clip.antiAlias,
-                                                  decoration: BoxDecoration(
-                                                    shape: BoxShape.circle,
-                                                  ),
-                                                  child: Image.network(
-                                                    getJsonField(
-                                                      itemItem,
-                                                      r'''$.category.picture''',
-                                                    ).toString(),
-                                                    fit: BoxFit.cover,
-                                                  ),
-                                                ),
-                                              ].divide(SizedBox(width: 10.0)),
+                                              ),
                                             ),
                                           ),
-                                        ),
-                                      ),
+                                        );
+                                      },
                                     );
                                   },
                                 );
@@ -322,95 +347,92 @@ class _ServicesPageWidgetState extends State<ServicesPageWidget>
                             ),
                           ),
                           KeepAliveWidgetWrapper(
-                            builder: (context) => Builder(
-                              builder: (context) {
-                                final item = FFAppState()
-                                    .serviceActive
-                                    .map((e) => getJsonField(
-                                          e,
-                                          r'''$''',
-                                        ))
-                                    .toList();
-                                if (item.isEmpty) {
-                                  return VazioWidgetWidget(
-                                    name: 'Sin servicios',
+                            builder: (context) =>
+                                FutureBuilder<ApiCallResponse>(
+                              future: MekaLTGroup.serviciosActivosCall.call(
+                                status: 'accepted',
+                                company: getJsonField(
+                                  FFAppState().ltCompany,
+                                  r'''$._id''',
+                                ).toString(),
+                              ),
+                              builder: (context, snapshot) {
+                                // Customize what your widget looks like when it's loading.
+                                if (!snapshot.hasData) {
+                                  return Center(
+                                    child: LinearProgressIndicator(
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
+                                    ),
                                   );
                                 }
-                                return ListView.separated(
-                                  padding: EdgeInsets.symmetric(vertical: 24.0),
-                                  scrollDirection: Axis.vertical,
-                                  itemCount: item.length,
-                                  separatorBuilder: (_, __) =>
-                                      SizedBox(height: 24.0),
-                                  itemBuilder: (context, itemIndex) {
-                                    final itemItem = item[itemIndex];
-                                    return Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          24.0, 0.0, 24.0, 0.0),
-                                      child: Material(
-                                        color: Colors.transparent,
-                                        elevation: 3.0,
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                        ),
-                                        child: Container(
-                                          width: double.infinity,
-                                          decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context)
-                                                .alternate,
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                          ),
-                                          child: Padding(
-                                            padding: EdgeInsets.all(10.0),
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                Expanded(
-                                                  child: Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      Text(
-                                                        getJsonField(
-                                                          itemItem,
-                                                          r'''$.createdAt''',
-                                                        ).toString(),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Poppins',
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryText,
-                                                                ),
-                                                      ),
-                                                      Row(
+                                final listViewServiciosActivosResponse =
+                                    snapshot.data!;
+                                return Builder(
+                                  builder: (context) {
+                                    final item = getJsonField(
+                                      listViewServiciosActivosResponse.jsonBody,
+                                      r'''$''',
+                                    ).toList();
+                                    if (item.isEmpty) {
+                                      return VazioWidgetWidget(
+                                        name: 'Sin servicios',
+                                      );
+                                    }
+                                    return ListView.separated(
+                                      padding:
+                                          EdgeInsets.symmetric(vertical: 24.0),
+                                      scrollDirection: Axis.vertical,
+                                      itemCount: item.length,
+                                      separatorBuilder: (_, __) =>
+                                          SizedBox(height: 24.0),
+                                      itemBuilder: (context, itemIndex) {
+                                        final itemItem = item[itemIndex];
+                                        return Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  24.0, 0.0, 24.0, 0.0),
+                                          child: Material(
+                                            color: Colors.transparent,
+                                            elevation: 3.0,
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                            ),
+                                            child: Container(
+                                              width: double.infinity,
+                                              decoration: BoxDecoration(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .alternate,
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                              ),
+                                              child: Padding(
+                                                padding: EdgeInsets.all(10.0),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  children: [
+                                                    Expanded(
+                                                      child: Column(
                                                         mainAxisSize:
                                                             MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .center,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
                                                         children: [
                                                           Text(
                                                             getJsonField(
                                                               itemItem,
-                                                              r'''$._id''',
-                                                            )
-                                                                .toString()
-                                                                .maybeHandleOverflow(
-                                                                    maxChars:
-                                                                        7),
+                                                              r'''$.createdAt''',
+                                                            ).toString(),
                                                             style: FlutterFlowTheme
                                                                     .of(context)
                                                                 .bodyMedium
@@ -422,26 +444,50 @@ class _ServicesPageWidgetState extends State<ServicesPageWidget>
                                                                       .secondaryText,
                                                                 ),
                                                           ),
+                                                          Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            children: [
+                                                              Text(
+                                                                getJsonField(
+                                                                  itemItem,
+                                                                  r'''$._id''',
+                                                                )
+                                                                    .toString()
+                                                                    .maybeHandleOverflow(
+                                                                        maxChars:
+                                                                            7),
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Poppins',
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryText,
+                                                                    ),
+                                                              ),
+                                                              Text(
+                                                                FFLocalizations.of(
+                                                                        context)
+                                                                    .getText(
+                                                                  '1uwbmr52' /* ... */,
+                                                                ),
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium,
+                                                              ),
+                                                            ],
+                                                          ),
                                                           Text(
-                                                            FFLocalizations.of(
-                                                                    context)
-                                                                .getText(
-                                                              '1uwbmr52' /* ... */,
-                                                            ),
+                                                            getJsonField(
+                                                              itemItem,
+                                                              r'''$.category.name''',
+                                                            ).toString(),
                                                             style: FlutterFlowTheme
                                                                     .of(context)
-                                                                .bodyMedium,
-                                                          ),
-                                                        ],
-                                                      ),
-                                                      Text(
-                                                        getJsonField(
-                                                          itemItem,
-                                                          r'''$.category.name''',
-                                                        ).toString(),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
                                                                 .titleSmall
                                                                 .override(
                                                                   fontFamily:
@@ -453,18 +499,17 @@ class _ServicesPageWidgetState extends State<ServicesPageWidget>
                                                                       FontWeight
                                                                           .w600,
                                                                 ),
-                                                      ),
-                                                      Text(
-                                                        '${getJsonField(
-                                                          itemItem,
-                                                          r'''$.brand.name''',
-                                                        ).toString()}-${getJsonField(
-                                                          itemItem,
-                                                          r'''$.model.name''',
-                                                        ).toString()}',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
+                                                          ),
+                                                          Text(
+                                                            '${getJsonField(
+                                                              itemItem,
+                                                              r'''$.brand.name''',
+                                                            ).toString()}-${getJsonField(
+                                                              itemItem,
+                                                              r'''$.model.name''',
+                                                            ).toString()}',
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
                                                                 .bodyMedium
                                                                 .override(
                                                                   fontFamily:
@@ -473,31 +518,35 @@ class _ServicesPageWidgetState extends State<ServicesPageWidget>
                                                                           context)
                                                                       .secondaryText,
                                                                 ),
+                                                          ),
+                                                        ].divide(SizedBox(
+                                                            height: 3.0)),
                                                       ),
-                                                    ].divide(
-                                                        SizedBox(height: 3.0)),
-                                                  ),
+                                                    ),
+                                                    Container(
+                                                      width: 60.0,
+                                                      height: 60.0,
+                                                      clipBehavior:
+                                                          Clip.antiAlias,
+                                                      decoration: BoxDecoration(
+                                                        shape: BoxShape.circle,
+                                                      ),
+                                                      child: Image.network(
+                                                        getJsonField(
+                                                          itemItem,
+                                                          r'''$.category.picture''',
+                                                        ).toString(),
+                                                        fit: BoxFit.cover,
+                                                      ),
+                                                    ),
+                                                  ].divide(
+                                                      SizedBox(width: 10.0)),
                                                 ),
-                                                Container(
-                                                  width: 60.0,
-                                                  height: 60.0,
-                                                  clipBehavior: Clip.antiAlias,
-                                                  decoration: BoxDecoration(
-                                                    shape: BoxShape.circle,
-                                                  ),
-                                                  child: Image.network(
-                                                    getJsonField(
-                                                      itemItem,
-                                                      r'''$.category.picture''',
-                                                    ).toString(),
-                                                    fit: BoxFit.cover,
-                                                  ),
-                                                ),
-                                              ].divide(SizedBox(width: 10.0)),
+                                              ),
                                             ),
                                           ),
-                                        ),
-                                      ),
+                                        );
+                                      },
                                     );
                                   },
                                 );
