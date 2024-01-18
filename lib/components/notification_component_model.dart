@@ -14,6 +14,10 @@ import 'package:provider/provider.dart';
 
 class NotificationComponentModel
     extends FlutterFlowModel<NotificationComponentWidget> {
+  ///  Local state fields for this component.
+
+  bool show = false;
+
   ///  State fields for stateful widgets in this component.
 
   InstantTimer? timerService;
