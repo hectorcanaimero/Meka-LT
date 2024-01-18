@@ -79,7 +79,7 @@ class _NotificationComponentWidgetState
       visible: _model.show,
       child: Container(
         width: double.infinity,
-        height: 160.0,
+        height: 140.0,
         decoration: BoxDecoration(
           color: Color(0x1AFFFFFF),
           boxShadow: [
@@ -143,7 +143,7 @@ class _NotificationComponentWidgetState
                         borderRadius: BorderRadius.circular(8.0),
                       ),
                       child: Container(
-                        width: MediaQuery.sizeOf(context).width * 0.6,
+                        width: MediaQuery.sizeOf(context).width * 0.55,
                         height: double.infinity,
                         decoration: BoxDecoration(
                           color: FlutterFlowTheme.of(context).alternate,
@@ -156,22 +156,26 @@ class _NotificationComponentWidgetState
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                getJsonField(
-                                  acceptedItem,
-                                  r'''$._id''',
-                                ).toString().maybeHandleOverflow(
-                                      maxChars: 7,
-                                      replacement: '…',
-                                    ),
-                                style: FlutterFlowTheme.of(context)
-                                    .titleSmall
-                                    .override(
-                                      fontFamily: 'Poppins',
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryText,
-                                      fontWeight: FontWeight.w600,
-                                    ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 10.0),
+                                child: Text(
+                                  getJsonField(
+                                    acceptedItem,
+                                    r'''$._id''',
+                                  ).toString().maybeHandleOverflow(
+                                        maxChars: 7,
+                                        replacement: '…',
+                                      ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .override(
+                                        fontFamily: 'Poppins',
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryText,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                ),
                               ),
                               Text(
                                 getJsonField(
@@ -186,21 +190,25 @@ class _NotificationComponentWidgetState
                                           .secondaryText,
                                     ),
                               ),
-                              Text(
-                                '${getJsonField(
-                                  acceptedItem,
-                                  r'''$.brand.name''',
-                                ).toString()}-${getJsonField(
-                                  acceptedItem,
-                                  r'''$.model.name''',
-                                ).toString()}',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Poppins',
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryText,
-                                    ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 10.0),
+                                child: Text(
+                                  '${getJsonField(
+                                    acceptedItem,
+                                    r'''$.brand.name''',
+                                  ).toString()}-${getJsonField(
+                                    acceptedItem,
+                                    r'''$.model.name''',
+                                  ).toString()}',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Poppins',
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryText,
+                                      ),
+                                ),
                               ),
                               Row(
                                 mainAxisSize: MainAxisSize.max,
