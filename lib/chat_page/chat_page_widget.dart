@@ -172,7 +172,7 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
                               return Align(
                                 alignment: AlignmentDirectional(
                                     valueOrDefault<double>(
-                                      messagesItem.typeUser == 1 ? -1.0 : 1.0,
+                                      messagesItem.typeUser == 0 ? -1.0 : 1.0,
                                       0.0,
                                     ),
                                     0.0),
@@ -248,6 +248,10 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
                                                       .bodyMedium
                                                       .override(
                                                         fontFamily: 'Poppins',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondaryText,
                                                         fontSize: 12.0,
                                                       ),
                                             ),
