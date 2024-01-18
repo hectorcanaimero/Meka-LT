@@ -1,5 +1,4 @@
 import '/auth/custom_auth/auth_util.dart';
-import '/components/desactive_component_widget.dart';
 import '/components/nav_bar_floting_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -163,15 +162,6 @@ class _MenuPageWidgetState extends State<MenuPageWidget> {
                   ),
                 ),
               ),
-              if (FFAppState().ltActive)
-                Align(
-                  alignment: AlignmentDirectional(0.0, 0.0),
-                  child: wrapWithModel(
-                    model: _model.desactiveComponentModel,
-                    updateCallback: () => setState(() {}),
-                    child: DesactiveComponentWidget(),
-                  ),
-                ),
               Container(
                 width: double.infinity,
                 height: 60.0,
