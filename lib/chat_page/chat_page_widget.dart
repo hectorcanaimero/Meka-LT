@@ -172,7 +172,7 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
                               return Align(
                                 alignment: AlignmentDirectional(
                                     valueOrDefault<double>(
-                                      messagesItem.typeUser == 0 ? -1.0 : 1.0,
+                                      messagesItem.typeUser == 1 ? -1.0 : 1.0,
                                       0.0,
                                     ),
                                     0.0),
@@ -185,10 +185,11 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
                                   child: Container(
                                     width: 200.0,
                                     decoration: BoxDecoration(
-                                      color: messagesItem.typeUser == 1
+                                      color: messagesItem.typeUser == 0
                                           ? FlutterFlowTheme.of(context)
                                               .alternate
-                                          : Color(0xFFEADDAF),
+                                          : FlutterFlowTheme.of(context)
+                                              .secondaryText,
                                       borderRadius: BorderRadius.circular(16.0),
                                     ),
                                     child: Padding(
@@ -334,7 +335,13 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
                               filled: true,
                               fillColor: FlutterFlowTheme.of(context).alternate,
                             ),
-                            style: FlutterFlowTheme.of(context).bodyMedium,
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Poppins',
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryText,
+                                ),
                             validator: _model.messageFieldControllerValidator
                                 .asValidator(context),
                           ),

@@ -175,7 +175,7 @@ class _ServicesPageWidgetState extends State<ServicesPageWidget>
                                           width: double.infinity,
                                           decoration: BoxDecoration(
                                             color: FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
+                                                .alternate,
                                             borderRadius:
                                                 BorderRadius.circular(8.0),
                                           ),
@@ -206,7 +206,14 @@ class _ServicesPageWidgetState extends State<ServicesPageWidget>
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .bodyMedium,
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Poppins',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryText,
+                                                                ),
                                                       ),
                                                       Row(
                                                         mainAxisSize:
@@ -223,7 +230,14 @@ class _ServicesPageWidgetState extends State<ServicesPageWidget>
                                                                         7),
                                                             style: FlutterFlowTheme
                                                                     .of(context)
-                                                                .bodyMedium,
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Poppins',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryText,
+                                                                ),
                                                           ),
                                                           Text(
                                                             FFLocalizations.of(
@@ -251,7 +265,7 @@ class _ServicesPageWidgetState extends State<ServicesPageWidget>
                                                                       'Poppins',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .primaryText,
+                                                                      .secondaryText,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .w600,
@@ -268,7 +282,14 @@ class _ServicesPageWidgetState extends State<ServicesPageWidget>
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .bodyMedium,
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Poppins',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryText,
+                                                                ),
                                                       ),
                                                     ].divide(
                                                         SizedBox(height: 3.0)),
@@ -337,7 +358,7 @@ class _ServicesPageWidgetState extends State<ServicesPageWidget>
                                           width: double.infinity,
                                           decoration: BoxDecoration(
                                             color: FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
+                                                .alternate,
                                             borderRadius:
                                                 BorderRadius.circular(8.0),
                                           ),
@@ -368,7 +389,14 @@ class _ServicesPageWidgetState extends State<ServicesPageWidget>
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .bodyMedium,
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Poppins',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryText,
+                                                                ),
                                                       ),
                                                       Row(
                                                         mainAxisSize:
@@ -385,7 +413,14 @@ class _ServicesPageWidgetState extends State<ServicesPageWidget>
                                                                         7),
                                                             style: FlutterFlowTheme
                                                                     .of(context)
-                                                                .bodyMedium,
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Poppins',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryText,
+                                                                ),
                                                           ),
                                                           Text(
                                                             FFLocalizations.of(
@@ -413,7 +448,7 @@ class _ServicesPageWidgetState extends State<ServicesPageWidget>
                                                                       'Poppins',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .primaryText,
+                                                                      .secondaryText,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .w600,
@@ -430,7 +465,14 @@ class _ServicesPageWidgetState extends State<ServicesPageWidget>
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .bodyMedium,
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Poppins',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryText,
+                                                                ),
                                                       ),
                                                     ].divide(
                                                         SizedBox(height: 3.0)),
