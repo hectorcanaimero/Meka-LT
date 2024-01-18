@@ -1,5 +1,4 @@
 import '/backend/api_requests/api_calls.dart';
-import '/components/vazio_widget_widget.dart';
 import '/components/view_service_component_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -41,7 +40,7 @@ class _NotificationComponentWidgetState
       logFirebaseEvent('NOTIFICATION_COMPONENT_NotificationCompo');
       logFirebaseEvent('NotificationComponent_start_periodic_act');
       _model.timerService = InstantTimer.periodic(
-        duration: Duration(milliseconds: 2000),
+        duration: Duration(milliseconds: 3000),
         callback: (timer) async {
           logFirebaseEvent('NotificationComponent_backend_call');
           _model.apiInProcess = await MekaLTGroup.serviciosActivosCall.call(
@@ -100,11 +99,6 @@ class _NotificationComponentWidgetState
                 (_model.apiInProcess?.jsonBody ?? ''),
                 r'''$''',
               ).toList();
-              if (accepted.isEmpty) {
-                return VazioWidgetWidget(
-                  name: 'Sin servicios por aceptar',
-                );
-              }
               return ListView.separated(
                 padding: EdgeInsets.zero,
                 scrollDirection: Axis.horizontal,
@@ -164,7 +158,7 @@ class _NotificationComponentWidgetState
                             children: [
                               Text(
                                 getJsonField(
-                                  (_model.apiInProcess?.jsonBody ?? ''),
+                                  acceptedItem,
                                   r'''$._id''',
                                 ).toString().maybeHandleOverflow(
                                       maxChars: 7,
@@ -181,7 +175,7 @@ class _NotificationComponentWidgetState
                               ),
                               Text(
                                 getJsonField(
-                                  (_model.apiInProcess?.jsonBody ?? ''),
+                                  acceptedItem,
                                   r'''$.category.name''',
                                 ).toString(),
                                 style: FlutterFlowTheme.of(context)
@@ -194,10 +188,10 @@ class _NotificationComponentWidgetState
                               ),
                               Text(
                                 '${getJsonField(
-                                  (_model.apiInProcess?.jsonBody ?? ''),
+                                  acceptedItem,
                                   r'''$.brand.name''',
                                 ).toString()}-${getJsonField(
-                                  (_model.apiInProcess?.jsonBody ?? ''),
+                                  acceptedItem,
                                   r'''$.model.name''',
                                 ).toString()}',
                                 style: FlutterFlowTheme.of(context)
@@ -225,8 +219,7 @@ class _NotificationComponentWidgetState
                                         ),
                                         Text(
                                           getJsonField(
-                                            (_model.apiInProcess?.jsonBody ??
-                                                ''),
+                                            acceptedItem,
                                             r'''$.distance''',
                                           ).toString(),
                                           style: FlutterFlowTheme.of(context)
@@ -260,9 +253,7 @@ class _NotificationComponentWidgetState
                                             dateTimeFormat(
                                               'd/M H:mm',
                                               functions.parseData(getJsonField(
-                                                (_model.apiInProcess
-                                                        ?.jsonBody ??
-                                                    ''),
+                                                acceptedItem,
                                                 r'''$.createdAt''',
                                               ).toString()),
                                               locale:
