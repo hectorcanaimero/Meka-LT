@@ -108,7 +108,7 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
             appBar: AppBar(
-              backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+              backgroundColor: Color(0xFFFFF9DD),
               automaticallyImplyLeading: false,
               leading: FlutterFlowIconButton(
                 borderColor: Colors.transparent,
@@ -132,13 +132,13 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
                 ),
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
                       fontFamily: 'Poppins',
-                      color: Colors.white,
+                      color: FlutterFlowTheme.of(context).secondaryText,
                       fontSize: 22.0,
                     ),
               ),
               actions: [],
               centerTitle: true,
-              elevation: 2.0,
+              elevation: 0.0,
             ),
             body: Column(
               mainAxisSize: MainAxisSize.max,
@@ -188,8 +188,7 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
                                       color: messagesItem.typeUser == 1
                                           ? FlutterFlowTheme.of(context)
                                               .alternate
-                                          : FlutterFlowTheme.of(context)
-                                              .primaryBtnText,
+                                          : Color(0xFFEADDAF),
                                       borderRadius: BorderRadius.circular(16.0),
                                     ),
                                     child: Padding(
@@ -257,7 +256,7 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
                   width: double.infinity,
                   height: 70.0,
                   decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).secondaryBackground,
+                    color: Color(0xFFFFF9DD),
                   ),
                   child: Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
