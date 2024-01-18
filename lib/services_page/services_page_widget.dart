@@ -168,8 +168,14 @@ class _ServicesPageWidgetState extends State<ServicesPageWidget>
                                       r'''$''',
                                     ).toList();
                                     if (item.isEmpty) {
-                                      return VazioWidgetWidget(
-                                        name: 'Sin servicios',
+                                      return Center(
+                                        child: Container(
+                                          width: double.infinity,
+                                          height: 300.0,
+                                          child: VazioWidgetWidget(
+                                            name: 'Sin servicios por Aceptar',
+                                          ),
+                                        ),
                                       );
                                     }
                                     return ListView.separated(
@@ -375,8 +381,14 @@ class _ServicesPageWidgetState extends State<ServicesPageWidget>
                                       r'''$''',
                                     ).toList();
                                     if (item.isEmpty) {
-                                      return VazioWidgetWidget(
-                                        name: 'Sin servicios',
+                                      return Center(
+                                        child: Container(
+                                          width: double.infinity,
+                                          height: 300.0,
+                                          child: VazioWidgetWidget(
+                                            name: 'Sin servicios Aceptados',
+                                          ),
+                                        ),
                                       );
                                     }
                                     return ListView.separated(
