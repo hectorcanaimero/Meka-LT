@@ -188,8 +188,14 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
                                       color: messagesItem.typeUser == 0
                                           ? FlutterFlowTheme.of(context)
                                               .alternate
-                                          : FlutterFlowTheme.of(context)
-                                              .secondaryText,
+                                          : Color(0xFFEADDAF),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          blurRadius: 4.0,
+                                          color: Color(0x33000000),
+                                          offset: Offset(0.0, 2.0),
+                                        )
+                                      ],
                                       borderRadius: BorderRadius.circular(16.0),
                                     ),
                                     child: Padding(
@@ -205,7 +211,13 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
                                                 messagesItem.message,
                                                 style:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyMedium,
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Poppins',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryText,
+                                                        ),
                                               ),
                                             ),
                                           if (messagesItem.typeMessage == 'IMG')
@@ -276,7 +288,7 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
                               await ChatRecord.createDoc(widget.serviceId!)
                                   .set(createChatRecordData(
                                 viewMessage: false,
-                                typeUser: 0,
+                                typeUser: 1,
                                 typeMessage: 'MSG',
                                 owner: currentUserUid,
                                 message: _model.messageFieldController.text,
@@ -364,7 +376,7 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
                             await ChatRecord.createDoc(widget.serviceId!)
                                 .set(createChatRecordData(
                               viewMessage: false,
-                              typeUser: 0,
+                              typeUser: 1,
                               typeMessage: 'MSG',
                               owner: currentUserUid,
                               message: _model.messageFieldController.text,
