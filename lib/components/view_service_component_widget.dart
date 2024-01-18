@@ -1034,11 +1034,11 @@ class _ViewServiceComponentWidgetState
                                                                 context)
                                                             .getVariableText(
                                                       esText:
-                                                          'Vamos a cancelar el servicio con este proveedor?',
+                                                          'Va aceptar el servicio',
                                                       enText:
-                                                          'Are we going to cancel service with this provider?',
+                                                          'Will accept the service',
                                                       ptText:
-                                                          'Vamos cancelar o serviço com este provedor?',
+                                                          'Aceitará o serviço',
                                                     )),
                                                     actions: [
                                                       TextButton(
@@ -1078,34 +1078,11 @@ class _ViewServiceComponentWidgetState
                                       if ((_model.apiResult8jb?.succeeded ??
                                           true)) {
                                         logFirebaseEvent(
-                                            'Accepted_bottom_sheet');
-                                        Navigator.pop(context);
+                                            'Accepted_update_app_state');
+                                        FFAppState().update(() {});
                                         logFirebaseEvent(
                                             'Accepted_bottom_sheet');
-                                        await showModalBottomSheet(
-                                          isScrollControlled: true,
-                                          backgroundColor: Colors.transparent,
-                                          context: context,
-                                          builder: (context) {
-                                            return Padding(
-                                              padding: MediaQuery.viewInsetsOf(
-                                                  context),
-                                              child: CommentsComponentWidget(
-                                                serviceId: widget.serviceId!,
-                                                companyId: getJsonField(
-                                                  containerServicioPorIDResponse
-                                                      .jsonBody,
-                                                  r'''$.company.user._id''',
-                                                ).toString(),
-                                                userId: getJsonField(
-                                                  containerServicioPorIDResponse
-                                                      .jsonBody,
-                                                  r'''$.user._id''',
-                                                ).toString(),
-                                              ),
-                                            );
-                                          },
-                                        ).then((value) => safeSetState(() {}));
+                                        Navigator.pop(context);
                                       }
 
                                       setState(() {});
