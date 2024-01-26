@@ -13,14 +13,14 @@ export 'message_advisor_component_model.dart';
 
 class MessageAdvisorComponentWidget extends StatefulWidget {
   const MessageAdvisorComponentWidget({
-    Key? key,
+    super.key,
     required this.email,
-  }) : super(key: key);
+  });
 
   final String? email;
 
   @override
-  _MessageAdvisorComponentWidgetState createState() =>
+  State<MessageAdvisorComponentWidget> createState() =>
       _MessageAdvisorComponentWidgetState();
 }
 

@@ -12,10 +12,10 @@ import 'complete_user_component_model.dart';
 export 'complete_user_component_model.dart';
 
 class CompleteUserComponentWidget extends StatefulWidget {
-  const CompleteUserComponentWidget({Key? key}) : super(key: key);
+  const CompleteUserComponentWidget({super.key});
 
   @override
-  _CompleteUserComponentWidgetState createState() =>
+  State<CompleteUserComponentWidget> createState() =>
       _CompleteUserComponentWidgetState();
 }
 

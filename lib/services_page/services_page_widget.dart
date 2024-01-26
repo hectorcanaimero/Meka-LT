@@ -17,10 +17,10 @@ import 'services_page_model.dart';
 export 'services_page_model.dart';
 
 class ServicesPageWidget extends StatefulWidget {
-  const ServicesPageWidget({Key? key}) : super(key: key);
+  const ServicesPageWidget({super.key});
 
   @override
-  _ServicesPageWidgetState createState() => _ServicesPageWidgetState();
+  State<ServicesPageWidget> createState() => _ServicesPageWidgetState();
 }
 
 class _ServicesPageWidgetState extends State<ServicesPageWidget>

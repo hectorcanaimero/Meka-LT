@@ -12,18 +12,18 @@ export 'comments_component_model.dart';
 
 class CommentsComponentWidget extends StatefulWidget {
   const CommentsComponentWidget({
-    Key? key,
+    super.key,
     required this.serviceId,
     required this.companyId,
     required this.userId,
-  }) : super(key: key);
+  });
 
   final String? serviceId;
   final String? companyId;
   final String? userId;
 
   @override
-  _CommentsComponentWidgetState createState() =>
+  State<CommentsComponentWidget> createState() =>
       _CommentsComponentWidgetState();
 }
 

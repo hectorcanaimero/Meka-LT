@@ -13,10 +13,10 @@ import 'menu_page_model.dart';
 export 'menu_page_model.dart';
 
 class MenuPageWidget extends StatefulWidget {
-  const MenuPageWidget({Key? key}) : super(key: key);
+  const MenuPageWidget({super.key});
 
   @override
-  _MenuPageWidgetState createState() => _MenuPageWidgetState();
+  State<MenuPageWidget> createState() => _MenuPageWidgetState();
 }
 
 class _MenuPageWidgetState extends State<MenuPageWidget> {
@@ -267,29 +267,42 @@ class _MenuPageWidgetState extends State<MenuPageWidget> {
                           width: 100.0,
                           height: 50.0,
                           decoration: BoxDecoration(),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                FFLocalizations.of(context).getText(
-                                  'kfmyfuas' /* Ver datos de la compañia */,
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              logFirebaseEvent(
+                                  'MENU_PAGE_PAGE_Column_hcklv45c_ON_TAP');
+                              logFirebaseEvent('Column_navigate_to');
+
+                              context.pushNamed('ViewCompanyPage');
+                            },
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  FFLocalizations.of(context).getText(
+                                    'kfmyfuas' /* Ver datos de la compañia */,
+                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Poppins',
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        fontSize: 16.0,
+                                      ),
                                 ),
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Poppins',
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                      fontSize: 16.0,
-                                    ),
-                              ),
-                              Divider(
-                                thickness: 1.0,
-                                color: FlutterFlowTheme.of(context).accent4,
-                              ),
-                            ],
+                                Divider(
+                                  thickness: 1.0,
+                                  color: FlutterFlowTheme.of(context).accent4,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                         Container(

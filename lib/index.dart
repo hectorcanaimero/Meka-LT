@@ -13,3 +13,5 @@ export '/registro_page/registro_page_widget.dart' show RegistroPageWidget;
 export '/create_company_page/create_company_page_widget.dart'
     show CreateCompanyPageWidget;
 export '/load_page/load_page_widget.dart' show LoadPageWidget;
+export '/view_company_page/view_company_page_widget.dart'
+    show ViewCompanyPageWidget;

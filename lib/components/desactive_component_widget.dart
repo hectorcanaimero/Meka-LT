@@ -8,10 +8,10 @@ import 'desactive_component_model.dart';
 export 'desactive_component_model.dart';
 
 class DesactiveComponentWidget extends StatefulWidget {
-  const DesactiveComponentWidget({Key? key}) : super(key: key);
+  const DesactiveComponentWidget({super.key});
 
   @override
-  _DesactiveComponentWidgetState createState() =>
+  State<DesactiveComponentWidget> createState() =>
       _DesactiveComponentWidgetState();
 }
 
@@ -61,6 +61,9 @@ class _DesactiveComponentWidgetState extends State<DesactiveComponentWidget> {
           child: Container(
             width: double.infinity,
             height: 100.0,
+            constraints: BoxConstraints(
+              minHeight: 60.0,
+            ),
             decoration: BoxDecoration(
               color: FlutterFlowTheme.of(context).error,
               boxShadow: [

@@ -17,14 +17,14 @@ export 'chat_page_model.dart';
 
 class ChatPageWidget extends StatefulWidget {
   const ChatPageWidget({
-    Key? key,
+    super.key,
     required this.serviceId,
-  }) : super(key: key);
+  });
 
   final DocumentReference? serviceId;
 
   @override
-  _ChatPageWidgetState createState() => _ChatPageWidgetState();
+  State<ChatPageWidget> createState() => _ChatPageWidgetState();
 }
 
 class _ChatPageWidgetState extends State<ChatPageWidget> {
@@ -184,6 +184,11 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
                                   ),
                                   child: Container(
                                     width: 200.0,
+                                    constraints: BoxConstraints(
+                                      minWidth:
+                                          MediaQuery.sizeOf(context).width *
+                                              0.6,
+                                    ),
                                     decoration: BoxDecoration(
                                       color: messagesItem.typeUser == 0
                                           ? FlutterFlowTheme.of(context)

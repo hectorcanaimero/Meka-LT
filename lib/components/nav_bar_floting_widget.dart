@@ -11,10 +11,10 @@ import 'nav_bar_floting_model.dart';
 export 'nav_bar_floting_model.dart';
 
 class NavBarFlotingWidget extends StatefulWidget {
-  const NavBarFlotingWidget({Key? key}) : super(key: key);
+  const NavBarFlotingWidget({super.key});
 
   @override
-  _NavBarFlotingWidgetState createState() => _NavBarFlotingWidgetState();
+  State<NavBarFlotingWidget> createState() => _NavBarFlotingWidgetState();
 }
 
 class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {

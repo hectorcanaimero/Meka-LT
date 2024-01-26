@@ -622,6 +622,54 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'pt': '',
     },
   },
+  // ViewCompanyPage
+  {
+    '0cme4gsy': {
+      'es': 'Ver Compañia',
+      'en': '',
+      'pt': '',
+    },
+    '5xt9n3ra': {
+      'es': 'Account Options',
+      'en': '',
+      'pt': '',
+    },
+    '6g7caxn5': {
+      'es': 'My Account',
+      'en': '',
+      'pt': '',
+    },
+    'x2y6tm8i': {
+      'es': 'Billing Details',
+      'en': '',
+      'pt': '',
+    },
+    'en9w5s1h': {
+      'es': 'Platform',
+      'en': '',
+      'pt': '',
+    },
+    'k6feg8jd': {
+      'es': 'Help Center',
+      'en': '',
+      'pt': '',
+    },
+    'qpe3tcd6': {
+      'es': 'Chat Support',
+      'en': '',
+      'pt': '',
+    },
+    'u1ame4k5': {
+      'es': 'Call Support',
+      'en': '',
+      'pt': '',
+    },
+    '28qrgs6i': {
+      'es': 'Home',
+      'en': '',
+      'pt': '',
+    },
+  },
   // MessageAdvisorComponent
   {
     '6v4wpi7w': {

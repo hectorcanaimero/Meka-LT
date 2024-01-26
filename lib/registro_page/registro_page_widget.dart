@@ -14,10 +14,10 @@ import 'registro_page_model.dart';
 export 'registro_page_model.dart';
 
 class RegistroPageWidget extends StatefulWidget {
-  const RegistroPageWidget({Key? key}) : super(key: key);
+  const RegistroPageWidget({super.key});
 
   @override
-  _RegistroPageWidgetState createState() => _RegistroPageWidgetState();
+  State<RegistroPageWidget> createState() => _RegistroPageWidgetState();
 }
 
 class _RegistroPageWidgetState extends State<RegistroPageWidget>

@@ -18,10 +18,10 @@ import 'create_company_page_model.dart';
 export 'create_company_page_model.dart';
 
 class CreateCompanyPageWidget extends StatefulWidget {
-  const CreateCompanyPageWidget({Key? key}) : super(key: key);
+  const CreateCompanyPageWidget({super.key});
 
   @override
-  _CreateCompanyPageWidgetState createState() =>
+  State<CreateCompanyPageWidget> createState() =>
       _CreateCompanyPageWidgetState();
 }
 

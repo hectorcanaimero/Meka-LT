@@ -10,10 +10,10 @@ import 'chat_component_model.dart';
 export 'chat_component_model.dart';
 
 class ChatComponentWidget extends StatefulWidget {
-  const ChatComponentWidget({Key? key}) : super(key: key);
+  const ChatComponentWidget({super.key});
 
   @override
-  _ChatComponentWidgetState createState() => _ChatComponentWidgetState();
+  State<ChatComponentWidget> createState() => _ChatComponentWidgetState();
 }
 
 class _ChatComponentWidgetState extends State<ChatComponentWidget> {

@@ -14,10 +14,10 @@ import 'notification_component_model.dart';
 export 'notification_component_model.dart';
 
 class NotificationComponentWidget extends StatefulWidget {
-  const NotificationComponentWidget({Key? key}) : super(key: key);
+  const NotificationComponentWidget({super.key});
 
   @override
-  _NotificationComponentWidgetState createState() =>
+  State<NotificationComponentWidget> createState() =>
       _NotificationComponentWidgetState();
 }
 
@@ -81,6 +81,9 @@ class _NotificationComponentWidgetState
       child: Container(
         width: double.infinity,
         height: 140.0,
+        constraints: BoxConstraints(
+          minHeight: 160.0,
+        ),
         decoration: BoxDecoration(
           color: Color(0x1AFFFFFF),
           boxShadow: [

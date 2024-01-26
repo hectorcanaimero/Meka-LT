@@ -15,14 +15,14 @@ export 'select_map_address_component_model.dart';
 
 class SelectMapAddressComponentWidget extends StatefulWidget {
   const SelectMapAddressComponentWidget({
-    Key? key,
+    super.key,
     required this.id,
-  }) : super(key: key);
+  });
 
   final String? id;
 
   @override
-  _SelectMapAddressComponentWidgetState createState() =>
+  State<SelectMapAddressComponentWidget> createState() =>
       _SelectMapAddressComponentWidgetState();
 }
 

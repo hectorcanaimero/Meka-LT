@@ -10,14 +10,14 @@ export 'vazio_widget_model.dart';
 
 class VazioWidgetWidget extends StatefulWidget {
   const VazioWidgetWidget({
-    Key? key,
+    super.key,
     required this.name,
-  }) : super(key: key);
+  });
 
   final String? name;
 
   @override
-  _VazioWidgetWidgetState createState() => _VazioWidgetWidgetState();
+  State<VazioWidgetWidget> createState() => _VazioWidgetWidgetState();
 }
 
 class _VazioWidgetWidgetState extends State<VazioWidgetWidget> {

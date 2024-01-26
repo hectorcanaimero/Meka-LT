@@ -148,6 +148,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'LoadPage',
           path: '/loadPage',
           builder: (context, params) => LoadPageWidget(),
+        ),
+        FFRoute(
+          name: 'ViewCompanyPage',
+          path: '/viewCompanyPage',
+          builder: (context, params) => ViewCompanyPageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

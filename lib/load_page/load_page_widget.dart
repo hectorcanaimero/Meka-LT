@@ -12,10 +12,10 @@ import 'load_page_model.dart';
 export 'load_page_model.dart';
 
 class LoadPageWidget extends StatefulWidget {
-  const LoadPageWidget({Key? key}) : super(key: key);
+  const LoadPageWidget({super.key});
 
   @override
-  _LoadPageWidgetState createState() => _LoadPageWidgetState();
+  State<LoadPageWidget> createState() => _LoadPageWidgetState();
 }
 
 class _LoadPageWidgetState extends State<LoadPageWidget> {

@@ -19,10 +19,10 @@ import 'create_user_page_model.dart';
 export 'create_user_page_model.dart';
 
 class CreateUserPageWidget extends StatefulWidget {
-  const CreateUserPageWidget({Key? key}) : super(key: key);
+  const CreateUserPageWidget({super.key});
 
   @override
-  _CreateUserPageWidgetState createState() => _CreateUserPageWidgetState();
+  State<CreateUserPageWidget> createState() => _CreateUserPageWidgetState();
 }
 
 class _CreateUserPageWidgetState extends State<CreateUserPageWidget>

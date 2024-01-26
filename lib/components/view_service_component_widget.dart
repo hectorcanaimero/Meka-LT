@@ -16,16 +16,16 @@ export 'view_service_component_model.dart';
 
 class ViewServiceComponentWidget extends StatefulWidget {
   const ViewServiceComponentWidget({
-    Key? key,
+    super.key,
     required this.serviceId,
     required this.status,
-  }) : super(key: key);
+  });
 
   final String? serviceId;
   final String? status;
 
   @override
-  _ViewServiceComponentWidgetState createState() =>
+  State<ViewServiceComponentWidget> createState() =>
       _ViewServiceComponentWidgetState();
 }
 
