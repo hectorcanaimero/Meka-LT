@@ -160,6 +160,25 @@ class _ViewCompanyPageWidgetState extends State<ViewCompanyPageWidget> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 0.0, 6.0),
+                                        child: Text(
+                                          getJsonField(
+                                            viewCompanyPageGetCompanyByUserResponse
+                                                .jsonBody,
+                                            r'''$.typeCompany.name''',
+                                          ).toString(),
+                                          style: FlutterFlowTheme.of(context)
+                                              .labelSmall
+                                              .override(
+                                                fontFamily: 'Poppins',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondary,
+                                              ),
+                                        ),
+                                      ),
                                       Text(
                                         getJsonField(
                                           viewCompanyPageGetCompanyByUserResponse
@@ -170,7 +189,7 @@ class _ViewCompanyPageWidgetState extends State<ViewCompanyPageWidget> {
                                             .titleLarge
                                             .override(
                                               fontFamily: 'Poppins',
-                                              fontSize: 20.0,
+                                              fontSize: 18.0,
                                             ),
                                       ),
                                       Divider(
@@ -263,6 +282,56 @@ class _ViewCompanyPageWidgetState extends State<ViewCompanyPageWidget> {
                                           viewCompanyPageGetCompanyByUserResponse
                                               .jsonBody,
                                           r'''$.user.phone''',
+                                        ).toString(),
+                                        style: FlutterFlowTheme.of(context)
+                                            .labelLarge
+                                            .override(
+                                              fontFamily: 'Poppins',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                            ),
+                                      ),
+                                      Divider(
+                                        thickness: 1.0,
+                                        color: FlutterFlowTheme.of(context)
+                                            .accent4,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ].divide(SizedBox(width: 12.0)),
+                            ),
+                          ),
+                          Container(
+                            width: 100.0,
+                            height: 70.0,
+                            decoration: BoxDecoration(),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 10.0),
+                                  child: FaIcon(
+                                    FontAwesomeIcons.solidAddressCard,
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    size: 28.0,
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        getJsonField(
+                                          viewCompanyPageGetCompanyByUserResponse
+                                              .jsonBody,
+                                          r'''$.address''',
                                         ).toString(),
                                         style: FlutterFlowTheme.of(context)
                                             .labelLarge
