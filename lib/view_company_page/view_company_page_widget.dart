@@ -286,190 +286,208 @@ class _ViewCompanyPageWidgetState extends State<ViewCompanyPageWidget> {
                           ),
                           Container(
                             width: 100.0,
-                            height: 50.0,
+                            height: 120.0,
                             decoration: BoxDecoration(),
-                            child: InkWell(
-                              splashColor: Colors.transparent,
-                              focusColor: Colors.transparent,
-                              hoverColor: Colors.transparent,
-                              highlightColor: Colors.transparent,
-                              onTap: () async {
-                                logFirebaseEvent(
-                                    'VIEW_COMPANY_Column_2046txs7_ON_TAP');
-                                logFirebaseEvent('Column_navigate_to');
-
-                                context.pushNamed('ViewCompanyPage');
-                              },
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    FFLocalizations.of(context).getText(
-                                      'xgcqxvv7' /* Ver datos de la compañia */,
-                                    ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Poppins',
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                          fontSize: 16.0,
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 10.0),
+                                  child: Icon(
+                                    Icons.category_sharp,
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    size: 28.0,
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 0.0, 8.0),
+                                        child: Text(
+                                          FFLocalizations.of(context).getText(
+                                            's0z7n6lm' /* Categorias */,
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .labelLarge
+                                              .override(
+                                                fontFamily: 'Poppins',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                              ),
                                         ),
+                                      ),
+                                      Builder(
+                                        builder: (context) {
+                                          final categories = getJsonField(
+                                            viewCompanyPageGetCompanyByUserResponse
+                                                .jsonBody,
+                                            r'''$.categories''',
+                                          ).toList();
+                                          return Wrap(
+                                            spacing: 6.0,
+                                            runSpacing: 6.0,
+                                            alignment: WrapAlignment.start,
+                                            crossAxisAlignment:
+                                                WrapCrossAlignment.start,
+                                            direction: Axis.horizontal,
+                                            runAlignment: WrapAlignment.start,
+                                            verticalDirection:
+                                                VerticalDirection.down,
+                                            clipBehavior: Clip.antiAlias,
+                                            children:
+                                                List.generate(categories.length,
+                                                    (categoriesIndex) {
+                                              final categoriesItem =
+                                                  categories[categoriesIndex];
+                                              return Container(
+                                                decoration: BoxDecoration(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .accent1,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          12.0),
+                                                ),
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          8.0, 4.0, 8.0, 4.0),
+                                                  child: Text(
+                                                    getJsonField(
+                                                      categoriesItem,
+                                                      r'''$.name''',
+                                                    ).toString(),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium,
+                                                  ),
+                                                ),
+                                              );
+                                            }),
+                                          );
+                                        },
+                                      ),
+                                      Divider(
+                                        thickness: 1.0,
+                                        color: FlutterFlowTheme.of(context)
+                                            .accent4,
+                                      ),
+                                    ],
                                   ),
-                                  Divider(
-                                    thickness: 1.0,
-                                    color: FlutterFlowTheme.of(context).accent4,
-                                  ),
-                                ],
-                              ),
+                                ),
+                              ].divide(SizedBox(width: 12.0)),
                             ),
                           ),
                           Container(
                             width: 100.0,
-                            height: 50.0,
+                            height: 120.0,
                             decoration: BoxDecoration(),
-                            child: Column(
+                            child: Row(
                               mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
-                                  FFLocalizations.of(context).getText(
-                                    'njymqj4e' /* Atendimiento al Cliente */,
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 10.0),
+                                  child: Icon(
+                                    Icons.paid,
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    size: 28.0,
                                   ),
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Poppins',
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                        fontSize: 16.0,
-                                      ),
                                 ),
-                                Divider(
-                                  thickness: 1.0,
-                                  color: FlutterFlowTheme.of(context).accent4,
-                                ),
-                              ],
-                            ),
-                          ),
-                          Container(
-                            width: 100.0,
-                            height: 50.0,
-                            decoration: BoxDecoration(),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  FFLocalizations.of(context).getText(
-                                    'ktrlmhaj' /* Subscripción */,
-                                  ),
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Poppins',
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                        fontSize: 16.0,
-                                      ),
-                                ),
-                                Divider(
-                                  thickness: 1.0,
-                                  color: FlutterFlowTheme.of(context).accent4,
-                                ),
-                              ],
-                            ),
-                          ),
-                          Container(
-                            width: 100.0,
-                            height: 50.0,
-                            decoration: BoxDecoration(),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  FFLocalizations.of(context).getText(
-                                    'rx4hx9uc' /* Excluir datos de la cuenta */,
-                                  ),
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Poppins',
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                        fontSize: 16.0,
-                                      ),
-                                ),
-                                Divider(
-                                  thickness: 1.0,
-                                  color: FlutterFlowTheme.of(context).accent4,
-                                ),
-                              ],
-                            ),
-                          ),
-                          InkWell(
-                            splashColor: Colors.transparent,
-                            focusColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            highlightColor: Colors.transparent,
-                            onTap: () async {
-                              logFirebaseEvent(
-                                  'VIEW_COMPANY_PAGE_PAGE_Logout_ON_TAP');
-                              logFirebaseEvent('Logout_auth');
-                              GoRouter.of(context).prepareAuthEvent();
-                              await authManager.signOut();
-                              GoRouter.of(context).clearRedirectLocation();
-
-                              logFirebaseEvent('Logout_update_app_state');
-                              setState(() {
-                                FFAppState().deleteLtCompany();
-                                FFAppState().ltCompany = null;
-                              });
-                              logFirebaseEvent('Logout_navigate_to');
-
-                              context.pushNamedAuth(
-                                'LoginPage',
-                                context.mounted,
-                                extra: <String, dynamic>{
-                                  kTransitionInfoKey: TransitionInfo(
-                                    hasTransition: true,
-                                    transitionType: PageTransitionType.fade,
-                                    duration: Duration(milliseconds: 0),
-                                  ),
-                                },
-                              );
-                            },
-                            child: Container(
-                              width: 100.0,
-                              height: 40.0,
-                              decoration: BoxDecoration(),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    FFLocalizations.of(context).getText(
-                                      'p1xgik4n' /* Cerrar Sesión */,
-                                    ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Poppins',
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                          fontSize: 16.0,
+                                Expanded(
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 0.0, 8.0),
+                                        child: Text(
+                                          FFLocalizations.of(context).getText(
+                                            '7r42nb4p' /* Método de Pagamentos */,
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .labelLarge
+                                              .override(
+                                                fontFamily: 'Poppins',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                              ),
                                         ),
+                                      ),
+                                      Builder(
+                                        builder: (context) {
+                                          final payments = getJsonField(
+                                            viewCompanyPageGetCompanyByUserResponse
+                                                .jsonBody,
+                                            r'''$.payment''',
+                                          ).toList();
+                                          return Wrap(
+                                            spacing: 6.0,
+                                            runSpacing: 6.0,
+                                            alignment: WrapAlignment.start,
+                                            crossAxisAlignment:
+                                                WrapCrossAlignment.start,
+                                            direction: Axis.horizontal,
+                                            runAlignment: WrapAlignment.start,
+                                            verticalDirection:
+                                                VerticalDirection.down,
+                                            clipBehavior: Clip.antiAlias,
+                                            children:
+                                                List.generate(payments.length,
+                                                    (paymentsIndex) {
+                                              final paymentsItem =
+                                                  payments[paymentsIndex];
+                                              return Container(
+                                                decoration: BoxDecoration(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .accent1,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          12.0),
+                                                ),
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          8.0, 4.0, 8.0, 4.0),
+                                                  child: Text(
+                                                    getJsonField(
+                                                      paymentsItem,
+                                                      r'''$''',
+                                                    ).toString(),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium,
+                                                  ),
+                                                ),
+                                              );
+                                            }),
+                                          );
+                                        },
+                                      ),
+                                      Divider(
+                                        thickness: 1.0,
+                                        color: FlutterFlowTheme.of(context)
+                                            .accent4,
+                                      ),
+                                    ],
                                   ),
-                                ],
-                              ),
+                                ),
+                              ].divide(SizedBox(width: 12.0)),
                             ),
                           ),
                         ].divide(SizedBox(height: 6.0)),

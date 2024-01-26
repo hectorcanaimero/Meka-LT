@@ -629,30 +629,15 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
       'pt': '',
     },
-    'xgcqxvv7': {
-      'es': 'Ver datos de la compañia',
-      'en': 'View company data',
-      'pt': 'Ver dados da empresa',
+    's0z7n6lm': {
+      'es': 'Categorias',
+      'en': 'Update profile',
+      'pt': 'Atualizar perfil',
     },
-    'njymqj4e': {
-      'es': 'Atendimiento al Cliente',
-      'en': 'Customer Service',
-      'pt': 'Atendimento ao Cliente',
-    },
-    'ktrlmhaj': {
-      'es': 'Subscripción',
-      'en': 'Subscription',
-      'pt': 'Inscrição',
-    },
-    'rx4hx9uc': {
-      'es': 'Excluir datos de la cuenta',
-      'en': 'Exclude account data',
-      'pt': 'Excluir dados da conta',
-    },
-    'p1xgik4n': {
-      'es': 'Cerrar Sesión',
-      'en': 'Sign off',
-      'pt': 'Fechar Sessão',
+    '7r42nb4p': {
+      'es': 'Método de Pagamentos',
+      'en': 'Update profile',
+      'pt': 'Atualizar perfil',
     },
     '28qrgs6i': {
       'es': 'Home',
