@@ -231,7 +231,6 @@ class _MenuPageWidgetState extends State<MenuPageWidget> {
                         EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 24.0, 0.0),
                     child: ListView(
                       padding: EdgeInsets.zero,
-                      shrinkWrap: true,
                       scrollDirection: Axis.vertical,
                       children: [
                         Container(

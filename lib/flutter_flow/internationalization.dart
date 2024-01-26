@@ -629,40 +629,30 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
       'pt': '',
     },
-    '5xt9n3ra': {
-      'es': 'Account Options',
-      'en': '',
-      'pt': '',
+    'xgcqxvv7': {
+      'es': 'Ver datos de la compañia',
+      'en': 'View company data',
+      'pt': 'Ver dados da empresa',
     },
-    '6g7caxn5': {
-      'es': 'My Account',
-      'en': '',
-      'pt': '',
+    'njymqj4e': {
+      'es': 'Atendimiento al Cliente',
+      'en': 'Customer Service',
+      'pt': 'Atendimento ao Cliente',
     },
-    'x2y6tm8i': {
-      'es': 'Billing Details',
-      'en': '',
-      'pt': '',
+    'ktrlmhaj': {
+      'es': 'Subscripción',
+      'en': 'Subscription',
+      'pt': 'Inscrição',
     },
-    'en9w5s1h': {
-      'es': 'Platform',
-      'en': '',
-      'pt': '',
+    'rx4hx9uc': {
+      'es': 'Excluir datos de la cuenta',
+      'en': 'Exclude account data',
+      'pt': 'Excluir dados da conta',
     },
-    'k6feg8jd': {
-      'es': 'Help Center',
-      'en': '',
-      'pt': '',
-    },
-    'qpe3tcd6': {
-      'es': 'Chat Support',
-      'en': '',
-      'pt': '',
-    },
-    'u1ame4k5': {
-      'es': 'Call Support',
-      'en': '',
-      'pt': '',
+    'p1xgik4n': {
+      'es': 'Cerrar Sesión',
+      'en': 'Sign off',
+      'pt': 'Fechar Sessão',
     },
     '28qrgs6i': {
       'es': 'Home',

@@ -85,7 +85,7 @@ class _ViewCompanyPageWidgetState extends State<ViewCompanyPageWidget> {
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
             appBar: AppBar(
-              backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+              backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
               automaticallyImplyLeading: false,
               leading: FlutterFlowIconButton(
                 borderColor: Colors.transparent,
@@ -128,465 +128,351 @@ class _ViewCompanyPageWidgetState extends State<ViewCompanyPageWidget> {
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    Align(
-                      alignment: AlignmentDirectional(0.0, 0.0),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            24.0, 10.0, 24.0, 16.0),
-                        child: Container(
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                blurRadius: 4.0,
-                                color: Color(0x33000000),
-                                offset: Offset(0.0, 2.0),
-                              )
-                            ],
-                            borderRadius: BorderRadius.circular(12.0),
-                          ),
-                          child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 12.0),
-                            child: Column(
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 24.0, 0.0),
+                      child: ListView(
+                        padding: EdgeInsets.zero,
+                        shrinkWrap: true,
+                        scrollDirection: Axis.vertical,
+                        children: [
+                          Container(
+                            width: 100.0,
+                            height: 70.0,
+                            decoration: BoxDecoration(),
+                            child: Row(
                               mainAxisSize: MainAxisSize.max,
-                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      12.0, 12.0, 0.0, 8.0),
-                                  child: Text(
-                                    FFLocalizations.of(context).getText(
-                                      '5xt9n3ra' /* Account Options */,
-                                    ),
-                                    textAlign: TextAlign.start,
-                                    style: FlutterFlowTheme.of(context)
-                                        .labelMedium
-                                        .override(
-                                          fontFamily: 'Plus Jakarta Sans',
-                                          color: Color(0xFF57636C),
-                                          fontSize: 14.0,
-                                          fontWeight: FontWeight.w500,
-                                        ),
+                                      0.0, 0.0, 0.0, 10.0),
+                                  child: FaIcon(
+                                    FontAwesomeIcons.school,
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    size: 28.0,
                                   ),
                                 ),
-                                Container(
-                                  width: double.infinity,
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                  ),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 8.0, 0.0, 8.0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  12.0, 0.0, 0.0, 0.0),
-                                          child: Icon(
-                                            Icons.account_circle_outlined,
-                                            color: Color(0xFF14181B),
-                                            size: 20.0,
-                                          ),
-                                        ),
-                                        Expanded(
-                                          child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    12.0, 0.0, 0.0, 0.0),
-                                            child: Text(
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                '6g7caxn5' /* My Account */,
-                                              ),
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .bodyMedium
-                                                  .override(
-                                                    fontFamily:
-                                                        'Plus Jakarta Sans',
-                                                    color: Color(0xFF14181B),
-                                                    fontSize: 14.0,
-                                                    fontWeight: FontWeight.w500,
-                                                  ),
+                                Expanded(
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        getJsonField(
+                                          viewCompanyPageGetCompanyByUserResponse
+                                              .jsonBody,
+                                          r'''$.name''',
+                                        ).toString(),
+                                        style: FlutterFlowTheme.of(context)
+                                            .titleLarge
+                                            .override(
+                                              fontFamily: 'Poppins',
+                                              fontSize: 20.0,
                                             ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                MouseRegion(
-                                  opaque: false,
-                                  cursor: SystemMouseCursors.basic ??
-                                      MouseCursor.defer,
-                                  child: AnimatedContainer(
-                                    duration: Duration(milliseconds: 150),
-                                    curve: Curves.easeInOut,
-                                    width: double.infinity,
-                                    decoration: BoxDecoration(
-                                      color: _model.mouseRegionHovered1!
-                                          ? Color(0xFFF1F4F8)
-                                          : Colors.white,
-                                    ),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 8.0, 0.0, 8.0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    12.0, 0.0, 0.0, 0.0),
-                                            child: FaIcon(
-                                              FontAwesomeIcons.solidEnvelope,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                              size: 20.0,
-                                            ),
-                                          ),
-                                          Expanded(
-                                            child: Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      12.0, 0.0, 0.0, 0.0),
-                                              child: Text(
-                                                getJsonField(
-                                                  viewCompanyPageGetCompanyByUserResponse
-                                                      .jsonBody,
-                                                  r'''$.user.email''',
-                                                ).toString(),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Plus Jakarta Sans',
-                                                          color:
-                                                              Color(0xFF14181B),
-                                                          fontSize: 14.0,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
-                                              ),
-                                            ),
-                                          ),
-                                        ],
                                       ),
-                                    ),
-                                  ),
-                                  onEnter: ((event) async {
-                                    setState(() =>
-                                        _model.mouseRegionHovered1 = true);
-                                  }),
-                                  onExit: ((event) async {
-                                    setState(() =>
-                                        _model.mouseRegionHovered1 = false);
-                                  }),
-                                ),
-                                MouseRegion(
-                                  opaque: false,
-                                  cursor: SystemMouseCursors.click ??
-                                      MouseCursor.defer,
-                                  child: AnimatedContainer(
-                                    duration: Duration(milliseconds: 150),
-                                    curve: Curves.easeInOut,
-                                    width: double.infinity,
-                                    decoration: BoxDecoration(
-                                      color: _model.mouseRegionHovered2!
-                                          ? Color(0xFFF1F4F8)
-                                          : Colors.white,
-                                    ),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 8.0, 0.0, 8.0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    12.0, 0.0, 0.0, 0.0),
-                                            child: Icon(
-                                              Icons.attach_money_rounded,
-                                              color: Color(0xFF14181B),
-                                              size: 20.0,
-                                            ),
-                                          ),
-                                          Expanded(
-                                            child: Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      12.0, 0.0, 0.0, 0.0),
-                                              child: Text(
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  'x2y6tm8i' /* Billing Details */,
-                                                ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Plus Jakarta Sans',
-                                                          color:
-                                                              Color(0xFF14181B),
-                                                          fontSize: 14.0,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
-                                              ),
-                                            ),
-                                          ),
-                                        ],
+                                      Divider(
+                                        thickness: 1.0,
+                                        color: FlutterFlowTheme.of(context)
+                                            .accent4,
                                       ),
-                                    ),
+                                    ],
                                   ),
-                                  onEnter: ((event) async {
-                                    setState(() =>
-                                        _model.mouseRegionHovered2 = true);
-                                  }),
-                                  onExit: ((event) async {
-                                    setState(() =>
-                                        _model.mouseRegionHovered2 = false);
-                                  }),
                                 ),
-                                Divider(
-                                  thickness: 1.0,
-                                  color: Color(0xFFE0E3E7),
-                                ),
+                              ].divide(SizedBox(width: 12.0)),
+                            ),
+                          ),
+                          Container(
+                            width: 100.0,
+                            height: 70.0,
+                            decoration: BoxDecoration(),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      12.0, 4.0, 0.0, 8.0),
-                                  child: Text(
+                                      0.0, 0.0, 0.0, 10.0),
+                                  child: FaIcon(
+                                    FontAwesomeIcons.solidEnvelope,
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    size: 28.0,
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        getJsonField(
+                                          viewCompanyPageGetCompanyByUserResponse
+                                              .jsonBody,
+                                          r'''$.user.email''',
+                                        ).toString(),
+                                        style: FlutterFlowTheme.of(context)
+                                            .labelLarge
+                                            .override(
+                                              fontFamily: 'Poppins',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                            ),
+                                      ),
+                                      Divider(
+                                        thickness: 1.0,
+                                        color: FlutterFlowTheme.of(context)
+                                            .accent4,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ].divide(SizedBox(width: 12.0)),
+                            ),
+                          ),
+                          Container(
+                            width: 100.0,
+                            height: 70.0,
+                            decoration: BoxDecoration(),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 10.0),
+                                  child: Icon(
+                                    Icons.phone,
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    size: 28.0,
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        getJsonField(
+                                          viewCompanyPageGetCompanyByUserResponse
+                                              .jsonBody,
+                                          r'''$.user.phone''',
+                                        ).toString(),
+                                        style: FlutterFlowTheme.of(context)
+                                            .labelLarge
+                                            .override(
+                                              fontFamily: 'Poppins',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                            ),
+                                      ),
+                                      Divider(
+                                        thickness: 1.0,
+                                        color: FlutterFlowTheme.of(context)
+                                            .accent4,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ].divide(SizedBox(width: 12.0)),
+                            ),
+                          ),
+                          Container(
+                            width: 100.0,
+                            height: 50.0,
+                            decoration: BoxDecoration(),
+                            child: InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                logFirebaseEvent(
+                                    'VIEW_COMPANY_Column_2046txs7_ON_TAP');
+                                logFirebaseEvent('Column_navigate_to');
+
+                                context.pushNamed('ViewCompanyPage');
+                              },
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
                                     FFLocalizations.of(context).getText(
-                                      'en9w5s1h' /* Platform */,
+                                      'xgcqxvv7' /* Ver datos de la compañia */,
                                     ),
-                                    textAlign: TextAlign.start,
                                     style: FlutterFlowTheme.of(context)
-                                        .labelMedium
+                                        .bodyMedium
                                         .override(
-                                          fontFamily: 'Plus Jakarta Sans',
-                                          color: Color(0xFF57636C),
-                                          fontSize: 14.0,
-                                          fontWeight: FontWeight.w500,
+                                          fontFamily: 'Poppins',
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                          fontSize: 16.0,
                                         ),
                                   ),
-                                ),
-                                MouseRegion(
-                                  opaque: false,
-                                  cursor: SystemMouseCursors.click ??
-                                      MouseCursor.defer,
-                                  child: AnimatedContainer(
-                                    duration: Duration(milliseconds: 150),
-                                    curve: Curves.easeInOut,
-                                    width: double.infinity,
-                                    decoration: BoxDecoration(
-                                      color: _model.mouseRegionHovered3!
-                                          ? Color(0xFFF1F4F8)
-                                          : Colors.white,
-                                    ),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 8.0, 0.0, 8.0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    12.0, 0.0, 0.0, 0.0),
-                                            child: Icon(
-                                              Icons.help_outline_rounded,
-                                              color: Color(0xFF14181B),
-                                              size: 20.0,
-                                            ),
-                                          ),
-                                          Expanded(
-                                            child: Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      12.0, 0.0, 0.0, 0.0),
-                                              child: Text(
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  'k6feg8jd' /* Help Center */,
-                                                ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Plus Jakarta Sans',
-                                                          color:
-                                                              Color(0xFF14181B),
-                                                          fontSize: 14.0,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
+                                  Divider(
+                                    thickness: 1.0,
+                                    color: FlutterFlowTheme.of(context).accent4,
                                   ),
-                                  onEnter: ((event) async {
-                                    setState(() =>
-                                        _model.mouseRegionHovered3 = true);
-                                  }),
-                                  onExit: ((event) async {
-                                    setState(() =>
-                                        _model.mouseRegionHovered3 = false);
-                                  }),
-                                ),
-                                MouseRegion(
-                                  opaque: false,
-                                  cursor: SystemMouseCursors.click ??
-                                      MouseCursor.defer,
-                                  child: AnimatedContainer(
-                                    duration: Duration(milliseconds: 150),
-                                    curve: Curves.easeInOut,
-                                    width: double.infinity,
-                                    decoration: BoxDecoration(
-                                      color: _model.mouseRegionHovered4!
-                                          ? Color(0xFFF1F4F8)
-                                          : Colors.white,
-                                    ),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 8.0, 0.0, 8.0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    12.0, 0.0, 0.0, 0.0),
-                                            child: Icon(
-                                              Icons.support_agent_rounded,
-                                              color: Color(0xFF14181B),
-                                              size: 20.0,
-                                            ),
-                                          ),
-                                          Expanded(
-                                            child: Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      12.0, 0.0, 0.0, 0.0),
-                                              child: Text(
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  'qpe3tcd6' /* Chat Support */,
-                                                ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Plus Jakarta Sans',
-                                                          color:
-                                                              Color(0xFF14181B),
-                                                          fontSize: 14.0,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          Container(
+                            width: 100.0,
+                            height: 50.0,
+                            decoration: BoxDecoration(),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  FFLocalizations.of(context).getText(
+                                    'njymqj4e' /* Atendimiento al Cliente */,
                                   ),
-                                  onEnter: ((event) async {
-                                    setState(() =>
-                                        _model.mouseRegionHovered4 = true);
-                                  }),
-                                  onExit: ((event) async {
-                                    setState(() =>
-                                        _model.mouseRegionHovered4 = false);
-                                  }),
-                                ),
-                                MouseRegion(
-                                  opaque: false,
-                                  cursor: SystemMouseCursors.click ??
-                                      MouseCursor.defer,
-                                  child: AnimatedContainer(
-                                    duration: Duration(milliseconds: 150),
-                                    curve: Curves.easeInOut,
-                                    width: double.infinity,
-                                    decoration: BoxDecoration(
-                                      color: _model.mouseRegionHovered5!
-                                          ? Color(0xFFF1F4F8)
-                                          : Colors.white,
-                                    ),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 8.0, 0.0, 8.0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    12.0, 0.0, 0.0, 0.0),
-                                            child: Icon(
-                                              Icons.settings_phone,
-                                              color: Color(0xFF14181B),
-                                              size: 20.0,
-                                            ),
-                                          ),
-                                          Expanded(
-                                            child: Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      12.0, 0.0, 0.0, 0.0),
-                                              child: Text(
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  'u1ame4k5' /* Call Support */,
-                                                ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Plus Jakarta Sans',
-                                                          color:
-                                                              Color(0xFF14181B),
-                                                          fontSize: 14.0,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
-                                              ),
-                                            ),
-                                          ),
-                                        ],
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Poppins',
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        fontSize: 16.0,
                                       ),
-                                    ),
-                                  ),
-                                  onEnter: ((event) async {
-                                    setState(() =>
-                                        _model.mouseRegionHovered5 = true);
-                                  }),
-                                  onExit: ((event) async {
-                                    setState(() =>
-                                        _model.mouseRegionHovered5 = false);
-                                  }),
                                 ),
                                 Divider(
                                   thickness: 1.0,
-                                  color: Color(0xFFE0E3E7),
+                                  color: FlutterFlowTheme.of(context).accent4,
                                 ),
                               ],
                             ),
                           ),
-                        ),
+                          Container(
+                            width: 100.0,
+                            height: 50.0,
+                            decoration: BoxDecoration(),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  FFLocalizations.of(context).getText(
+                                    'ktrlmhaj' /* Subscripción */,
+                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Poppins',
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        fontSize: 16.0,
+                                      ),
+                                ),
+                                Divider(
+                                  thickness: 1.0,
+                                  color: FlutterFlowTheme.of(context).accent4,
+                                ),
+                              ],
+                            ),
+                          ),
+                          Container(
+                            width: 100.0,
+                            height: 50.0,
+                            decoration: BoxDecoration(),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  FFLocalizations.of(context).getText(
+                                    'rx4hx9uc' /* Excluir datos de la cuenta */,
+                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Poppins',
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        fontSize: 16.0,
+                                      ),
+                                ),
+                                Divider(
+                                  thickness: 1.0,
+                                  color: FlutterFlowTheme.of(context).accent4,
+                                ),
+                              ],
+                            ),
+                          ),
+                          InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              logFirebaseEvent(
+                                  'VIEW_COMPANY_PAGE_PAGE_Logout_ON_TAP');
+                              logFirebaseEvent('Logout_auth');
+                              GoRouter.of(context).prepareAuthEvent();
+                              await authManager.signOut();
+                              GoRouter.of(context).clearRedirectLocation();
+
+                              logFirebaseEvent('Logout_update_app_state');
+                              setState(() {
+                                FFAppState().deleteLtCompany();
+                                FFAppState().ltCompany = null;
+                              });
+                              logFirebaseEvent('Logout_navigate_to');
+
+                              context.pushNamedAuth(
+                                'LoginPage',
+                                context.mounted,
+                                extra: <String, dynamic>{
+                                  kTransitionInfoKey: TransitionInfo(
+                                    hasTransition: true,
+                                    transitionType: PageTransitionType.fade,
+                                    duration: Duration(milliseconds: 0),
+                                  ),
+                                },
+                              );
+                            },
+                            child: Container(
+                              width: 100.0,
+                              height: 40.0,
+                              decoration: BoxDecoration(),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    FFLocalizations.of(context).getText(
+                                      'p1xgik4n' /* Cerrar Sesión */,
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Poppins',
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                          fontSize: 16.0,
+                                        ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ].divide(SizedBox(height: 6.0)),
                       ),
                     ),
                   ]
