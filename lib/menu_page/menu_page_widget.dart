@@ -247,7 +247,7 @@ class _MenuPageWidgetState extends State<MenuPageWidget> {
                       tileColor:
                           FlutterFlowTheme.of(context).secondaryBackground,
                       activeColor: FlutterFlowTheme.of(context).primary,
-                      activeTrackColor: FlutterFlowTheme.of(context).accent1,
+                      activeTrackColor: FlutterFlowTheme.of(context).accent4,
                       dense: false,
                       controlAffinity: ListTileControlAffinity.trailing,
                     ),
