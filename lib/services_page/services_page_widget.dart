@@ -157,9 +157,16 @@ class _ServicesPageWidgetState extends State<ServicesPageWidget>
                                   // Customize what your widget looks like when it's loading.
                                   if (!snapshot.hasData) {
                                     return Center(
-                                      child: LinearProgressIndicator(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primary,
+                                      child: SizedBox(
+                                        width: 24.0,
+                                        height: 24.0,
+                                        child: CircularProgressIndicator(
+                                          valueColor:
+                                              AlwaysStoppedAnimation<Color>(
+                                            FlutterFlowTheme.of(context)
+                                                .primary,
+                                          ),
+                                        ),
                                       ),
                                     );
                                   }
@@ -442,9 +449,16 @@ class _ServicesPageWidgetState extends State<ServicesPageWidget>
                                   // Customize what your widget looks like when it's loading.
                                   if (!snapshot.hasData) {
                                     return Center(
-                                      child: LinearProgressIndicator(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primary,
+                                      child: SizedBox(
+                                        width: 24.0,
+                                        height: 24.0,
+                                        child: CircularProgressIndicator(
+                                          valueColor:
+                                              AlwaysStoppedAnimation<Color>(
+                                            FlutterFlowTheme.of(context)
+                                                .primary,
+                                          ),
+                                        ),
                                       ),
                                     );
                                   }

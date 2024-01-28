@@ -15,5 +15,6 @@ Future lockOrientation() async {
   // Add your function code here!
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(statusBarColor: Color.fromRGBO(203, 165, 0, 1)));
+    SystemUiOverlayStyle(statusBarColor: Color.fromRGBO(31, 31, 31, 1)),
+  );
 }
