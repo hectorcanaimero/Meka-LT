@@ -122,549 +122,575 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
         backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
         body: Align(
           alignment: AlignmentDirectional(0.0, 0.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Align(
-                alignment: AlignmentDirectional(0.0, 0.0),
-                child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-                  child: Container(
-                    width: double.infinity,
-                    constraints: BoxConstraints(
-                      maxWidth: 530.0,
-                    ),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12.0),
-                    ),
-                    alignment: AlignmentDirectional(0.0, 0.0),
-                    child: Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Align(
-                            alignment: AlignmentDirectional(0.0, 0.0),
-                            child: Padding(
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Align(
+                  alignment: AlignmentDirectional(0.0, 0.0),
+                  child: Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                    child: Container(
+                      width: double.infinity,
+                      constraints: BoxConstraints(
+                        maxWidth: 530.0,
+                      ),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12.0),
+                      ),
+                      alignment: AlignmentDirectional(0.0, 0.0),
+                      child: Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Align(
+                              alignment: AlignmentDirectional(0.0, 0.0),
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 12.0, 0.0, 0.0),
+                                child: Container(
+                                  width: double.infinity,
+                                  height: 200.0,
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                  ),
+                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                  child: Align(
+                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 24.0),
+                                          child: Container(
+                                            width: 120.0,
+                                            height: 120.0,
+                                            clipBehavior: Clip.antiAlias,
+                                            decoration: BoxDecoration(
+                                              shape: BoxShape.circle,
+                                            ),
+                                            child: Image.asset(
+                                              'assets/images/icon2.png',
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                        ),
+                                        RichText(
+                                          textScaleFactor:
+                                              MediaQuery.of(context)
+                                                  .textScaleFactor,
+                                          text: TextSpan(
+                                            children: [
+                                              TextSpan(
+                                                text:
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                  'xz6agwmn' /* Meka  */,
+                                                ),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleLarge
+                                                        .override(
+                                                          fontFamily: 'Poppins',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondary,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                        ),
+                                              ),
+                                              TextSpan(
+                                                text:
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                  'jcc964rz' /* LT */,
+                                                ),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleLarge
+                                                        .override(
+                                                          fontFamily: 'Poppins',
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                        ),
+                                              )
+                                            ],
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Align(
+                              alignment: AlignmentDirectional(-1.0, 0.0),
+                              child: Text(
+                                FFLocalizations.of(context).getText(
+                                  '8t42qsqg' /* Bienvenido de nuevo */,
+                                ),
+                                textAlign: TextAlign.start,
+                                style:
+                                    FlutterFlowTheme.of(context).headlineMedium,
+                              ),
+                            ),
+                            Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 12.0, 0.0, 0.0),
+                                  0.0, 4.0, 0.0, 24.0),
+                              child: Text(
+                                FFLocalizations.of(context).getText(
+                                  'rkqwjeuv' /* Complete la información a cont... */,
+                                ),
+                                textAlign: TextAlign.start,
+                                style: FlutterFlowTheme.of(context)
+                                    .labelMedium
+                                    .override(
+                                      fontFamily: 'Poppins',
+                                      color: Color(0xFFC3B8B8),
+                                    ),
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 24.0),
                               child: Container(
                                 width: double.infinity,
-                                height: 200.0,
-                                decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                ),
-                                alignment: AlignmentDirectional(0.0, 0.0),
-                                child: Align(
-                                  alignment: AlignmentDirectional(0.0, 0.0),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 0.0, 24.0),
-                                        child: Container(
-                                          width: 120.0,
-                                          height: 120.0,
-                                          clipBehavior: Clip.antiAlias,
-                                          decoration: BoxDecoration(
-                                            shape: BoxShape.circle,
-                                          ),
-                                          child: Image.asset(
-                                            'assets/images/icon2.png',
-                                            fit: BoxFit.cover,
-                                          ),
-                                        ),
+                                child: TextFormField(
+                                  controller: _model.emailLoginController,
+                                  focusNode: _model.emailLoginFocusNode,
+                                  autofillHints: [AutofillHints.email],
+                                  obscureText: false,
+                                  decoration: InputDecoration(
+                                    labelStyle:
+                                        FlutterFlowTheme.of(context).labelLarge,
+                                    hintText:
+                                        FFLocalizations.of(context).getText(
+                                      'xpjzaoq5' /* E-mail */,
+                                    ),
+                                    enabledBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
+                                        width: 2.0,
                                       ),
-                                      RichText(
-                                        textScaleFactor: MediaQuery.of(context)
-                                            .textScaleFactor,
-                                        text: TextSpan(
-                                          children: [
-                                            TextSpan(
-                                              text: FFLocalizations.of(context)
-                                                  .getText(
-                                                'xz6agwmn' /* Meka  */,
-                                              ),
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .titleLarge
-                                                  .override(
-                                                    fontFamily: 'Poppins',
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondary,
-                                                    fontWeight: FontWeight.bold,
-                                                  ),
-                                            ),
-                                            TextSpan(
-                                              text: FFLocalizations.of(context)
-                                                  .getText(
-                                                'jcc964rz' /* LT */,
-                                              ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleLarge
-                                                      .override(
-                                                        fontFamily: 'Poppins',
-                                                        fontWeight:
-                                                            FontWeight.normal,
-                                                      ),
-                                            )
-                                          ],
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium,
-                                        ),
+                                      borderRadius: BorderRadius.circular(8.0),
+                                    ),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        width: 2.0,
                                       ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Align(
-                            alignment: AlignmentDirectional(-1.0, 0.0),
-                            child: Text(
-                              FFLocalizations.of(context).getText(
-                                '8t42qsqg' /* Bienvenido de nuevo */,
-                              ),
-                              textAlign: TextAlign.start,
-                              style:
-                                  FlutterFlowTheme.of(context).headlineMedium,
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 4.0, 0.0, 24.0),
-                            child: Text(
-                              FFLocalizations.of(context).getText(
-                                'rkqwjeuv' /* Complete la información a cont... */,
-                              ),
-                              textAlign: TextAlign.start,
-                              style: FlutterFlowTheme.of(context)
-                                  .labelMedium
-                                  .override(
-                                    fontFamily: 'Poppins',
-                                    color: Color(0xFFC3B8B8),
-                                  ),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 24.0),
-                            child: Container(
-                              width: double.infinity,
-                              child: TextFormField(
-                                controller: _model.emailLoginController,
-                                focusNode: _model.emailLoginFocusNode,
-                                autofillHints: [AutofillHints.email],
-                                obscureText: false,
-                                decoration: InputDecoration(
-                                  labelStyle:
-                                      FlutterFlowTheme.of(context).labelLarge,
-                                  hintText: FFLocalizations.of(context).getText(
-                                    'xpjzaoq5' /* E-mail */,
-                                  ),
-                                  enabledBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryBackground,
-                                      width: 2.0,
+                                      borderRadius: BorderRadius.circular(8.0),
                                     ),
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
-                                      width: 2.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
-                                  errorBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: FlutterFlowTheme.of(context)
-                                          .alternate,
-                                      width: 2.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
-                                  focusedErrorBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: FlutterFlowTheme.of(context)
-                                          .alternate,
-                                      width: 2.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
-                                  filled: true,
-                                  fillColor:
-                                      FlutterFlowTheme.of(context).alternate,
-                                  contentPadding: EdgeInsets.all(14.0),
-                                ),
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyLarge
-                                    .override(
-                                      fontFamily: 'Poppins',
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryText,
-                                    ),
-                                keyboardType: TextInputType.emailAddress,
-                                validator: _model.emailLoginControllerValidator
-                                    .asValidator(context),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 16.0),
-                            child: Container(
-                              width: double.infinity,
-                              child: TextFormField(
-                                controller: _model.passwordLoginController,
-                                focusNode: _model.passwordLoginFocusNode,
-                                autofillHints: [AutofillHints.password],
-                                obscureText: !_model.passwordLoginVisibility,
-                                decoration: InputDecoration(
-                                  labelStyle:
-                                      FlutterFlowTheme.of(context).labelLarge,
-                                  hintText: FFLocalizations.of(context).getText(
-                                    '8savg7ok' /* Contraseña */,
-                                  ),
-                                  enabledBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryBackground,
-                                      width: 2.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
-                                      width: 2.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
-                                  errorBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: FlutterFlowTheme.of(context).error,
-                                      width: 2.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
-                                  focusedErrorBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: FlutterFlowTheme.of(context).error,
-                                      width: 2.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
-                                  filled: true,
-                                  fillColor:
-                                      FlutterFlowTheme.of(context).alternate,
-                                  contentPadding: EdgeInsets.all(14.0),
-                                  suffixIcon: InkWell(
-                                    onTap: () => setState(
-                                      () => _model.passwordLoginVisibility =
-                                          !_model.passwordLoginVisibility,
-                                    ),
-                                    focusNode: FocusNode(skipTraversal: true),
-                                    child: Icon(
-                                      _model.passwordLoginVisibility
-                                          ? Icons.visibility_outlined
-                                          : Icons.visibility_off_outlined,
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryText,
-                                      size: 24.0,
-                                    ),
-                                  ),
-                                ),
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyLarge
-                                    .override(
-                                      fontFamily: 'Poppins',
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryText,
-                                    ),
-                                validator: _model
-                                    .passwordLoginControllerValidator
-                                    .asValidator(context),
-                              ),
-                            ),
-                          ),
-                          Align(
-                            alignment: AlignmentDirectional(0.0, 0.0),
-                            child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 16.0, 0.0, 0.0),
-                              child: FFButtonWidget(
-                                onPressed: () async {
-                                  logFirebaseEvent(
-                                      'LOGIN_INICIAR_SESIÓN_BTN_ON_TAP');
-                                  logFirebaseEvent('Button_backend_call');
-                                  _model.apiResult9uk =
-                                      await MekaGroup.authLoginCall.call(
-                                    username: _model.emailLoginController.text,
-                                    password:
-                                        _model.passwordLoginController.text,
-                                    pushKey: FFAppState().ffPushKey,
-                                  );
-                                  if ((_model.apiResult9uk?.succeeded ??
-                                      true)) {
-                                    logFirebaseEvent('Button_auth');
-                                    GoRouter.of(context).prepareAuthEvent();
-                                    await authManager.signIn(
-                                      authenticationToken:
-                                          MekaGroup.authLoginCall.token(
-                                        (_model.apiResult9uk?.jsonBody ?? ''),
+                                    errorBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: FlutterFlowTheme.of(context)
+                                            .alternate,
+                                        width: 2.0,
                                       ),
-                                      refreshToken:
-                                          MekaGroup.authLoginCall.refreshToken(
-                                        (_model.apiResult9uk?.jsonBody ?? ''),
+                                      borderRadius: BorderRadius.circular(8.0),
+                                    ),
+                                    focusedErrorBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: FlutterFlowTheme.of(context)
+                                            .alternate,
+                                        width: 2.0,
                                       ),
-                                      authUid: MekaGroup.authLoginCall.id(
-                                        (_model.apiResult9uk?.jsonBody ?? ''),
-                                      ),
-                                      userData: UsersStruct(
-                                        firstName:
-                                            MekaGroup.authLoginCall.firstName(
-                                          (_model.apiResult9uk?.jsonBody ?? ''),
-                                        ),
-                                        lastName:
-                                            MekaGroup.authLoginCall.lastName(
-                                          (_model.apiResult9uk?.jsonBody ?? ''),
-                                        ),
-                                        email: MekaGroup.authLoginCall.email(
-                                          (_model.apiResult9uk?.jsonBody ?? ''),
-                                        ),
-                                        countryName:
-                                            MekaGroup.authLoginCall.countryName(
-                                          (_model.apiResult9uk?.jsonBody ?? ''),
-                                        ),
-                                        countryId:
-                                            MekaGroup.authLoginCall.countryId(
-                                          (_model.apiResult9uk?.jsonBody ?? ''),
-                                        ),
-                                        typeUser: MekaGroup.authLoginCall
-                                            .typeUser(
-                                              (_model.apiResult9uk?.jsonBody ??
-                                                  ''),
-                                            )
-                                            ?.toString(),
-                                        id: MekaGroup.authLoginCall.id(
-                                          (_model.apiResult9uk?.jsonBody ?? ''),
-                                        ),
-                                        score: MekaGroup.authLoginCall.score(
-                                          (_model.apiResult9uk?.jsonBody ?? ''),
-                                        ),
-                                        scoreName:
-                                            MekaGroup.authLoginCall.scoreName(
-                                          (_model.apiResult9uk?.jsonBody ?? ''),
-                                        ),
-                                      ),
-                                    );
-                                    logFirebaseEvent('Button_backend_call');
-                                    _model.getCompany = await MekaLTGroup
-                                        .getCompanyByUserCall
-                                        .call(
-                                      userId: currentUserUid,
-                                    );
-                                    if ((_model.getCompany?.succeeded ??
-                                            true) &&
-                                        (MekaLTGroup.getCompanyByUserCall
-                                                .active(
-                                              (_model.getCompany?.jsonBody ??
-                                                  ''),
-                                            ) ==
-                                            true)) {
-                                      logFirebaseEvent(
-                                          'Button_update_app_state');
-                                      FFAppState().ltCompany = getJsonField(
-                                        (_model.getCompany?.jsonBody ?? ''),
-                                        r'''$''',
-                                      );
-                                      logFirebaseEvent('Button_navigate_to');
-
-                                      context.pushNamedAuth(
-                                          'HomePage', context.mounted);
-                                    } else {
-                                      logFirebaseEvent('Button_navigate_to');
-
-                                      context.pushNamedAuth(
-                                        'CreateCompanyPage',
-                                        context.mounted,
-                                        extra: <String, dynamic>{
-                                          kTransitionInfoKey: TransitionInfo(
-                                            hasTransition: true,
-                                            transitionType:
-                                                PageTransitionType.fade,
-                                            duration: Duration(milliseconds: 0),
-                                          ),
-                                        },
-                                      );
-                                    }
-                                  } else {
-                                    logFirebaseEvent('Button_alert_dialog');
-                                    await showDialog(
-                                      context: context,
-                                      builder: (alertDialogContext) {
-                                        return AlertDialog(
-                                          title: Text('Error'),
-                                          content: Text(MekaGroup.authLoginCall
-                                              .errordescription(
-                                                (_model.apiResult9uk
-                                                        ?.jsonBody ??
-                                                    ''),
-                                              )
-                                              .toString()),
-                                          actions: [
-                                            TextButton(
-                                              onPressed: () => Navigator.pop(
-                                                  alertDialogContext),
-                                              child: Text('Ok'),
-                                            ),
-                                          ],
-                                        );
-                                      },
-                                    );
-                                  }
-
-                                  setState(() {});
-                                },
-                                text: FFLocalizations.of(context).getText(
-                                  'j9q5hbaz' /* Iniciar sesión */,
-                                ),
-                                options: FFButtonOptions(
-                                  width: 270.0,
-                                  height: 52.0,
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 0.0),
-                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 0.0),
-                                  color: FlutterFlowTheme.of(context).primary,
-                                  textStyle: FlutterFlowTheme.of(context)
-                                      .titleSmall
+                                      borderRadius: BorderRadius.circular(8.0),
+                                    ),
+                                    filled: true,
+                                    fillColor:
+                                        FlutterFlowTheme.of(context).alternate,
+                                    contentPadding: EdgeInsets.all(14.0),
+                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyLarge
                                       .override(
                                         fontFamily: 'Poppins',
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryText,
-                                        fontWeight: FontWeight.w600,
                                       ),
-                                  elevation: 3.0,
-                                  borderSide: BorderSide(
-                                    color: Colors.transparent,
-                                    width: 1.0,
-                                  ),
-                                  borderRadius: BorderRadius.circular(12.0),
+                                  keyboardType: TextInputType.emailAddress,
+                                  validator: _model
+                                      .emailLoginControllerValidator
+                                      .asValidator(context),
                                 ),
                               ),
                             ),
-                          ),
-                          Align(
-                            alignment: AlignmentDirectional(0.0, 0.0),
-                            child: Padding(
+                            Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 16.0, 0.0, 16.0),
-                              child: FFButtonWidget(
-                                onPressed: () async {
-                                  logFirebaseEvent(
-                                      'LOGIN_REGISTRESE_AQUI_BTN_ON_TAP');
-                                  logFirebaseEvent('Button_navigate_to');
-
-                                  context.pushNamed('CreateUserPage');
-                                },
-                                text: FFLocalizations.of(context).getText(
-                                  '9hcnw5ef' /* Registrese aqui */,
-                                ),
-                                options: FFButtonOptions(
-                                  height: 44.0,
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      32.0, 0.0, 32.0, 0.0),
-                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 0.0),
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                  textStyle: FlutterFlowTheme.of(context)
-                                      .bodyMedium
+                                  0.0, 0.0, 0.0, 16.0),
+                              child: Container(
+                                width: double.infinity,
+                                child: TextFormField(
+                                  controller: _model.passwordLoginController,
+                                  focusNode: _model.passwordLoginFocusNode,
+                                  autofillHints: [AutofillHints.password],
+                                  obscureText: !_model.passwordLoginVisibility,
+                                  decoration: InputDecoration(
+                                    labelStyle:
+                                        FlutterFlowTheme.of(context).labelLarge,
+                                    hintText:
+                                        FFLocalizations.of(context).getText(
+                                      '8savg7ok' /* Contraseña */,
+                                    ),
+                                    enabledBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
+                                        width: 2.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8.0),
+                                    ),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        width: 2.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8.0),
+                                    ),
+                                    errorBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color:
+                                            FlutterFlowTheme.of(context).error,
+                                        width: 2.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8.0),
+                                    ),
+                                    focusedErrorBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color:
+                                            FlutterFlowTheme.of(context).error,
+                                        width: 2.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8.0),
+                                    ),
+                                    filled: true,
+                                    fillColor:
+                                        FlutterFlowTheme.of(context).alternate,
+                                    contentPadding: EdgeInsets.all(14.0),
+                                    suffixIcon: InkWell(
+                                      onTap: () => setState(
+                                        () => _model.passwordLoginVisibility =
+                                            !_model.passwordLoginVisibility,
+                                      ),
+                                      focusNode: FocusNode(skipTraversal: true),
+                                      child: Icon(
+                                        _model.passwordLoginVisibility
+                                            ? Icons.visibility_outlined
+                                            : Icons.visibility_off_outlined,
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryText,
+                                        size: 24.0,
+                                      ),
+                                    ),
+                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyLarge
                                       .override(
                                         fontFamily: 'Poppins',
-                                        fontSize: 16.0,
-                                        fontWeight: FontWeight.normal,
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryText,
                                       ),
-                                  elevation: 0.0,
-                                  borderSide: BorderSide(
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                    width: 2.0,
-                                  ),
-                                  borderRadius: BorderRadius.circular(40.0),
-                                  hoverColor: FlutterFlowTheme.of(context)
-                                      .primaryBackground,
+                                  validator: _model
+                                      .passwordLoginControllerValidator
+                                      .asValidator(context),
                                 ),
                               ),
                             ),
-                          ),
-                          Align(
-                            alignment: AlignmentDirectional(0.0, 0.0),
-                            child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 16.0, 0.0, 16.0),
-                              child: FFButtonWidget(
-                                onPressed: () async {
-                                  logFirebaseEvent(
-                                      'LOGIN_¿_HAS_OLVIDADO_TU_CONTRASEÑA?_BTN_');
-                                  logFirebaseEvent('Button_navigate_to');
+                            Align(
+                              alignment: AlignmentDirectional(0.0, 0.0),
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 16.0, 0.0, 0.0),
+                                child: FFButtonWidget(
+                                  onPressed: () async {
+                                    logFirebaseEvent(
+                                        'LOGIN_INICIAR_SESIÓN_BTN_ON_TAP');
+                                    logFirebaseEvent('Button_backend_call');
+                                    _model.apiResult9uk =
+                                        await MekaGroup.authLoginCall.call(
+                                      username:
+                                          _model.emailLoginController.text,
+                                      password:
+                                          _model.passwordLoginController.text,
+                                      pushKey: FFAppState().ffPushKey,
+                                    );
+                                    if ((_model.apiResult9uk?.succeeded ??
+                                        true)) {
+                                      logFirebaseEvent('Button_auth');
+                                      GoRouter.of(context).prepareAuthEvent();
+                                      await authManager.signIn(
+                                        authenticationToken:
+                                            MekaGroup.authLoginCall.token(
+                                          (_model.apiResult9uk?.jsonBody ?? ''),
+                                        ),
+                                        refreshToken: MekaGroup.authLoginCall
+                                            .refreshToken(
+                                          (_model.apiResult9uk?.jsonBody ?? ''),
+                                        ),
+                                        authUid: MekaGroup.authLoginCall.id(
+                                          (_model.apiResult9uk?.jsonBody ?? ''),
+                                        ),
+                                        userData: UsersStruct(
+                                          firstName:
+                                              MekaGroup.authLoginCall.firstName(
+                                            (_model.apiResult9uk?.jsonBody ??
+                                                ''),
+                                          ),
+                                          lastName:
+                                              MekaGroup.authLoginCall.lastName(
+                                            (_model.apiResult9uk?.jsonBody ??
+                                                ''),
+                                          ),
+                                          email: MekaGroup.authLoginCall.email(
+                                            (_model.apiResult9uk?.jsonBody ??
+                                                ''),
+                                          ),
+                                          countryName: MekaGroup.authLoginCall
+                                              .countryName(
+                                            (_model.apiResult9uk?.jsonBody ??
+                                                ''),
+                                          ),
+                                          countryId:
+                                              MekaGroup.authLoginCall.countryId(
+                                            (_model.apiResult9uk?.jsonBody ??
+                                                ''),
+                                          ),
+                                          typeUser: MekaGroup.authLoginCall
+                                              .typeUser(
+                                                (_model.apiResult9uk
+                                                        ?.jsonBody ??
+                                                    ''),
+                                              )
+                                              ?.toString(),
+                                          id: MekaGroup.authLoginCall.id(
+                                            (_model.apiResult9uk?.jsonBody ??
+                                                ''),
+                                          ),
+                                          score: MekaGroup.authLoginCall.score(
+                                            (_model.apiResult9uk?.jsonBody ??
+                                                ''),
+                                          ),
+                                          scoreName:
+                                              MekaGroup.authLoginCall.scoreName(
+                                            (_model.apiResult9uk?.jsonBody ??
+                                                ''),
+                                          ),
+                                        ),
+                                      );
+                                      logFirebaseEvent('Button_backend_call');
+                                      _model.getCompany = await MekaLTGroup
+                                          .getCompanyByUserCall
+                                          .call(
+                                        userId: currentUserUid,
+                                      );
+                                      if ((_model.getCompany?.succeeded ??
+                                              true) &&
+                                          (MekaLTGroup.getCompanyByUserCall
+                                                  .active(
+                                                (_model.getCompany?.jsonBody ??
+                                                    ''),
+                                              ) ==
+                                              true)) {
+                                        logFirebaseEvent(
+                                            'Button_update_app_state');
+                                        FFAppState().ltCompany = getJsonField(
+                                          (_model.getCompany?.jsonBody ?? ''),
+                                          r'''$''',
+                                        );
+                                        logFirebaseEvent('Button_navigate_to');
 
-                                  context.pushNamed('ForgotPasswordPage');
-                                },
-                                text: FFLocalizations.of(context).getText(
-                                  '9wlny8wh' /* ¿Has olvidado tu contraseña? */,
-                                ),
-                                options: FFButtonOptions(
-                                  height: 44.0,
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      32.0, 0.0, 32.0, 0.0),
-                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 0.0),
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                  textStyle: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Poppins',
-                                        fontSize: 16.0,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                  elevation: 0.0,
-                                  borderSide: BorderSide(
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                    width: 2.0,
+                                        context.pushNamedAuth(
+                                            'HomePage', context.mounted);
+                                      } else {
+                                        logFirebaseEvent('Button_navigate_to');
+
+                                        context.pushNamedAuth(
+                                          'CreateCompanyPage',
+                                          context.mounted,
+                                          extra: <String, dynamic>{
+                                            kTransitionInfoKey: TransitionInfo(
+                                              hasTransition: true,
+                                              transitionType:
+                                                  PageTransitionType.fade,
+                                              duration:
+                                                  Duration(milliseconds: 0),
+                                            ),
+                                          },
+                                        );
+                                      }
+                                    } else {
+                                      logFirebaseEvent('Button_alert_dialog');
+                                      await showDialog(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return AlertDialog(
+                                            title: Text('Error'),
+                                            content:
+                                                Text(MekaGroup.authLoginCall
+                                                    .errordescription(
+                                                      (_model.apiResult9uk
+                                                              ?.jsonBody ??
+                                                          ''),
+                                                    )
+                                                    .toString()),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext),
+                                                child: Text('Ok'),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      );
+                                    }
+
+                                    setState(() {});
+                                  },
+                                  text: FFLocalizations.of(context).getText(
+                                    'j9q5hbaz' /* Iniciar sesión */,
                                   ),
-                                  borderRadius: BorderRadius.circular(40.0),
-                                  hoverColor: FlutterFlowTheme.of(context)
-                                      .primaryBackground,
+                                  options: FFButtonOptions(
+                                    width: 270.0,
+                                    height: 52.0,
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 0.0),
+                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 0.0),
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .override(
+                                          fontFamily: 'Poppins',
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryText,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                    elevation: 3.0,
+                                    borderSide: BorderSide(
+                                      color: Colors.transparent,
+                                      width: 1.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(12.0),
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                        ],
-                      ).animateOnPageLoad(
-                          animationsMap['columnOnPageLoadAnimation']!),
-                    ),
-                  ).animateOnPageLoad(
-                      animationsMap['containerOnPageLoadAnimation']!),
+                            Align(
+                              alignment: AlignmentDirectional(0.0, 0.0),
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 16.0, 0.0, 16.0),
+                                child: FFButtonWidget(
+                                  onPressed: () async {
+                                    logFirebaseEvent(
+                                        'LOGIN_REGISTRESE_AQUI_BTN_ON_TAP');
+                                    logFirebaseEvent('Button_navigate_to');
+
+                                    context.pushNamed('CreateUserPage');
+                                  },
+                                  text: FFLocalizations.of(context).getText(
+                                    '9hcnw5ef' /* Registrese aqui */,
+                                  ),
+                                  options: FFButtonOptions(
+                                    height: 44.0,
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        32.0, 0.0, 32.0, 0.0),
+                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 0.0),
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Poppins',
+                                          fontSize: 16.0,
+                                          fontWeight: FontWeight.normal,
+                                        ),
+                                    elevation: 0.0,
+                                    borderSide: BorderSide(
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      width: 2.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(40.0),
+                                    hoverColor: FlutterFlowTheme.of(context)
+                                        .primaryBackground,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Align(
+                              alignment: AlignmentDirectional(0.0, 0.0),
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 16.0, 0.0, 16.0),
+                                child: FFButtonWidget(
+                                  onPressed: () async {
+                                    logFirebaseEvent(
+                                        'LOGIN_¿_HAS_OLVIDADO_TU_CONTRASEÑA?_BTN_');
+                                    logFirebaseEvent('Button_navigate_to');
+
+                                    context.pushNamed('ForgotPasswordPage');
+                                  },
+                                  text: FFLocalizations.of(context).getText(
+                                    '9wlny8wh' /* ¿Has olvidado tu contraseña? */,
+                                  ),
+                                  options: FFButtonOptions(
+                                    height: 44.0,
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        32.0, 0.0, 32.0, 0.0),
+                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 0.0),
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Poppins',
+                                          fontSize: 16.0,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                    elevation: 0.0,
+                                    borderSide: BorderSide(
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      width: 2.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(40.0),
+                                    hoverColor: FlutterFlowTheme.of(context)
+                                        .primaryBackground,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ).animateOnPageLoad(
+                            animationsMap['columnOnPageLoadAnimation']!),
+                      ),
+                    ).animateOnPageLoad(
+                        animationsMap['containerOnPageLoadAnimation']!),
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
