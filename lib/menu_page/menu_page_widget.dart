@@ -1,4 +1,5 @@
 import '/auth/custom_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/components/nav_bar_floting_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -9,6 +10,7 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'menu_page_model.dart';
 export 'menu_page_model.dart';
 
@@ -82,7 +84,7 @@ class _MenuPageWidgetState extends State<MenuPageWidget> {
                           shape: BoxShape.circle,
                         ),
                         child: Image.network(
-                          'https://picsum.photos/seed/992/600',
+                          'https://gravatar.com/avatar/da468ba501a54b0d5c314417483d6210?s=400&d=robohash&r=x',
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -158,66 +160,97 @@ class _MenuPageWidgetState extends State<MenuPageWidget> {
                           ),
                         ),
                       ),
-                    ].divide(SizedBox(width: 12.0)),
+                    ].divide(SizedBox(width: 16.0)),
                   ),
                 ),
               ),
-              Container(
-                width: double.infinity,
-                height: 60.0,
-                decoration: BoxDecoration(
-                  color: Color(0xB31C1C1C),
-                  boxShadow: [
-                    BoxShadow(
-                      blurRadius: 4.0,
-                      color: Color(0x33FFFFFF),
-                      offset: Offset(0.0, 2.0),
-                    )
-                  ],
-                  borderRadius: BorderRadius.circular(25.0),
-                  border: Border.all(
-                    color: FlutterFlowTheme.of(context).primary,
-                    width: 3.0,
-                  ),
-                ),
-                child: Align(
-                  alignment: AlignmentDirectional(0.0, 0.0),
-                  child: SwitchListTile.adaptive(
-                    value: _model.switchListTileValue ??= FFAppState().ltActive,
-                    onChanged: (newValue) async {
-                      setState(() => _model.switchListTileValue = newValue!);
-                      if (newValue!) {
-                        logFirebaseEvent(
-                            'MENU_SwitchListTile_0me424n1_ON_TOGGLE_O');
-                        logFirebaseEvent('SwitchListTile_update_app_state');
-                        setState(() {
-                          FFAppState().ltActive = true;
-                        });
-                      } else {
-                        logFirebaseEvent(
-                            'MENU_SwitchListTile_0me424n1_ON_TOGGLE_O');
-                        logFirebaseEvent('SwitchListTile_update_app_state');
-                        setState(() {
-                          FFAppState().ltActive = false;
-                        });
-                      }
-                    },
-                    title: Text(
-                      FFLocalizations.of(context).getText(
-                        'ulxf9cc1' /* Conectado */,
-                      ),
-                      style: FlutterFlowTheme.of(context).titleLarge.override(
-                            fontFamily: 'Poppins',
-                            color: FlutterFlowTheme.of(context).primaryText,
-                            fontSize: 18.0,
-                            fontWeight: FontWeight.w600,
-                          ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 12.0),
+                child: Container(
+                  width: double.infinity,
+                  height: 60.0,
+                  decoration: BoxDecoration(
+                    color: Color(0xB31C1C1C),
+                    boxShadow: [
+                      BoxShadow(
+                        blurRadius: 4.0,
+                        color: Color(0x33FFFFFF),
+                        offset: Offset(0.0, 2.0),
+                      )
+                    ],
+                    borderRadius: BorderRadius.circular(25.0),
+                    border: Border.all(
+                      color: FlutterFlowTheme.of(context).primary,
+                      width: 3.0,
                     ),
-                    tileColor: FlutterFlowTheme.of(context).secondaryBackground,
-                    activeColor: FlutterFlowTheme.of(context).primary,
-                    activeTrackColor: FlutterFlowTheme.of(context).accent1,
-                    dense: false,
-                    controlAffinity: ListTileControlAffinity.trailing,
+                  ),
+                  child: Align(
+                    alignment: AlignmentDirectional(0.0, 0.0),
+                    child: SwitchListTile.adaptive(
+                      value: _model.switchListTileValue ??=
+                          FFAppState().ltActive,
+                      onChanged: (newValue) async {
+                        setState(() => _model.switchListTileValue = newValue!);
+                        if (newValue!) {
+                          logFirebaseEvent(
+                              'MENU_SwitchListTile_0me424n1_ON_TOGGLE_O');
+                          logFirebaseEvent('SwitchListTile_backend_call');
+                          _model.apiResultduf =
+                              await MekaLTGroup.fueraDeLineaCall.call(
+                            uid: getJsonField(
+                              FFAppState().ltCompany,
+                              r'''$._id''',
+                            ).toString(),
+                            status: true,
+                          );
+                          if ((_model.apiResultduf?.succeeded ?? true)) {
+                            logFirebaseEvent('SwitchListTile_update_app_state');
+                            setState(() {
+                              FFAppState().ltActive = true;
+                            });
+                          }
+
+                          setState(() {});
+                        } else {
+                          logFirebaseEvent(
+                              'MENU_SwitchListTile_0me424n1_ON_TOGGLE_O');
+                          logFirebaseEvent('SwitchListTile_backend_call');
+                          _model.foraOff =
+                              await MekaLTGroup.fueraDeLineaCall.call(
+                            uid: getJsonField(
+                              FFAppState().ltCompany,
+                              r'''$._id''',
+                            ).toString(),
+                            status: false,
+                          );
+                          if ((_model.foraOff?.succeeded ?? true)) {
+                            logFirebaseEvent('SwitchListTile_update_app_state');
+                            setState(() {
+                              FFAppState().ltActive = false;
+                            });
+                          }
+
+                          setState(() {});
+                        }
+                      },
+                      title: Text(
+                        FFLocalizations.of(context).getText(
+                          'ulxf9cc1' /* Conectado */,
+                        ),
+                        style: FlutterFlowTheme.of(context).titleLarge.override(
+                              fontFamily: 'Poppins',
+                              color: FlutterFlowTheme.of(context).primaryText,
+                              fontSize: 18.0,
+                              fontWeight: FontWeight.w600,
+                            ),
+                      ),
+                      tileColor:
+                          FlutterFlowTheme.of(context).secondaryBackground,
+                      activeColor: FlutterFlowTheme.of(context).primary,
+                      activeTrackColor: FlutterFlowTheme.of(context).accent1,
+                      dense: false,
+                      controlAffinity: ListTileControlAffinity.trailing,
+                    ),
                   ),
                 ),
               ),
@@ -237,29 +270,42 @@ class _MenuPageWidgetState extends State<MenuPageWidget> {
                           width: 100.0,
                           height: 50.0,
                           decoration: BoxDecoration(),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                FFLocalizations.of(context).getText(
-                                  '60ri68ru' /* Actualizar Perfil */,
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              logFirebaseEvent(
+                                  'MENU_PAGE_PAGE_Column_cp6r15jw_ON_TAP');
+                              logFirebaseEvent('Column_navigate_to');
+
+                              context.pushNamed('ProfilePage');
+                            },
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  FFLocalizations.of(context).getText(
+                                    '60ri68ru' /* Actualizar Perfil */,
+                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Poppins',
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        fontSize: 16.0,
+                                      ),
                                 ),
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Poppins',
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                      fontSize: 16.0,
-                                    ),
-                              ),
-                              Divider(
-                                thickness: 1.0,
-                                color: FlutterFlowTheme.of(context).accent4,
-                              ),
-                            ],
+                                Divider(
+                                  thickness: 1.0,
+                                  color: FlutterFlowTheme.of(context).accent4,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                         Container(
@@ -308,58 +354,92 @@ class _MenuPageWidgetState extends State<MenuPageWidget> {
                           width: 100.0,
                           height: 50.0,
                           decoration: BoxDecoration(),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                FFLocalizations.of(context).getText(
-                                  'bv36wjjf' /* Atendimiento al Cliente */,
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              logFirebaseEvent(
+                                  'MENU_PAGE_PAGE_Column_6gkftjdm_ON_TAP');
+                              logFirebaseEvent('Column_send_email');
+                              await launchUrl(Uri(
+                                  scheme: 'mailto',
+                                  path: 'mekadevelopments@gmail.com',
+                                  query: {
+                                    'subject': 'SAC Meka LT',
+                                  }
+                                      .entries
+                                      .map((MapEntry<String, String> e) =>
+                                          '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
+                                      .join('&')));
+                            },
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  FFLocalizations.of(context).getText(
+                                    'bv36wjjf' /* Atendimiento al Cliente */,
+                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Poppins',
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        fontSize: 16.0,
+                                      ),
                                 ),
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Poppins',
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                      fontSize: 16.0,
-                                    ),
-                              ),
-                              Divider(
-                                thickness: 1.0,
-                                color: FlutterFlowTheme.of(context).accent4,
-                              ),
-                            ],
+                                Divider(
+                                  thickness: 1.0,
+                                  color: FlutterFlowTheme.of(context).accent4,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                         Container(
                           width: 100.0,
                           height: 50.0,
                           decoration: BoxDecoration(),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                FFLocalizations.of(context).getText(
-                                  '54zsjwr8' /* Subscripción */,
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              logFirebaseEvent(
+                                  'MENU_PAGE_PAGE_Column_3wxbuasa_ON_TAP');
+                              logFirebaseEvent('Column_navigate_to');
+
+                              context.pushNamed('PaymentPage');
+                            },
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  FFLocalizations.of(context).getText(
+                                    '54zsjwr8' /* Subscripción */,
+                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Poppins',
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        fontSize: 16.0,
+                                      ),
                                 ),
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Poppins',
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                      fontSize: 16.0,
-                                    ),
-                              ),
-                              Divider(
-                                thickness: 1.0,
-                                color: FlutterFlowTheme.of(context).accent4,
-                              ),
-                            ],
+                                Divider(
+                                  thickness: 1.0,
+                                  color: FlutterFlowTheme.of(context).accent4,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                         Container(

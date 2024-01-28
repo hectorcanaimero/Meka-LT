@@ -30,33 +30,103 @@ class CreateUserPageModel extends FlutterFlowModel<CreateUserPageWidget> {
   FocusNode? firstNameFocusNode;
   TextEditingController? firstNameController;
   String? Function(BuildContext, String?)? firstNameControllerValidator;
+  String? _firstNameControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return FFLocalizations.of(context).getText(
+        'epau0ppf' /* Campo obligatorio */,
+      );
+    }
+
+    return null;
+  }
+
   // State field(s) for lastName widget.
   FocusNode? lastNameFocusNode;
   TextEditingController? lastNameController;
   String? Function(BuildContext, String?)? lastNameControllerValidator;
+  String? _lastNameControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return FFLocalizations.of(context).getText(
+        'nrrd7n3o' /* Campo obligatorio */,
+      );
+    }
+
+    return null;
+  }
+
   // State field(s) for emailLogin widget.
   FocusNode? emailLoginFocusNode;
   TextEditingController? emailLoginController;
   String? Function(BuildContext, String?)? emailLoginControllerValidator;
+  String? _emailLoginControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return FFLocalizations.of(context).getText(
+        'b6g35988' /* Campo obligatorio */,
+      );
+    }
+
+    if (!RegExp(kTextValidatorEmailRegex).hasMatch(val)) {
+      return FFLocalizations.of(context).getText(
+        '25gar57a' /* Digite un email valido */,
+      );
+    }
+    return null;
+  }
+
   // State field(s) for phoneRegister widget.
   FocusNode? phoneRegisterFocusNode;
   TextEditingController? phoneRegisterController;
   String? Function(BuildContext, String?)? phoneRegisterControllerValidator;
+  String? _phoneRegisterControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return FFLocalizations.of(context).getText(
+        'tcx2jlla' /* Campo obligatorio */,
+      );
+    }
+
+    return null;
+  }
+
   // State field(s) for country widget.
   String? countryValue;
   FormFieldController<String>? countryValueController;
+  // State field(s) for language widget.
+  String? languageValue;
+  FormFieldController<String>? languageValueController;
   // State field(s) for passwordRegister widget.
   FocusNode? passwordRegisterFocusNode;
   TextEditingController? passwordRegisterController;
   late bool passwordRegisterVisibility;
   String? Function(BuildContext, String?)? passwordRegisterControllerValidator;
+  String? _passwordRegisterControllerValidator(
+      BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return FFLocalizations.of(context).getText(
+        'chm6oz3i' /* Campo obligatorio */,
+      );
+    }
+
+    if (val.length < 6) {
+      return FFLocalizations.of(context).getText(
+        'volcp049' /* La contraseña debe ser mayor a... */,
+      );
+    }
+
+    return null;
+  }
+
   // Stores action output result for [Backend Call - API (Auth Create User)] action in Button widget.
   ApiCallResponse? apiResultbyl;
 
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {
+    firstNameControllerValidator = _firstNameControllerValidator;
+    lastNameControllerValidator = _lastNameControllerValidator;
+    emailLoginControllerValidator = _emailLoginControllerValidator;
+    phoneRegisterControllerValidator = _phoneRegisterControllerValidator;
     passwordRegisterVisibility = false;
+    passwordRegisterControllerValidator = _passwordRegisterControllerValidator;
   }
 
   void dispose() {

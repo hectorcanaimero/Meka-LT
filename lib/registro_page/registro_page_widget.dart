@@ -175,7 +175,7 @@ class _RegistroPageWidgetState extends State<RegistroPageWidget>
                                           width: double.infinity,
                                           decoration: BoxDecoration(
                                             color: FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
+                                                .alternate,
                                             borderRadius:
                                                 BorderRadius.circular(8.0),
                                           ),
@@ -206,7 +206,14 @@ class _RegistroPageWidgetState extends State<RegistroPageWidget>
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .bodyMedium,
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Poppins',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryBackground,
+                                                                ),
                                                       ),
                                                       Row(
                                                         mainAxisSize:
@@ -223,7 +230,14 @@ class _RegistroPageWidgetState extends State<RegistroPageWidget>
                                                                         7),
                                                             style: FlutterFlowTheme
                                                                     .of(context)
-                                                                .bodyMedium,
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Poppins',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryBackground,
+                                                                ),
                                                           ),
                                                           Text(
                                                             FFLocalizations.of(
@@ -233,7 +247,14 @@ class _RegistroPageWidgetState extends State<RegistroPageWidget>
                                                             ),
                                                             style: FlutterFlowTheme
                                                                     .of(context)
-                                                                .bodyMedium,
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Poppins',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryBackground,
+                                                                ),
                                                           ),
                                                         ],
                                                       ),
@@ -251,7 +272,7 @@ class _RegistroPageWidgetState extends State<RegistroPageWidget>
                                                                       'Poppins',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .primaryText,
+                                                                      .secondaryBackground,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .w600,
@@ -268,7 +289,14 @@ class _RegistroPageWidgetState extends State<RegistroPageWidget>
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .bodyMedium,
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Poppins',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryBackground,
+                                                                ),
                                                       ),
                                                     ].divide(
                                                         SizedBox(height: 3.0)),
@@ -337,7 +365,7 @@ class _RegistroPageWidgetState extends State<RegistroPageWidget>
                                           width: double.infinity,
                                           decoration: BoxDecoration(
                                             color: FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
+                                                .alternate,
                                             borderRadius:
                                                 BorderRadius.circular(8.0),
                                           ),
@@ -368,7 +396,14 @@ class _RegistroPageWidgetState extends State<RegistroPageWidget>
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .bodyMedium,
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Poppins',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryBackground,
+                                                                ),
                                                       ),
                                                       Row(
                                                         mainAxisSize:
@@ -385,7 +420,14 @@ class _RegistroPageWidgetState extends State<RegistroPageWidget>
                                                                         7),
                                                             style: FlutterFlowTheme
                                                                     .of(context)
-                                                                .bodyMedium,
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Poppins',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryBackground,
+                                                                ),
                                                           ),
                                                           Text(
                                                             FFLocalizations.of(
@@ -395,7 +437,14 @@ class _RegistroPageWidgetState extends State<RegistroPageWidget>
                                                             ),
                                                             style: FlutterFlowTheme
                                                                     .of(context)
-                                                                .bodyMedium,
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Poppins',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryBackground,
+                                                                ),
                                                           ),
                                                         ],
                                                       ),
@@ -413,7 +462,7 @@ class _RegistroPageWidgetState extends State<RegistroPageWidget>
                                                                       'Poppins',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .primaryText,
+                                                                      .secondaryBackground,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .w600,
@@ -430,7 +479,14 @@ class _RegistroPageWidgetState extends State<RegistroPageWidget>
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .bodyMedium,
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Poppins',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryBackground,
+                                                                ),
                                                       ),
                                                     ].divide(
                                                         SizedBox(height: 3.0)),

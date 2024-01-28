@@ -27,6 +27,8 @@ class MekaGroup {
   static ConditionsCall conditionsCall = ConditionsCall();
   static CompanyByIdCall companyByIdCall = CompanyByIdCall();
   static TipoCompaniasCall tipoCompaniasCall = TipoCompaniasCall();
+  static UserByIdCall userByIdCall = UserByIdCall();
+  static UpdateUserCall updateUserCall = UpdateUserCall();
 }
 
 class CountryGelAllCall {
@@ -548,6 +550,63 @@ class TipoCompaniasCall {
           .toList();
 }
 
+class UserByIdCall {
+  Future<ApiCallResponse> call({
+    String? uid = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'user By Id',
+      apiUrl: '${MekaGroup.baseUrl}/users/${uid}',
+      callType: ApiCallType.GET,
+      headers: {},
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class UpdateUserCall {
+  Future<ApiCallResponse> call({
+    String? uid = '',
+    String? firstName = '',
+    String? lastName = '',
+    String? phone = '',
+    String? email = '',
+    String? country = '',
+    String? language = '',
+    String? picture = '',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "first_name": "${firstName}",
+  "last_name": "${lastName}",
+  "phone": "${phone}",
+  "email": "${email}",
+  "country": "${country}",
+  "picture": "${picture}",
+  "language": "${language}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'Update User',
+      apiUrl: '${MekaGroup.baseUrl}/users/${uid}',
+      callType: ApiCallType.PATCH,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
 /// End Meka Group Code
 
 /// Start Meka Services Group Code
@@ -916,6 +975,7 @@ class MekaLTGroup {
   static CrearComentarioCall crearComentarioCall = CrearComentarioCall();
   static GetCompanyByUserCall getCompanyByUserCall = GetCompanyByUserCall();
   static CreateCompanyCall createCompanyCall = CreateCompanyCall();
+  static FueraDeLineaCall fueraDeLineaCall = FueraDeLineaCall();
 }
 
 class ServiciosActivosCall {
@@ -1043,6 +1103,32 @@ class CreateCompanyCall {
       callName: 'Create Company',
       apiUrl: '${MekaLTGroup.baseUrl}/companies',
       callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class FueraDeLineaCall {
+  Future<ApiCallResponse> call({
+    String? uid = '',
+    bool? status,
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "status": ${status}
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'Fuera de Linea',
+      apiUrl: '${MekaLTGroup.baseUrl}/companies/${uid}',
+      callType: ApiCallType.PATCH,
       headers: {},
       params: {},
       body: ffApiRequestBody,

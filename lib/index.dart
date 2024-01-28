@@ -15,3 +15,5 @@ export '/create_company_page/create_company_page_widget.dart'
 export '/load_page/load_page_widget.dart' show LoadPageWidget;
 export '/view_company_page/view_company_page_widget.dart'
     show ViewCompanyPageWidget;
+export '/block_page/block_page_widget.dart' show BlockPageWidget;
+export '/payment_page/payment_page_widget.dart' show PaymentPageWidget;

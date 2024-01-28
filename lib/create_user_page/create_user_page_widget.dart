@@ -707,7 +707,100 @@ class _CreateUserPageWidgetState extends State<CreateUserPageWidget>
                                     borderWidth: 2.0,
                                     borderRadius: 8.0,
                                     margin: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 4.0, 16.0, 4.0),
+                                        12.0, 4.0, 16.0, 4.0),
+                                    hidesUnderline: true,
+                                    isOverButton: true,
+                                    isSearchable: true,
+                                    isMultiSelect: false,
+                                  );
+                                },
+                              ),
+                              FutureBuilder<ApiCallResponse>(
+                                future: MekaGroup.countryGelAllCall.call(),
+                                builder: (context, snapshot) {
+                                  // Customize what your widget looks like when it's loading.
+                                  if (!snapshot.hasData) {
+                                    return Center(
+                                      child: SizedBox(
+                                        width: 24.0,
+                                        height: 24.0,
+                                        child: CircularProgressIndicator(
+                                          valueColor:
+                                              AlwaysStoppedAnimation<Color>(
+                                            FlutterFlowTheme.of(context)
+                                                .primary,
+                                          ),
+                                        ),
+                                      ),
+                                    );
+                                  }
+                                  final languageCountryGelAllResponse =
+                                      snapshot.data!;
+                                  return FlutterFlowDropDown<String>(
+                                    controller:
+                                        _model.languageValueController ??=
+                                            FormFieldController<String>(
+                                      _model.languageValue ??= 'es',
+                                    ),
+                                    options:
+                                        List<String>.from(['es', 'en', 'pt']),
+                                    optionLabels: [
+                                      FFLocalizations.of(context).getText(
+                                        'g7qq6yff' /* Español */,
+                                      ),
+                                      FFLocalizations.of(context).getText(
+                                        'ninaixg6' /* Ingles */,
+                                      ),
+                                      FFLocalizations.of(context).getText(
+                                        'xhzv1vrb' /* Portugués */,
+                                      )
+                                    ],
+                                    onChanged: (val) => setState(
+                                        () => _model.languageValue = val),
+                                    width: double.infinity,
+                                    height: 50.0,
+                                    searchHintTextStyle:
+                                        FlutterFlowTheme.of(context)
+                                            .labelMedium
+                                            .override(
+                                              fontFamily: 'Poppins',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryText,
+                                            ),
+                                    searchTextStyle:
+                                        FlutterFlowTheme.of(context).bodyMedium,
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Poppins',
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryText,
+                                          fontSize: 16.0,
+                                        ),
+                                    hintText:
+                                        FFLocalizations.of(context).getText(
+                                      'ifu2p4k6' /* Seleccione idioma... */,
+                                    ),
+                                    searchHintText:
+                                        FFLocalizations.of(context).getText(
+                                      'ccvrlu4r' /* Busca del pais... */,
+                                    ),
+                                    icon: Icon(
+                                      Icons.keyboard_arrow_down_rounded,
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                      size: 24.0,
+                                    ),
+                                    fillColor:
+                                        FlutterFlowTheme.of(context).alternate,
+                                    elevation: 2.0,
+                                    borderColor:
+                                        FlutterFlowTheme.of(context).alternate,
+                                    borderWidth: 2.0,
+                                    borderRadius: 8.0,
+                                    margin: EdgeInsetsDirectional.fromSTEB(
+                                        12.0, 4.0, 16.0, 4.0),
                                     hidesUnderline: true,
                                     isOverButton: true,
                                     isSearchable: true,
@@ -819,6 +912,18 @@ class _CreateUserPageWidgetState extends State<CreateUserPageWidget>
                                   onPressed: () async {
                                     logFirebaseEvent(
                                         'CREATE_USER_REGISTRAR_BTN_ON_TAP');
+                                    logFirebaseEvent('Button_validate_form');
+                                    if (_model.formKey.currentState == null ||
+                                        !_model.formKey.currentState!
+                                            .validate()) {
+                                      return;
+                                    }
+                                    if (_model.countryValue == null) {
+                                      return;
+                                    }
+                                    if (_model.languageValue == null) {
+                                      return;
+                                    }
                                     logFirebaseEvent('Button_backend_call');
                                     _model.apiResultbyl =
                                         await MekaGroup.authCreateUserCall.call(
@@ -920,6 +1025,10 @@ class _CreateUserPageWidgetState extends State<CreateUserPageWidget>
                                                         ''),
                                                   )
                                                   .toString(),
+                                          phone: _model
+                                              .phoneRegisterController.text,
+                                          tokenPush: FFAppState().ffPushKey,
+                                          language: _model.languageValue,
                                         ),
                                       );
                                       logFirebaseEvent('Button_alert_dialog');

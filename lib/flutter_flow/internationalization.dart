@@ -222,60 +222,155 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // ProfilePage
   {
-    'azjxjzu2': {
-      'es': 'David Jerome',
-      'en': 'David Jerome',
-      'pt': 'David Jerônimo',
+    'nzglaocq': {
+      'es': '',
+      'en': 'Name',
+      'pt': 'Nome',
     },
-    'j4kcz2ub': {
-      'es': 'David.j@gmail.com',
-      'en': 'David.j@gmail.com',
-      'pt': 'David.j@gmail.com',
+    '0vduso6s': {
+      'es': 'Nombre',
+      'en': 'Name',
+      'pt': 'Nome',
     },
-    'wqapjv16': {
-      'es': 'Nombre Completo...',
-      'en': 'Full name...',
-      'pt': 'Nome completo...',
+    '4n00vgwh': {
+      'es': '',
+      'en': 'Last name',
+      'pt': 'Sobrenome',
     },
-    '40ok9mrx': {
-      'es': 'Email....',
-      'en': 'E-mail....',
-      'pt': 'E-mail....',
+    '065rsi0u': {
+      'es': 'Apellido',
+      'en': 'Last name',
+      'pt': 'Sobrenome',
     },
-    'x5x2gv52': {
-      'es': 'Label here...',
-      'en': 'Label here...',
-      'pt': 'Etiqueta aqui...',
+    'zwfkdlcg': {
+      'es': '',
+      'en': 'E-mail',
+      'pt': 'E-mail',
     },
-    'x2dby4yp': {
+    '9c5fv762': {
+      'es': 'E-mail',
+      'en': 'E-mail',
+      'pt': 'E-mail',
+    },
+    'cp5ff4pg': {
+      'es': '',
+      'en': 'Cell phone',
+      'pt': 'Celular',
+    },
+    'zrjsjori': {
+      'es': 'Celular',
+      'en': 'Cell phone',
+      'pt': 'Celular',
+    },
+    'g497q2au': {
+      'es': '',
+      'en': '',
+      'pt': '',
+    },
+    'sj83ef1u': {
+      'es': 'Seleccione el país...',
+      'en': 'Select the country...',
+      'pt': 'Selecione o país...',
+    },
+    'u2emzcpc': {
+      'es': 'Busca del pais...',
+      'en': 'Search for the country...',
+      'pt': 'Procure o país...',
+    },
+    'y3puzpru': {
       'es': 'Español',
       'en': 'Spanish',
       'pt': 'Espanhol',
     },
-    '9xhohzsr': {
+    '6bvdlwsa': {
       'es': 'Ingles',
       'en': 'English',
       'pt': 'Inglês',
     },
-    'odkhklkb': {
-      'es': 'Portugues',
+    'r8cwbvb9': {
+      'es': 'Portugués',
       'en': 'Portuguese',
       'pt': 'Português',
     },
-    'd0cd7c5v': {
-      'es': 'Idioma...',
-      'en': 'Language...',
-      'pt': 'Linguagem...',
+    'pnkw2q38': {
+      'es': 'Seleccione idioma...',
+      'en': 'Select the country...',
+      'pt': 'Selecione o país...',
     },
-    'v49sscbs': {
-      'es': 'Search for an item...',
-      'en': 'Search for an item...',
-      'pt': 'Procure um item...',
+    '8s66v18f': {
+      'es': 'Busca del pais...',
+      'en': 'Search for the country...',
+      'pt': 'Procure o país...',
     },
-    '4szod4wc': {
-      'es': 'Salvar',
-      'en': 'Save',
-      'pt': 'Salvar',
+    't64holy1': {
+      'es': 'Actualizar',
+      'en': 'Update',
+      'pt': 'Atualizar',
+    },
+    'ghwrtf0l': {
+      'es': 'Campo obligatorio',
+      'en': 'Field is required',
+      'pt': 'Campo é obrigatório',
+    },
+    't6s6ynnr': {
+      'es': 'Please choose an option from the dropdown',
+      'en': '',
+      'pt': '',
+    },
+    't7f9pi0u': {
+      'es': 'Campo obligatorio',
+      'en': 'Obligatory field',
+      'pt': 'O campo obrigatório',
+    },
+    '58skkaha': {
+      'es': 'Please choose an option from the dropdown',
+      'en': '',
+      'pt': '',
+    },
+    '26ssv8j5': {
+      'es': 'Campo obligatorio',
+      'en': 'Obligatory field',
+      'pt': 'O campo obrigatório',
+    },
+    'e2lnoodb': {
+      'es': 'Digite un email valido',
+      'en': 'Enter a valid email',
+      'pt': 'Entre com um email válido',
+    },
+    '9ftekb4h': {
+      'es': 'Please choose an option from the dropdown',
+      'en': '',
+      'pt': '',
+    },
+    '2lfr9shr': {
+      'es': 'Campo obligatorio',
+      'en': 'Obligatory field',
+      'pt': 'O campo obrigatório',
+    },
+    'bm61f2pu': {
+      'es': 'Please choose an option from the dropdown',
+      'en': '',
+      'pt': '',
+    },
+    'sligistg': {
+      'es': 'Campo obligatorio',
+      'en': 'Obligatory field',
+      'pt': 'O campo obrigatório',
+    },
+    'b6rl5k0r': {
+      'es': 'La contraseña debe ser mayor a 6 digitos',
+      'en': 'The password must be greater than 6 digits',
+      'pt': 'A senha deve ter mais de 6 dígitos',
+    },
+    '2ihejmu4': {
+      'es': 'Please choose an option from the dropdown',
+      'en': '',
+      'pt': '',
+    },
+    'mqq6pb2l': {
+      'es': 'Mi Perfil',
+      'en': 'My profile',
+      'pt': 'Meu perfil',
     },
     'qluplj3r': {
       'es': 'Perfil',
@@ -467,6 +562,31 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Search for the country...',
       'pt': 'Procure o país...',
     },
+    'g7qq6yff': {
+      'es': 'Español',
+      'en': 'Spanish',
+      'pt': 'Espanhol',
+    },
+    'ninaixg6': {
+      'es': 'Ingles',
+      'en': 'English',
+      'pt': 'Inglês',
+    },
+    'xhzv1vrb': {
+      'es': 'Portugués',
+      'en': 'Portuguese',
+      'pt': 'Português',
+    },
+    'ifu2p4k6': {
+      'es': 'Seleccione idioma...',
+      'en': 'Select the country...',
+      'pt': 'Selecione o país...',
+    },
+    'ccvrlu4r': {
+      'es': 'Busca del pais...',
+      'en': 'Search for the country...',
+      'pt': 'Procure o país...',
+    },
     'e3uk4645': {
       'es': '',
       'en': 'Password',
@@ -481,6 +601,66 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Registrar',
       'en': 'to register',
       'pt': 'registrar',
+    },
+    'epau0ppf': {
+      'es': 'Campo obligatorio',
+      'en': 'Field is required',
+      'pt': 'Campo é obrigatório',
+    },
+    'sxci2xbl': {
+      'es': 'Please choose an option from the dropdown',
+      'en': '',
+      'pt': '',
+    },
+    'nrrd7n3o': {
+      'es': 'Campo obligatorio',
+      'en': 'Obligatory field',
+      'pt': 'O campo obrigatório',
+    },
+    'b129zhec': {
+      'es': 'Please choose an option from the dropdown',
+      'en': '',
+      'pt': '',
+    },
+    'b6g35988': {
+      'es': 'Campo obligatorio',
+      'en': 'Obligatory field',
+      'pt': 'O campo obrigatório',
+    },
+    '25gar57a': {
+      'es': 'Digite un email valido',
+      'en': 'Enter a valid email',
+      'pt': 'Entre com um email válido',
+    },
+    '2690o38e': {
+      'es': 'Please choose an option from the dropdown',
+      'en': '',
+      'pt': '',
+    },
+    'tcx2jlla': {
+      'es': 'Campo obligatorio',
+      'en': 'Obligatory field',
+      'pt': 'O campo obrigatório',
+    },
+    'duweoyp5': {
+      'es': 'Please choose an option from the dropdown',
+      'en': '',
+      'pt': '',
+    },
+    'chm6oz3i': {
+      'es': 'Campo obligatorio',
+      'en': 'Obligatory field',
+      'pt': 'O campo obrigatório',
+    },
+    'volcp049': {
+      'es': 'La contraseña debe ser mayor a 6 digitos',
+      'en': 'The password must be greater than 6 digits',
+      'pt': 'A senha deve ter mais de 6 dígitos',
+    },
+    '8ip2q8sn': {
+      'es': 'Please choose an option from the dropdown',
+      'en': '',
+      'pt': '',
     },
     '0l2i6bwk': {
       'es': 'Crear Usuario',
@@ -645,60 +825,30 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'pt': '',
     },
   },
-  // MessageAdvisorComponent
+  // BlockPage
   {
-    '6v4wpi7w': {
-      'es': 'Envia un mensaje por e-mail',
-      'en': 'Send a message by email',
-      'pt': 'Envie uma mensagem por e-mail',
+    'mwtlgidp': {
+      'es': 'Page Title',
+      'en': '',
+      'pt': '',
     },
-    'cwam4561': {
-      'es': 'Digite su mensaje...',
-      'en': 'Enter your message...',
-      'pt': 'Digite sua mensagem...',
-    },
-    'mrojpqzv': {
-      'es': 'Enviar',
-      'en': 'Send',
-      'pt': 'Enviar',
+    'oeluqx8n': {
+      'es': 'Home',
+      'en': '',
+      'pt': '',
     },
   },
-  // CompleteUserComponent
+  // PaymentPage
   {
-    'h2yzw9ew': {
-      'es': 'Completa tu perfil',
-      'en': 'Complete your profile',
-      'pt': 'Complete seu perfil',
+    'g45q9oyq': {
+      'es': 'Page Title',
+      'en': '',
+      'pt': '',
     },
-    'r5vqr6nw': {
-      'es': 'Option 1',
-      'en': 'Option 1',
-      'pt': 'Opção 1',
-    },
-    'wbyz1fql': {
-      'es': 'Please select...',
-      'en': 'Please select...',
-      'pt': 'Por favor selecione...',
-    },
-    'qcnthhaj': {
-      'es': 'Search for an item...',
-      'en': 'Search for an item...',
-      'pt': 'Procure um item...',
-    },
-    '9cg06ulb': {
-      'es': 'Label here...',
-      'en': 'Label here...',
-      'pt': 'Etiqueta aqui...',
-    },
-    '5o0b3tse': {
-      'es': 'Avatar',
-      'en': 'Avatar',
-      'pt': 'avatar',
-    },
-    '808pbsz0': {
-      'es': 'Salvar',
-      'en': 'Save',
-      'pt': 'Salvar',
+    'ljyd267b': {
+      'es': 'Home',
+      'en': '',
+      'pt': '',
     },
   },
   // selectMapAddressComponent
@@ -723,7 +873,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     '8oxd6kvj': {
       'es': 'Ver Servicio',
-      'en': 'See Service',
+      'en': ' Service',
       'pt': 'Consulte o serviço',
     },
     '3rfdt6kq': {
@@ -805,29 +955,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'pt': '32/12 18:32',
     },
   },
-  // ChatComponent
-  {
-    'gci51i0l': {
-      'es': 'Create Note',
-      'en': 'Create Note',
-      'pt': 'Criar nota',
-    },
-    '9e2my3sy': {
-      'es': 'Find members by searching below',
-      'en': 'Find members by searching below',
-      'pt': 'Encontre membros pesquisando abaixo',
-    },
-    '9isf5e80': {
-      'es': 'Enter your note here...',
-      'en': 'Enter your note here...',
-      'pt': 'Digite sua nota aqui...',
-    },
-    'al57ju5g': {
-      'es': 'Create Note',
-      'en': 'Create Note',
-      'pt': 'Criar nota',
-    },
-  },
   // CommentsComponent
   {
     'r5qe2uaq': {
@@ -850,13 +977,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'fnxphbgn': {
       'es': 'Fuera de Linea',
-      'en': '',
-      'pt': '',
+      'en': 'Out of line',
+      'pt': 'Fora de linha',
     },
     '8rjq054y': {
       'es': 'No puedes aceptar ningún servicio.',
-      'en': '',
-      'pt': '',
+      'en': 'You cannot accept any service.',
+      'pt': 'Você não pode aceitar nenhum serviço.',
     },
   },
   // Miscellaneous

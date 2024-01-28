@@ -101,10 +101,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'ProfilePage',
           path: '/profilePage',
-          builder: (context, params) => ProfilePageWidget(
-            uid: params
-                .getParam('uid', ParamType.DocumentReference, false, ['users']),
-          ),
+          builder: (context, params) => ProfilePageWidget(),
         ),
         FFRoute(
           name: 'MenuPage',
@@ -153,6 +150,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'ViewCompanyPage',
           path: '/viewCompanyPage',
           builder: (context, params) => ViewCompanyPageWidget(),
+        ),
+        FFRoute(
+          name: 'BlockPage',
+          path: '/blockPage',
+          builder: (context, params) => BlockPageWidget(),
+        ),
+        FFRoute(
+          name: 'PaymentPage',
+          path: '/paymentPage',
+          builder: (context, params) => PaymentPageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
