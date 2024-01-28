@@ -352,113 +352,122 @@ class _ViewCompanyPageWidgetState extends State<ViewCompanyPageWidget> {
                               ].divide(SizedBox(width: 12.0)),
                             ),
                           ),
-                          Container(
-                            width: 100.0,
-                            height: 120.0,
-                            decoration: BoxDecoration(),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 10.0),
-                                  child: Icon(
-                                    Icons.category_sharp,
-                                    color: FlutterFlowTheme.of(context).primary,
-                                    size: 28.0,
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 6.0, 0.0, 0.0),
+                            child: Container(
+                              width: 100.0,
+                              height: 120.0,
+                              decoration: BoxDecoration(),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 10.0),
+                                    child: Icon(
+                                      Icons.category_sharp,
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
+                                      size: 28.0,
+                                    ),
                                   ),
-                                ),
-                                Expanded(
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 0.0, 8.0),
-                                        child: Text(
-                                          FFLocalizations.of(context).getText(
-                                            's0z7n6lm' /* Categorias */,
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .labelLarge
-                                              .override(
-                                                fontFamily: 'Poppins',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                              ),
-                                        ),
-                                      ),
-                                      Builder(
-                                        builder: (context) {
-                                          final categories = getJsonField(
-                                            viewCompanyPageGetCompanyByUserResponse
-                                                .jsonBody,
-                                            r'''$.categories''',
-                                          ).toList();
-                                          return Wrap(
-                                            spacing: 6.0,
-                                            runSpacing: 6.0,
-                                            alignment: WrapAlignment.start,
-                                            crossAxisAlignment:
-                                                WrapCrossAlignment.start,
-                                            direction: Axis.horizontal,
-                                            runAlignment: WrapAlignment.start,
-                                            verticalDirection:
-                                                VerticalDirection.down,
-                                            clipBehavior: Clip.antiAlias,
-                                            children:
-                                                List.generate(categories.length,
-                                                    (categoriesIndex) {
-                                              final categoriesItem =
-                                                  categories[categoriesIndex];
-                                              return Container(
-                                                decoration: BoxDecoration(
+                                  Expanded(
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 8.0),
+                                          child: Text(
+                                            FFLocalizations.of(context).getText(
+                                              's0z7n6lm' /* Categorias */,
+                                            ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .labelLarge
+                                                .override(
+                                                  fontFamily: 'Poppins',
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .alternate,
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          12.0),
+                                                      .primaryText,
                                                 ),
-                                                child: Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          8.0, 4.0, 8.0, 4.0),
-                                                  child: Text(
-                                                    getJsonField(
-                                                      categoriesItem,
-                                                      r'''$.name''',
-                                                    ).toString(),
-                                                    style: FlutterFlowTheme.of(
+                                          ),
+                                        ),
+                                        Builder(
+                                          builder: (context) {
+                                            final categories = getJsonField(
+                                              viewCompanyPageGetCompanyByUserResponse
+                                                  .jsonBody,
+                                              r'''$.categories''',
+                                            ).toList();
+                                            return Wrap(
+                                              spacing: 6.0,
+                                              runSpacing: 6.0,
+                                              alignment: WrapAlignment.start,
+                                              crossAxisAlignment:
+                                                  WrapCrossAlignment.start,
+                                              direction: Axis.horizontal,
+                                              runAlignment: WrapAlignment.start,
+                                              verticalDirection:
+                                                  VerticalDirection.down,
+                                              clipBehavior: Clip.antiAlias,
+                                              children: List.generate(
+                                                  categories.length,
+                                                  (categoriesIndex) {
+                                                final categoriesItem =
+                                                    categories[categoriesIndex];
+                                                return Container(
+                                                  decoration: BoxDecoration(
+                                                    color: FlutterFlowTheme.of(
                                                             context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Poppins',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryBackground,
-                                                        ),
+                                                        .alternate,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            12.0),
                                                   ),
-                                                ),
-                                              );
-                                            }),
-                                          );
-                                        },
-                                      ),
-                                      Divider(
-                                        thickness: 1.0,
-                                        color: FlutterFlowTheme.of(context)
-                                            .accent4,
-                                      ),
-                                    ],
+                                                  child: Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(8.0, 4.0,
+                                                                8.0, 4.0),
+                                                    child: Text(
+                                                      getJsonField(
+                                                        categoriesItem,
+                                                        r'''$.name''',
+                                                      ).toString(),
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Poppins',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryBackground,
+                                                              ),
+                                                    ),
+                                                  ),
+                                                );
+                                              }),
+                                            );
+                                          },
+                                        ),
+                                        Divider(
+                                          thickness: 1.0,
+                                          color: FlutterFlowTheme.of(context)
+                                              .accent4,
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                ),
-                              ].divide(SizedBox(width: 12.0)),
+                                ].divide(SizedBox(width: 12.0)),
+                              ),
                             ),
                           ),
                           Container(
