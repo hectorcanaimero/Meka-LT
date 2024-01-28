@@ -367,7 +367,7 @@ class _ViewServiceComponentWidgetState
                                                         Text(
                                                           dateTimeFormat(
                                                             'd/M h:mm a',
-                                                            functions.parseData(
+                                                            functions.createdAt(
                                                                 getJsonField(
                                                               containerServicioPorIDResponse
                                                                   .jsonBody,

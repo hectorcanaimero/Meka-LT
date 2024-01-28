@@ -308,10 +308,18 @@ class _ServicesPageWidgetState extends State<ServicesPageWidget>
                                                                     .start,
                                                             children: [
                                                               Text(
-                                                                getJsonField(
-                                                                  itemItem,
-                                                                  r'''$.createdAt''',
-                                                                ).toString(),
+                                                                dateTimeFormat(
+                                                                  'd/M h:mm a',
+                                                                  functions
+                                                                      .createdAt(
+                                                                          getJsonField(
+                                                                    itemItem,
+                                                                    r'''$.createdAt''',
+                                                                  ).toString()),
+                                                                  locale: FFLocalizations.of(
+                                                                          context)
+                                                                      .languageCode,
+                                                                ),
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyMedium
@@ -600,10 +608,18 @@ class _ServicesPageWidgetState extends State<ServicesPageWidget>
                                                                     .start,
                                                             children: [
                                                               Text(
-                                                                getJsonField(
-                                                                  itemItem,
-                                                                  r'''$.createdAt''',
-                                                                ).toString(),
+                                                                dateTimeFormat(
+                                                                  'd/M h:mm a',
+                                                                  functions
+                                                                      .createdAt(
+                                                                          getJsonField(
+                                                                    itemItem,
+                                                                    r'''$.createdAt''',
+                                                                  ).toString()),
+                                                                  locale: FFLocalizations.of(
+                                                                          context)
+                                                                      .languageCode,
+                                                                ),
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyMedium

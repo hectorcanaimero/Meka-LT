@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_button_tabbar.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'registro_page_widget.dart' show RegistroPageWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

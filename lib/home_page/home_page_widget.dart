@@ -577,7 +577,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                       dateTimeFormat(
                                                                         'd/M h:mm a',
                                                                         functions
-                                                                            .parseData(getJsonField(
+                                                                            .createdAt(getJsonField(
                                                                           acceptedItem,
                                                                           r'''$.createdAt''',
                                                                         ).toString()),
@@ -710,7 +710,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                             .titleSmall
                                                                             .override(
                                                                               fontFamily: 'Poppins',
-                                                                              color: Colors.white,
+                                                                              color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                               fontSize: 12.0,
                                                                             ),
                                                                       ),

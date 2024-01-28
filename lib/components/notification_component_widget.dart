@@ -268,8 +268,8 @@ class _NotificationComponentWidgetState
                                           ),
                                           Text(
                                             dateTimeFormat(
-                                              'd/M H:mm',
-                                              functions.parseData(getJsonField(
+                                              'd/M h:mm a',
+                                              functions.createdAt(getJsonField(
                                                 acceptedItem,
                                                 r'''$.createdAt''',
                                               ).toString()),

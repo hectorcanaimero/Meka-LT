@@ -78,3 +78,9 @@ List<String> getIdsCategories(
   }
   return ids;
 }
+
+DateTime createdAt(String data) {
+  DateFormat formatoEntrada = DateFormat("yyyy-MM-ddTHH:mm");
+  DateTime fecha = formatoEntrada.parse(data);
+  return fecha;
+}
