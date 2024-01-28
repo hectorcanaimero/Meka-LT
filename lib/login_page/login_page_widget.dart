@@ -120,11 +120,13 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-        body: Column(
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            Expanded(
-              child: Align(
+        body: Align(
+          alignment: AlignmentDirectional(0.0, 0.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Align(
                 alignment: AlignmentDirectional(0.0, 0.0),
                 child: Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
@@ -141,7 +143,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                       padding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                       child: Column(
-                        mainAxisSize: MainAxisSize.max,
+                        mainAxisSize: MainAxisSize.min,
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
@@ -662,8 +664,8 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                       animationsMap['containerOnPageLoadAnimation']!),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
