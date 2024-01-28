@@ -189,7 +189,10 @@ class _CommentsComponentWidgetState extends State<CommentsComponentWidget> {
                       contentPadding: EdgeInsetsDirectional.fromSTEB(
                           20.0, 32.0, 20.0, 12.0),
                     ),
-                    style: FlutterFlowTheme.of(context).bodyMedium,
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                          fontFamily: 'Poppins',
+                          color: FlutterFlowTheme.of(context).secondaryText,
+                        ),
                     textAlign: TextAlign.start,
                     maxLines: 7,
                     keyboardType: TextInputType.multiline,
