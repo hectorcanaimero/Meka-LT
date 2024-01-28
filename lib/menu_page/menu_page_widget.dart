@@ -308,22 +308,21 @@ class _MenuPageWidgetState extends State<MenuPageWidget> {
                             ),
                           ),
                         ),
-                        Container(
-                          width: 100.0,
-                          height: 50.0,
-                          decoration: BoxDecoration(),
-                          child: InkWell(
-                            splashColor: Colors.transparent,
-                            focusColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            highlightColor: Colors.transparent,
-                            onTap: () async {
-                              logFirebaseEvent(
-                                  'MENU_PAGE_PAGE_Column_hcklv45c_ON_TAP');
-                              logFirebaseEvent('Column_navigate_to');
+                        InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            logFirebaseEvent('MENU_PAGE_PAGE_Company_ON_TAP');
+                            logFirebaseEvent('Company_navigate_to');
 
-                              context.pushNamed('ViewCompanyPage');
-                            },
+                            context.pushNamed('ViewCompanyPage');
+                          },
+                          child: Container(
+                            width: 100.0,
+                            height: 50.0,
+                            decoration: BoxDecoration(),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
