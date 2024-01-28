@@ -827,11 +827,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // BlockPage
   {
-    'mwtlgidp': {
-      'es': 'Page Title',
-      'en': '',
-      'pt': '',
-    },
     'oeluqx8n': {
       'es': 'Home',
       'en': '',
@@ -840,8 +835,58 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // PaymentPage
   {
-    'g45q9oyq': {
-      'es': 'Page Title',
+    '65n1fktw': {
+      'es': 'Subscripción',
+      'en': '',
+      'pt': '',
+    },
+    '85p9p0wg': {
+      'es': 'Membresia y Facturación',
+      'en': 'Membership and Billing',
+      'pt': 'Associação e faturamento',
+    },
+    '16zd0twi': {
+      'es': 'Cancelar membresia',
+      'en': 'Cancel membership',
+      'pt': 'Cancelar a adesão',
+    },
+    'pm8n2ba5': {
+      'es': 'Información de facturación',
+      'en': 'Billing information',
+      'pt': 'Informações de pagamento',
+    },
+    'ggs3dez5': {
+      'es': 'Plan',
+      'en': 'Plan',
+      'pt': 'Plano',
+    },
+    'y3rh2vom': {
+      'es': 'Premium',
+      'en': '',
+      'pt': '',
+    },
+    '4l9fbjgw': {
+      'es': '\$ 2.00 al mes',
+      'en': '',
+      'pt': '',
+    },
+    'db36mzq6': {
+      'es': '29/02/2024',
+      'en': '',
+      'pt': '',
+    },
+    'ut4hg7ns': {
+      'es': 'Servicio de la plataforma',
+      'en': 'Platform service',
+      'pt': 'Serviço de plataforma',
+    },
+    'r95coexv': {
+      'es': '29/02/24 -29/03/2024',
+      'en': '',
+      'pt': '',
+    },
+    'c3qhpypj': {
+      'es': '\$5.00',
       'en': '',
       'pt': '',
     },

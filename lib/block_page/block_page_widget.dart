@@ -57,29 +57,32 @@ class _BlockPageWidgetState extends State<BlockPageWidget> {
         onWillPop: () async => false,
         child: Scaffold(
           key: scaffoldKey,
-          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-          appBar: AppBar(
-            backgroundColor: FlutterFlowTheme.of(context).primary,
-            automaticallyImplyLeading: false,
-            title: Text(
-              FFLocalizations.of(context).getText(
-                'mwtlgidp' /* Page Title */,
-              ),
-              style: FlutterFlowTheme.of(context).headlineMedium.override(
-                    fontFamily: 'Poppins',
-                    color: Colors.white,
-                    fontSize: 22.0,
-                  ),
-            ),
-            actions: [],
-            centerTitle: false,
-            elevation: 2.0,
-          ),
+          backgroundColor: FlutterFlowTheme.of(context).primary,
           body: SafeArea(
             top: true,
             child: Column(
               mainAxisSize: MainAxisSize.max,
-              children: [],
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(18.0, 0.0, 18.0, 0.0),
+                  child: Container(
+                    width: double.infinity,
+                    height: 500.0,
+                    decoration: BoxDecoration(
+                      color: FlutterFlowTheme.of(context).alternate,
+                      boxShadow: [
+                        BoxShadow(
+                          blurRadius: 4.0,
+                          color: Color(0x33000000),
+                          offset: Offset(0.0, 2.0),
+                        )
+                      ],
+                      borderRadius: BorderRadius.circular(16.0),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ),
