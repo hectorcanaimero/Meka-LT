@@ -198,6 +198,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 12.0, 0.0, 0.0),
                             child: Container(
+                              constraints: BoxConstraints(
+                                minHeight: 200.0,
+                              ),
                               decoration: BoxDecoration(),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
@@ -230,105 +233,115 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 12.0, 0.0, 0.0),
-                            child: FutureBuilder<ApiCallResponse>(
-                              future: MekaGroup.bannerClienteCall.call(
-                                location: currentUserLocationValue?.toString(),
-                              ),
-                              builder: (context, snapshot) {
-                                // Customize what your widget looks like when it's loading.
-                                if (!snapshot.hasData) {
-                                  return Center(
-                                    child: SizedBox(
-                                      width: 24.0,
-                                      height: 24.0,
-                                      child: CircularProgressIndicator(
-                                        valueColor:
-                                            AlwaysStoppedAnimation<Color>(
-                                          FlutterFlowTheme.of(context).primary,
-                                        ),
-                                      ),
-                                    ),
-                                  );
-                                }
-                                final carouselBannerClienteResponse =
-                                    snapshot.data!;
-                                return Builder(
-                                  builder: (context) {
-                                    final banner = getJsonField(
-                                      carouselBannerClienteResponse.jsonBody,
-                                      r'''$''',
-                                    ).toList();
-                                    return Container(
-                                      width: double.infinity,
-                                      height: 250.0,
-                                      child: CarouselSlider.builder(
-                                        itemCount: banner.length,
-                                        itemBuilder: (context, bannerIndex, _) {
-                                          final bannerItem =
-                                              banner[bannerIndex];
-                                          return InkWell(
-                                            splashColor: Colors.transparent,
-                                            focusColor: Colors.transparent,
-                                            hoverColor: Colors.transparent,
-                                            highlightColor: Colors.transparent,
-                                            onTap: () async {
-                                              logFirebaseEvent(
-                                                  'HOME_PAGE_PAGE_Image_u3fntq5a_ON_TAP');
-                                              logFirebaseEvent(
-                                                  'Image_launch_u_r_l');
-                                              await launchURL(getJsonField(
-                                                bannerItem,
-                                                r'''$.url''',
-                                              ).toString());
-                                            },
-                                            child: ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                              child: CachedNetworkImage(
-                                                fadeInDuration:
-                                                    Duration(milliseconds: 400),
-                                                fadeOutDuration:
-                                                    Duration(milliseconds: 400),
-                                                imageUrl: getJsonField(
-                                                  bannerItem,
-                                                  r'''$.picture''',
-                                                ).toString(),
-                                                fit: BoxFit.cover,
-                                                memCacheHeight: 200,
-                                              ),
-                                            ),
-                                          );
-                                        },
-                                        carouselController:
-                                            _model.carouselController ??=
-                                                CarouselController(),
-                                        options: CarouselOptions(
-                                          initialPage:
-                                              min(1, banner.length - 1),
-                                          viewportFraction: 1.0,
-                                          disableCenter: true,
-                                          enlargeCenterPage: true,
-                                          enlargeFactor: 0.25,
-                                          enableInfiniteScroll: true,
-                                          scrollDirection: Axis.horizontal,
-                                          autoPlay: true,
-                                          autoPlayAnimationDuration:
-                                              Duration(milliseconds: 500),
-                                          autoPlayInterval: Duration(
-                                              milliseconds: (500 + 2000)),
-                                          autoPlayCurve: Curves.linear,
-                                          pauseAutoPlayInFiniteScroll: true,
-                                          onPageChanged: (index, _) => _model
-                                              .carouselCurrentIndex = index,
+                          Container(
+                            constraints: BoxConstraints(
+                              minHeight: 250.0,
+                            ),
+                            decoration: BoxDecoration(),
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 12.0, 0.0, 0.0),
+                              child: FutureBuilder<ApiCallResponse>(
+                                future: MekaGroup.bannerClienteCall.call(
+                                  location:
+                                      currentUserLocationValue?.toString(),
+                                ),
+                                builder: (context, snapshot) {
+                                  // Customize what your widget looks like when it's loading.
+                                  if (!snapshot.hasData) {
+                                    return Center(
+                                      child: SizedBox(
+                                        width: 24.0,
+                                        height: 24.0,
+                                        child: CircularProgressIndicator(
+                                          valueColor:
+                                              AlwaysStoppedAnimation<Color>(
+                                            FlutterFlowTheme.of(context)
+                                                .primary,
+                                          ),
                                         ),
                                       ),
                                     );
-                                  },
-                                );
-                              },
+                                  }
+                                  final carouselBannerClienteResponse =
+                                      snapshot.data!;
+                                  return Builder(
+                                    builder: (context) {
+                                      final banner = getJsonField(
+                                        carouselBannerClienteResponse.jsonBody,
+                                        r'''$''',
+                                      ).toList();
+                                      return Container(
+                                        width: double.infinity,
+                                        height: 250.0,
+                                        child: CarouselSlider.builder(
+                                          itemCount: banner.length,
+                                          itemBuilder:
+                                              (context, bannerIndex, _) {
+                                            final bannerItem =
+                                                banner[bannerIndex];
+                                            return InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                logFirebaseEvent(
+                                                    'HOME_PAGE_PAGE_Image_u3fntq5a_ON_TAP');
+                                                logFirebaseEvent(
+                                                    'Image_launch_u_r_l');
+                                                await launchURL(getJsonField(
+                                                  bannerItem,
+                                                  r'''$.url''',
+                                                ).toString());
+                                              },
+                                              child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                                child: CachedNetworkImage(
+                                                  fadeInDuration: Duration(
+                                                      milliseconds: 400),
+                                                  fadeOutDuration: Duration(
+                                                      milliseconds: 400),
+                                                  imageUrl: getJsonField(
+                                                    bannerItem,
+                                                    r'''$.picture''',
+                                                  ).toString(),
+                                                  fit: BoxFit.cover,
+                                                  memCacheHeight: 200,
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                          carouselController:
+                                              _model.carouselController ??=
+                                                  CarouselController(),
+                                          options: CarouselOptions(
+                                            initialPage:
+                                                min(1, banner.length - 1),
+                                            viewportFraction: 1.0,
+                                            disableCenter: true,
+                                            enlargeCenterPage: true,
+                                            enlargeFactor: 0.25,
+                                            enableInfiniteScroll: true,
+                                            scrollDirection: Axis.horizontal,
+                                            autoPlay: true,
+                                            autoPlayAnimationDuration:
+                                                Duration(milliseconds: 500),
+                                            autoPlayInterval: Duration(
+                                                milliseconds: (500 + 2000)),
+                                            autoPlayCurve: Curves.linear,
+                                            pauseAutoPlayInFiniteScroll: true,
+                                            onPageChanged: (index, _) => _model
+                                                .carouselCurrentIndex = index,
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  );
+                                },
+                              ),
                             ),
                           ),
                           Padding(
@@ -336,6 +349,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 0.0, 12.0, 0.0, 0.0),
                             child: Container(
                               width: double.infinity,
+                              constraints: BoxConstraints(
+                                minHeight: 190.0,
+                              ),
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context)
                                     .secondaryBackground,
