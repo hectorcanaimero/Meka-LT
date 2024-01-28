@@ -221,11 +221,14 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget>
                                                 shape: BoxShape.circle,
                                               ),
                                               child: Image.network(
-                                                getJsonField(
-                                                  profilePageUserByIdResponse
-                                                      .jsonBody,
-                                                  r'''$.picture''',
-                                                ).toString(),
+                                                valueOrDefault<String>(
+                                                  getJsonField(
+                                                    profilePageUserByIdResponse
+                                                        .jsonBody,
+                                                    r'''$.picture''',
+                                                  )?.toString(),
+                                                  'https://gravatar.com/avatar/da468ba501a54b0d5c314417483d6210?s=400&d=robohash&r=x',
+                                                ),
                                                 fit: BoxFit.cover,
                                               ),
                                             ),

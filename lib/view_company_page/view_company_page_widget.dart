@@ -305,7 +305,6 @@ class _ViewCompanyPageWidgetState extends State<ViewCompanyPageWidget> {
                           ),
                           Container(
                             width: 100.0,
-                            height: 70.0,
                             decoration: BoxDecoration(),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -421,7 +420,7 @@ class _ViewCompanyPageWidgetState extends State<ViewCompanyPageWidget> {
                                                 decoration: BoxDecoration(
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .accent1,
+                                                      .alternate,
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                           12.0),
@@ -437,7 +436,13 @@ class _ViewCompanyPageWidgetState extends State<ViewCompanyPageWidget> {
                                                     ).toString(),
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .bodyMedium,
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Poppins',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryBackground,
+                                                        ),
                                                   ),
                                                 ),
                                               );
@@ -524,7 +529,7 @@ class _ViewCompanyPageWidgetState extends State<ViewCompanyPageWidget> {
                                                 decoration: BoxDecoration(
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .accent1,
+                                                      .alternate,
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                           12.0),
@@ -540,7 +545,13 @@ class _ViewCompanyPageWidgetState extends State<ViewCompanyPageWidget> {
                                                     ).toString(),
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .bodyMedium,
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Poppins',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryBackground,
+                                                        ),
                                                   ),
                                                 ),
                                               );
