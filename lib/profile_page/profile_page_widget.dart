@@ -877,14 +877,15 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget>
                                           _model.resultUpdate = await MekaGroup
                                               .updateUserCall
                                               .call(
+                                            uid: currentUserUid,
                                             firstName:
                                                 _model.firstNameController.text,
                                             lastName:
                                                 _model.lastNameController.text,
-                                            email: _model
-                                                .emailLoginController.text,
                                             phone: _model
                                                 .phoneRegisterController.text,
+                                            email: _model
+                                                .emailLoginController.text,
                                             country: _model.countryValue,
                                             language: _model.languageValue,
                                           );

@@ -442,33 +442,117 @@ class _MenuPageWidgetState extends State<MenuPageWidget> {
                             ),
                           ),
                         ),
-                        Container(
-                          width: 100.0,
-                          height: 50.0,
-                          decoration: BoxDecoration(),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                FFLocalizations.of(context).getText(
-                                  'u6omeba5' /* Excluir datos de la cuenta */,
+                        InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            logFirebaseEvent('MENU_PAGE_PAGE_Exclude_ON_TAP');
+                            logFirebaseEvent('Exclude_alert_dialog');
+                            var confirmDialogResponse = await showDialog<bool>(
+                                  context: context,
+                                  builder: (alertDialogContext) {
+                                    return AlertDialog(
+                                      title: Text('Info'),
+                                      content: Text(FFLocalizations.of(context)
+                                          .getVariableText(
+                                        esText:
+                                            'Quieres eliminar todos los datos de la App. Esta acción es definitiva',
+                                        enText:
+                                            'You want to delete all data from the App. This action is final',
+                                        ptText:
+                                            'Você deseja excluir todos os dados do App. Está ação é final',
+                                      )),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () => Navigator.pop(
+                                              alertDialogContext, false),
+                                          child: Text('Cancelar'),
+                                        ),
+                                        TextButton(
+                                          onPressed: () => Navigator.pop(
+                                              alertDialogContext, true),
+                                          child: Text('Ok'),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                ) ??
+                                false;
+                            logFirebaseEvent('Exclude_backend_call');
+                            _model.resultExclude =
+                                await MekaGroup.exludeUserCall.call(
+                              status: false,
+                              uid: currentUserUid,
+                            );
+                            if ((_model.resultExclude?.succeeded ?? true)) {
+                              logFirebaseEvent('Exclude_alert_dialog');
+                              await showDialog(
+                                context: context,
+                                builder: (alertDialogContext) {
+                                  return AlertDialog(
+                                    title: Text('Info'),
+                                    content: Text(FFLocalizations.of(context)
+                                        .getVariableText(
+                                      esText:
+                                          'Estamos eliminando tu dados y cerrando sessión',
+                                      enText:
+                                          'We are deleting your dice and logging out',
+                                      ptText:
+                                          'Estamos excluindo seus dados e saindo',
+                                    )),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () =>
+                                            Navigator.pop(alertDialogContext),
+                                        child: Text('Ok'),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
+                              logFirebaseEvent('Exclude_auth');
+                              GoRouter.of(context).prepareAuthEvent();
+                              await authManager.signOut();
+                              GoRouter.of(context).clearRedirectLocation();
+
+                              logFirebaseEvent('Exclude_navigate_to');
+
+                              context.pushNamedAuth(
+                                  'LoginPage', context.mounted);
+                            }
+
+                            setState(() {});
+                          },
+                          child: Container(
+                            width: 100.0,
+                            height: 50.0,
+                            decoration: BoxDecoration(),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  FFLocalizations.of(context).getText(
+                                    'u6omeba5' /* Excluir datos de la cuenta */,
+                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Poppins',
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        fontSize: 16.0,
+                                      ),
                                 ),
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Poppins',
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                      fontSize: 16.0,
-                                    ),
-                              ),
-                              Divider(
-                                thickness: 1.0,
-                                color: FlutterFlowTheme.of(context).accent4,
-                              ),
-                            ],
+                                Divider(
+                                  thickness: 1.0,
+                                  color: FlutterFlowTheme.of(context).accent4,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                         InkWell(

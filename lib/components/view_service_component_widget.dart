@@ -366,7 +366,7 @@ class _ViewServiceComponentWidgetState
                                                       children: [
                                                         Text(
                                                           dateTimeFormat(
-                                                            'd/M h:mm a',
+                                                            'dd/MM/yy h:mm a',
                                                             functions.createdAt(
                                                                 getJsonField(
                                                               containerServicioPorIDResponse

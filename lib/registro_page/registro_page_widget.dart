@@ -237,7 +237,7 @@ class _RegistroPageWidgetState extends State<RegistroPageWidget>
                                                         children: [
                                                           Text(
                                                             dateTimeFormat(
-                                                              'd/M h:mm a',
+                                                              'dd/MM/yy h:mm a',
                                                               functions.createdAt(
                                                                   getJsonField(
                                                                 itemItem,
@@ -470,7 +470,7 @@ class _RegistroPageWidgetState extends State<RegistroPageWidget>
                                                         children: [
                                                           Text(
                                                             dateTimeFormat(
-                                                              'd/M h:mm a',
+                                                              'dd/MM/yy h:mm a',
                                                               functions.createdAt(
                                                                   getJsonField(
                                                                 itemItem,

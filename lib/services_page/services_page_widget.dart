@@ -309,7 +309,7 @@ class _ServicesPageWidgetState extends State<ServicesPageWidget>
                                                             children: [
                                                               Text(
                                                                 dateTimeFormat(
-                                                                  'd/M h:mm a',
+                                                                  'd/MM/yy h:mm a',
                                                                   functions
                                                                       .createdAt(
                                                                           getJsonField(

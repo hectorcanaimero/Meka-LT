@@ -25,6 +25,8 @@ class MenuPageModel extends FlutterFlowModel<MenuPageWidget> {
   ApiCallResponse? apiResultduf;
   // Stores action output result for [Backend Call - API (Fuera de Linea)] action in SwitchListTile widget.
   ApiCallResponse? foraOff;
+  // Stores action output result for [Backend Call - API (Exlude User)] action in Exclude widget.
+  ApiCallResponse? resultExclude;
   // Model for NavBarFloting component.
   late NavBarFlotingModel navBarFlotingModel;
 

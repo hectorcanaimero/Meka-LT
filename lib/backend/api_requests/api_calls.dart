@@ -28,6 +28,7 @@ class MekaGroup {
   static CompanyByIdCall companyByIdCall = CompanyByIdCall();
   static TipoCompaniasCall tipoCompaniasCall = TipoCompaniasCall();
   static UserByIdCall userByIdCall = UserByIdCall();
+  static ExludeUserCall exludeUserCall = ExludeUserCall();
   static UpdateUserCall updateUserCall = UpdateUserCall();
 }
 
@@ -569,6 +570,32 @@ class UserByIdCall {
   }
 }
 
+class ExludeUserCall {
+  Future<ApiCallResponse> call({
+    bool? status,
+    String? uid = '',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "status": ${status}
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'Exlude User',
+      apiUrl: '${MekaGroup.baseUrl}/users/${uid}',
+      callType: ApiCallType.PATCH,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
 class UpdateUserCall {
   Future<ApiCallResponse> call({
     String? uid = '',
@@ -1035,7 +1062,7 @@ class CrearComentarioCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Crear Comentario',
-      apiUrl: '${MekaLTGroup.baseUrl}/commets',
+      apiUrl: '${MekaLTGroup.baseUrl}/comments',
       callType: ApiCallType.POST,
       headers: {},
       params: {},
