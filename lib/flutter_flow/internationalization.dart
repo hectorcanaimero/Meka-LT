@@ -686,7 +686,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'pt': '...',
     },
     'qe8wfei4': {
-      'es': 'Aceptados',
+      'es': 'Finalizados',
       'en': 'Cancelled',
       'pt': 'Cancelado',
     },
