@@ -1167,37 +1167,40 @@ class _ViewServiceComponentWidgetState
                                                 },
                                               ) ??
                                               false;
-                                      logFirebaseEvent('Finished_bottom_sheet');
-                                      await showModalBottomSheet(
-                                        isScrollControlled: true,
-                                        backgroundColor: Colors.transparent,
-                                        isDismissible: false,
-                                        enableDrag: false,
-                                        context: context,
-                                        builder: (context) {
-                                          return Padding(
-                                            padding: MediaQuery.viewInsetsOf(
-                                                context),
-                                            child: CommentsComponentWidget(
-                                              serviceId: getJsonField(
-                                                containerServicioPorIDResponse
-                                                    .jsonBody,
-                                                r'''$._id''',
-                                              ).toString(),
-                                              companyId: getJsonField(
-                                                containerServicioPorIDResponse
-                                                    .jsonBody,
-                                                r'''$.company._id''',
-                                              ).toString(),
-                                              userId: getJsonField(
-                                                containerServicioPorIDResponse
-                                                    .jsonBody,
-                                                r'''$.user._id''',
-                                              ).toString(),
-                                            ),
-                                          );
-                                        },
-                                      ).then((value) => safeSetState(() {}));
+                                      if (confirmDialogResponse) {
+                                        logFirebaseEvent(
+                                            'Finished_bottom_sheet');
+                                        await showModalBottomSheet(
+                                          isScrollControlled: true,
+                                          backgroundColor: Colors.transparent,
+                                          isDismissible: false,
+                                          enableDrag: false,
+                                          context: context,
+                                          builder: (context) {
+                                            return Padding(
+                                              padding: MediaQuery.viewInsetsOf(
+                                                  context),
+                                              child: CommentsComponentWidget(
+                                                serviceId: getJsonField(
+                                                  containerServicioPorIDResponse
+                                                      .jsonBody,
+                                                  r'''$._id''',
+                                                ).toString(),
+                                                companyId: getJsonField(
+                                                  containerServicioPorIDResponse
+                                                      .jsonBody,
+                                                  r'''$.company._id''',
+                                                ).toString(),
+                                                userId: getJsonField(
+                                                  containerServicioPorIDResponse
+                                                      .jsonBody,
+                                                  r'''$.user._id''',
+                                                ).toString(),
+                                              ),
+                                            );
+                                          },
+                                        ).then((value) => safeSetState(() {}));
+                                      }
                                     },
                                     text: FFLocalizations.of(context).getText(
                                       'ulva0kgi' /* Finalizar */,
