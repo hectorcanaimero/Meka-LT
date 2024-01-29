@@ -479,47 +479,49 @@ class _MenuPageWidgetState extends State<MenuPageWidget> {
                                   },
                                 ) ??
                                 false;
-                            logFirebaseEvent('Exclude_backend_call');
-                            _model.resultExclude =
-                                await MekaGroup.exludeUserCall.call(
-                              status: false,
-                              uid: currentUserUid,
-                            );
-                            if ((_model.resultExclude?.succeeded ?? true)) {
-                              logFirebaseEvent('Exclude_alert_dialog');
-                              await showDialog(
-                                context: context,
-                                builder: (alertDialogContext) {
-                                  return AlertDialog(
-                                    title: Text('Info'),
-                                    content: Text(FFLocalizations.of(context)
-                                        .getVariableText(
-                                      esText:
-                                          'Estamos eliminando tu dados y cerrando sessión',
-                                      enText:
-                                          'We are deleting your dice and logging out',
-                                      ptText:
-                                          'Estamos excluindo seus dados e saindo',
-                                    )),
-                                    actions: [
-                                      TextButton(
-                                        onPressed: () =>
-                                            Navigator.pop(alertDialogContext),
-                                        child: Text('Ok'),
-                                      ),
-                                    ],
-                                  );
-                                },
+                            if (confirmDialogResponse) {
+                              logFirebaseEvent('Exclude_backend_call');
+                              _model.resultExclude =
+                                  await MekaGroup.exludeUserCall.call(
+                                status: false,
+                                uid: currentUserUid,
                               );
-                              logFirebaseEvent('Exclude_auth');
-                              GoRouter.of(context).prepareAuthEvent();
-                              await authManager.signOut();
-                              GoRouter.of(context).clearRedirectLocation();
+                              if ((_model.resultExclude?.succeeded ?? true)) {
+                                logFirebaseEvent('Exclude_alert_dialog');
+                                await showDialog(
+                                  context: context,
+                                  builder: (alertDialogContext) {
+                                    return AlertDialog(
+                                      title: Text('Info'),
+                                      content: Text(FFLocalizations.of(context)
+                                          .getVariableText(
+                                        esText:
+                                            'Estamos eliminando tu dados y cerrando sessión',
+                                        enText:
+                                            'We are deleting your dice and logging out',
+                                        ptText:
+                                            'Estamos excluindo seus dados e saindo',
+                                      )),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () =>
+                                              Navigator.pop(alertDialogContext),
+                                          child: Text('Ok'),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                                logFirebaseEvent('Exclude_auth');
+                                GoRouter.of(context).prepareAuthEvent();
+                                await authManager.signOut();
+                                GoRouter.of(context).clearRedirectLocation();
 
-                              logFirebaseEvent('Exclude_navigate_to');
+                                logFirebaseEvent('Exclude_navigate_to');
 
-                              context.pushNamedAuth(
-                                  'LoginPage', context.mounted);
+                                context.pushNamedAuth(
+                                    'LoginPage', context.mounted);
+                              }
                             }
 
                             setState(() {});
