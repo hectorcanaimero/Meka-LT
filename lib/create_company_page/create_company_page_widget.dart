@@ -113,7 +113,7 @@ class _CreateCompanyPageWidgetState extends State<CreateCompanyPageWidget> {
                           alignment: AlignmentDirectional(0.0, 0.0),
                           child: Text(
                             FFLocalizations.of(context).getText(
-                              'iyw4seyd' /* Registrar la compañia */,
+                              'iyw4seyd' /* Registro de la compañia */,
                             ),
                             style: FlutterFlowTheme.of(context)
                                 .headlineSmall
@@ -312,7 +312,7 @@ class _CreateCompanyPageWidgetState extends State<CreateCompanyPageWidget> {
                                           ),
                                       hintText:
                                           FFLocalizations.of(context).getText(
-                                        '40lcjozl' /* Categoria(s) que actua.. */,
+                                        '40lcjozl' /* Seleccione la(s) especialidad(... */,
                                       ),
                                       searchHintText:
                                           FFLocalizations.of(context).getText(

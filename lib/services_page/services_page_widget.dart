@@ -121,7 +121,7 @@ class _ServicesPageWidgetState extends State<ServicesPageWidget>
                         tabs: [
                           Tab(
                             text: FFLocalizations.of(context).getText(
-                              '9ks2r7fp' /* Por Aceptar */,
+                              '9ks2r7fp' /* Solicitudes */,
                             ),
                           ),
                           Tab(

@@ -240,7 +240,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                               alignment: AlignmentDirectional(-1.0, 0.0),
                               child: Text(
                                 FFLocalizations.of(context).getText(
-                                  '8t42qsqg' /* Bienvenido de nuevo */,
+                                  '8t42qsqg' /* ¡Bienvenido a Meka LT! */,
                                 ),
                                 textAlign: TextAlign.start,
                                 style:
@@ -252,7 +252,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                   0.0, 4.0, 0.0, 24.0),
                               child: Text(
                                 FFLocalizations.of(context).getText(
-                                  'rkqwjeuv' /* Complete la información a cont... */,
+                                  'rkqwjeuv' /* La aplicación líder para mecán... */,
                                 ),
                                 textAlign: TextAlign.start,
                                 style: FlutterFlowTheme.of(context)
@@ -601,13 +601,13 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                 child: FFButtonWidget(
                                   onPressed: () async {
                                     logFirebaseEvent(
-                                        'LOGIN_REGISTRESE_AQUI_BTN_ON_TAP');
+                                        'LOGIN_REGISTRATE_AQUÍ_BTN_ON_TAP');
                                     logFirebaseEvent('Button_navigate_to');
 
                                     context.pushNamed('CreateUserPage');
                                   },
                                   text: FFLocalizations.of(context).getText(
-                                    '9hcnw5ef' /* Registrese aqui */,
+                                    '9hcnw5ef' /* Registrate aquí */,
                                   ),
                                   options: FFButtonOptions(
                                     height: 44.0,

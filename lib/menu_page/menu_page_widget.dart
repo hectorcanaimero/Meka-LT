@@ -201,12 +201,12 @@ class _MenuPageWidgetState extends State<MenuPageWidget> {
                               FFAppState().ltCompany,
                               r'''$._id''',
                             ).toString(),
-                            status: true,
+                            status: false,
                           );
                           if ((_model.apiResultduf?.succeeded ?? true)) {
                             logFirebaseEvent('SwitchListTile_update_app_state');
                             setState(() {
-                              FFAppState().ltActive = true;
+                              FFAppState().ltActive = false;
                             });
                           }
 
@@ -221,12 +221,12 @@ class _MenuPageWidgetState extends State<MenuPageWidget> {
                               FFAppState().ltCompany,
                               r'''$._id''',
                             ).toString(),
-                            status: false,
+                            status: true,
                           );
                           if ((_model.foraOff?.succeeded ?? true)) {
                             logFirebaseEvent('SwitchListTile_update_app_state');
                             setState(() {
-                              FFAppState().ltActive = false;
+                              FFAppState().ltActive = true;
                             });
                           }
 

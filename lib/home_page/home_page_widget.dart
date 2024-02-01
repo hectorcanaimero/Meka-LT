@@ -308,7 +308,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                     bannerItem,
                                                     r'''$.picture''',
                                                   ).toString(),
-                                                  fit: BoxFit.cover,
+                                                  fit: BoxFit.contain,
                                                   memCacheHeight: 200,
                                                 ),
                                               ),

@@ -121,7 +121,7 @@ class _RegistroPageWidgetState extends State<RegistroPageWidget>
                         tabs: [
                           Tab(
                             text: FFLocalizations.of(context).getText(
-                              '1x0wu7jy' /* Cancelados */,
+                              '1x0wu7jy' /* Rechazados */,
                             ),
                           ),
                           Tab(

@@ -105,7 +105,7 @@ class _NotificationComponentWidgetState
               ).toList();
               if (accepted.isEmpty) {
                 return VazioWidgetWidget(
-                  name: 'Sin servicios por aceptar',
+                  name: 'Sin solicitudes',
                 );
               }
               return ListView.separated(

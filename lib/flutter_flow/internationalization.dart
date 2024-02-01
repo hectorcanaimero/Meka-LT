@@ -119,12 +119,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'pt': 'L. T.',
     },
     '8t42qsqg': {
-      'es': 'Bienvenido de nuevo',
+      'es': '¡Bienvenido a Meka LT!',
       'en': 'Welcome back',
       'pt': 'Bem vindo de novo',
     },
     'rkqwjeuv': {
-      'es': 'Complete la información a continuación para acceder a su cuenta.',
+      'es':
+          'La aplicación líder para mecánicos, tiendas de repuestos y talleres. Completa la información a continuación para acceder o crear tu cuenta.',
       'en': 'Please complete the information below to access your account.',
       'pt': 'Preencha as informações abaixo para acessar sua conta.',
     },
@@ -154,7 +155,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'pt': 'Iniciar sessão',
     },
     '9hcnw5ef': {
-      'es': 'Registrese aqui',
+      'es': 'Registrate aquí',
       'en': 'Register here',
       'pt': 'Registre-se aqui',
     },
@@ -424,7 +425,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // ServicesPage
   {
     '9ks2r7fp': {
-      'es': 'Por Aceptar',
+      'es': 'Solicitudes',
       'en': 'Historical',
       'pt': 'Histórico',
     },
@@ -676,7 +677,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // RegistroPage
   {
     '1x0wu7jy': {
-      'es': 'Cancelados',
+      'es': 'Rechazados',
       'en': 'Historical',
       'pt': 'Histórico',
     },
@@ -704,7 +705,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // CreateCompanyPage
   {
     'iyw4seyd': {
-      'es': 'Registrar la compañia',
+      'es': 'Registro de la compañia',
       'en': 'Register the company',
       'pt': 'Cadastre a empresa',
     },
@@ -734,7 +735,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'pt': 'Opção 1',
     },
     '40lcjozl': {
-      'es': 'Categoria(s) que actua..',
+      'es': 'Seleccione la(s) especialidad(es)...',
       'en': 'Category(s) that operates..',
       'pt': 'Categoria(s) que opera..',
     },

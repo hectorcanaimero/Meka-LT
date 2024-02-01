@@ -1038,7 +1038,15 @@ class _CreateUserPageWidgetState extends State<CreateUserPageWidget>
                                           return AlertDialog(
                                             title: Text('Show!'),
                                             content: Text(
-                                                'Ya creamos tu cuenta de forma correcta. Ahora necesitamos los datos de la empresa.'),
+                                                FFLocalizations.of(context)
+                                                    .getVariableText(
+                                              esText:
+                                                  '¡Listo con tu cuenta personal! Ahora, registra los datos de tu empresa para aprovechar al máximo nuestra aplicación. 🚀🏢',
+                                              enText:
+                                                  'Ready with your personal account! Now, register your company details to get the most out of our application. 🚀🏢',
+                                              ptText:
+                                                  'Pronto com sua conta pessoal! Agora, cadastre os dados da sua empresa para aproveitar ao máximo nosso aplicativo. 🚀🏢',
+                                            )),
                                             actions: [
                                               TextButton(
                                                 onPressed: () => Navigator.pop(
