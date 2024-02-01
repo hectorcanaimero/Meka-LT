@@ -30,6 +30,8 @@ class _SelectMapAddressComponentWidgetState
     extends State<SelectMapAddressComponentWidget> {
   late SelectMapAddressComponentModel _model;
 
+  LatLng? currentUserLocationValue;
+
   @override
   void setState(VoidCallback callback) {
     super.setState(callback);
@@ -41,6 +43,8 @@ class _SelectMapAddressComponentWidgetState
     super.initState();
     _model = createModel(context, () => SelectMapAddressComponentModel());
 
+    getCurrentUserLocation(defaultLocation: LatLng(0.0, 0.0), cached: true)
+        .then((loc) => setState(() => currentUserLocationValue = loc));
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -54,6 +58,22 @@ class _SelectMapAddressComponentWidgetState
   @override
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
+    if (currentUserLocationValue == null) {
+      return Container(
+        color: FlutterFlowTheme.of(context).primaryBackground,
+        child: Center(
+          child: SizedBox(
+            width: 24.0,
+            height: 24.0,
+            child: CircularProgressIndicator(
+              valueColor: AlwaysStoppedAnimation<Color>(
+                FlutterFlowTheme.of(context).primary,
+              ),
+            ),
+          ),
+        ),
+      );
+    }
 
     return Align(
       alignment: AlignmentDirectional(0.0, 1.0),
@@ -257,7 +277,7 @@ class _SelectMapAddressComponentWidgetState
                         onCameraIdle: (latLng) =>
                             _model.googleMapsCenter = latLng,
                         initialLocation: _model.googleMapsCenter ??=
-                            _model.placePickerValue.latLng,
+                            currentUserLocationValue!,
                         markers: [
                           if (_googleMapMarker != null)
                             FlutterFlowMarker(
